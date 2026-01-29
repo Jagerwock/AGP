@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Detalle de propiedad | Lima</title>
-  <meta name="description" content="Detalle de propiedad en Lima con galería, características y contacto directo." />
+  <title>Propiedad | AGP Inmobiliaria</title>
+  <meta name="description" content="Detalle de propiedad en Lima Metropolitana. AGP Inmobiliaria." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -19,10 +19,19 @@
   <header class="site-header">
     <nav class="navbar" aria-label="Principal">
       <a class="logo" href="index.html">
-        <span>Valeria Torres</span>
-        <small>Agente inmobiliario</small>
+        <span>AGP Inmobiliaria</span>
+        <small>Lima Metropolitana · Perú</small>
       </a>
-      <a class="btn btn-secondary" href="index.html#propiedades">Ver más propiedades</a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu">
+        <span class="sr-only">Mostrar menú</span>
+        ☰
+      </button>
+      <div class="nav-menu" id="nav-menu">
+        <a href="index.html#propiedades">Propiedades</a>
+        <a href="index.html#mapa">Mapa</a>
+        <a href="index.html#zonas">Zonas</a>
+        <a href="index.html#contacto">Contacto</a>
+      </div>
       <button class="mode-toggle" type="button" aria-pressed="false">
         <span class="sr-only">Cambiar modo oscuro</span>
         <span aria-hidden="true">🌙</span>
@@ -32,52 +41,45 @@
 
   <main id="detalle">
     <section class="property-hero">
-      <div class="property-hero__content">
-        <p class="eyebrow" id="property-district">Distrito</p>
-        <h1 id="property-title">Propiedad</h1>
-        <p class="property-price" id="property-price"></p>
-        <p class="property-address" id="property-address"></p>
-        <div class="property-tags" id="property-tags"></div>
-        <div class="property-actions">
-          <a class="btn btn-primary" href="#contacto">Agendar visita</a>
-          <a class="btn btn-secondary" id="property-whatsapp" href="https://wa.me/51999999999" target="_blank" rel="noopener">WhatsApp</a>
-        </div>
-      </div>
       <div class="property-gallery">
         <div class="gallery-main">
-          <img id="gallery-main" alt="Foto principal" loading="lazy" />
+            <img id="gallery-main" src="" alt="" loading="lazy" />
         </div>
-        <div class="gallery-thumbs" id="gallery-thumbs"></div>
+        <div class="gallery-thumbs" id="gallery-thumbs" aria-label="Galería"></div>
+      </div>
+      <div>
+        <p class="eyebrow" id="property-district"></p>
+        <h1 id="property-title"></h1>
+        <p><strong id="property-price"></strong></p>
+        <p id="property-address"></p>
+        <div id="property-tags" class="trust-badges"></div>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#contacto">Agendar visita</a>
+          <a class="btn btn-secondary" id="property-whatsapp" href="https://wa.me/51XXXXXXXXX" target="_blank" rel="noopener">WhatsApp</a>
+        </div>
       </div>
     </section>
 
     <section class="property-details">
-      <div class="property-description">
+      <article>
         <h2>Descripción</h2>
         <p id="property-description"></p>
+        <h3>Características</h3>
         <ul class="property-features" id="property-features"></ul>
-      </div>
-      <div class="property-info">
-        <h2>Características</h2>
-        <table class="property-table" aria-label="Características">
-          <tbody id="property-table"></tbody>
-        </table>
+      <h3>Ficha técnica</h3>
+        <table class="property-table" id="property-table"></table>
+      </article>
+      <aside>
+        <h3>Ubicación aproximada</h3>
+        <p>Mapa referencial para Lima Metropolitana.</p>
         <div id="property-map" class="map map--small" aria-label="Mapa de propiedad"></div>
-      </div>
-    </section>
-
-    <section class="similar-properties">
-      <div class="section-heading">
-        <h2>Propiedades similares</h2>
-        <p>Alternativas en el mismo distrito o tipo.</p>
-      </div>
-      <div class="property-grid" id="similar-grid"></div>
+      </aside>
     </section>
 
     <section class="contact" id="contacto">
       <div class="section-heading">
-        <h2>Agenda una visita privada</h2>
-        <p>Coordinemos una visita presencial o virtual en menos de 24h.</p>
+        <h2>Agendar visita</h2>
+        <p>Coordina con el equipo AGP Inmobiliaria y recibe respuesta en menos de 24h.</p>
       </div>
       <div class="contact-grid">
         <form class="contact-form" id="contact-form" novalidate>
@@ -97,42 +99,68 @@
 
           <button class="btn btn-primary" type="submit">Enviar solicitud</button>
           <div class="contact-actions">
-            <a class="btn btn-secondary" href="https://wa.me/51999999999" target="_blank" rel="noopener">WhatsApp</a>
+            <a class="btn btn-secondary" href="https://wa.me/51XXXXXXXXX" target="_blank" rel="noopener">WhatsApp</a>
             <a class="btn btn-ghost" href="https://calendly.com" target="_blank" rel="noopener">Calendly</a>
           </div>
           <p class="form-feedback" id="contact-feedback" role="status" aria-live="polite"></p>
         </form>
         <div class="contact-info">
           <h3>Contacto directo</h3>
-          <p><strong>Dirección:</strong> Lima Metropolitana, Perú</p>
-          <p><strong>Email:</strong> hola@valeriatorres.com</p>
-          <p><strong>Teléfono:</strong> +51 999 999 999</p>
-          <div class="contact-cards">
-            <div>
-              <h4>Asesoría legal</h4>
-              <p>Validación SUNARP y documentación completa.</p>
-            </div>
-            <div>
-              <h4>Optimización financiera</h4>
-              <p>Te guiamos en créditos y negociación.</p>
-            </div>
-          </div>
+          <p><strong>Ubicación:</strong> Lima Metropolitana, Perú</p>
+          <p><strong>Email:</strong> contacto@agpinmobiliaria.pe</p>
+          <p><strong>Teléfono:</strong> +51 XXXXXXXXX</p>
         </div>
       </div>
     </section>
+
+    <section class="similar-properties" id="similares">
+      <div class="section-heading">
+        <h2>Propiedades similares</h2>
+        <p>Opciones en el mismo distrito o tipo de inmueble.</p>
+      </div>
+      <div class="property-grid" id="similar-grid"></div>
+    </section>
   </main>
 
-  <div class="sticky-cta" id="sticky-cta">
-    <a class="btn btn-primary" href="#contacto">Agendar visita</a>
-    <a class="btn btn-secondary" id="sticky-whatsapp" href="https://wa.me/51999999999" target="_blank" rel="noopener">WhatsApp</a>
-  </div>
+  <footer class="footer">
+    <div>
+      <h3>AGP Inmobiliaria</h3>
+      <p>Lima Metropolitana · Perú</p>
+    </div>
+    <div>
+      <p>Teléfono: +51 XXXXXXXXX</p>
+      <p>Email: contacto@agpinmobiliaria.pe</p>
+    </div>
+    <div class="footer-links">
+      <a href="privacidad.html">Política de privacidad</a>
+      <a href="terminos.html">Términos y condiciones</a>
+      <a href="index.html#contacto">Agenda una visita</a>
+    </div>
+  </footer>
 
-  <div class="modal" id="gallery-modal" aria-hidden="true">
-    <button class="modal-close" type="button" aria-label="Cerrar">×</button>
-    <img id="modal-image" alt="Galería" />
+  <div class="sticky-cta"></div>
+    <a class="btn btn-primary" href="#contacto">Agendar visita</a>
+    <a class="btn btn-secondary" id="sticky-whatsapp" href="https://wa.me/51XXXXXXXXX" target="_blank" rel="noopener">WhatsApp</a>
   </div>
 
   <div class="toast" id="toast" role="status" aria-live="polite" aria-atomic="true"></div>
+
+  <div class="modal" id="gallery-modal" aria-hidden="true" role="dialog">
+    <img id="modal-image" src="" alt="Vista ampliada" />
+    <button class="modal-close" type="button" aria-label="Cerrar">×</button>
+  </div>
+
+  <div class="modal" id="success-modal" aria-hidden="true" role="dialog" aria-labelledby="modal-title">
+    <div class="modal-content">
+      <button class="modal-close" type="button" aria-label="Cerrar">×</button>
+      <h3 id="modal-title">Solicitud recibida</h3>
+      <p>Gracias por confiar en AGP Inmobiliaria. Respondemos en menos de 24h.</p>
+      <div class="contact-actions">
+        <a class="btn btn-primary" href="https://wa.me/51XXXXXXXXX" target="_blank" rel="noopener">WhatsApp</a>
+        <a class="btn btn-secondary" href="https://calendly.com" target="_blank" rel="noopener">Calendly</a>
+      </div>
+    </div>
+  </div>
 
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
   <script src="js/property.js" defer></script>

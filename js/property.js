@@ -1,4 +1,5 @@
-const USD_RATE = 3.8;
+const USD_RATE = 3.75;
+const WHATSAPP_NUMBER = "51XXXXXXXXX";
 
 const elements = {
   district: document.getElementById("property-district"),
@@ -12,16 +13,18 @@ const elements = {
   features: document.getElementById("property-features"),
   table: document.getElementById("property-table"),
   similar: document.getElementById("similar-grid"),
-  map: document.getElementById("property-map"),
   modal: document.getElementById("gallery-modal"),
   modalImage: document.getElementById("modal-image"),
-  modalClose: document.querySelector(".modal-close"),
+  modalClose: document.querySelector("#gallery-modal .modal-close"),
   toast: document.getElementById("toast"),
   contactForm: document.getElementById("contact-form"),
   contactFeedback: document.getElementById("contact-feedback"),
   whatsapp: document.getElementById("property-whatsapp"),
   stickyWhatsapp: document.getElementById("sticky-whatsapp"),
   modeToggle: document.querySelector(".mode-toggle"),
+  successModal: document.getElementById("success-modal"),
+  navToggle: document.querySelector(".nav-toggle"),
+  navMenu: document.querySelector(".nav-menu"),
 };
 
 let map;
@@ -45,6 +48,12 @@ const showToast = (message) => {
   elements.toast.textContent = message;
   elements.toast.classList.add("show");
   setTimeout(() => elements.toast.classList.remove("show"), 3000);
+};
+
+const toggleModal = (modal, show) => {
+  if (!modal) return;
+  modal.classList.toggle("show", show);
+  modal.setAttribute("aria-hidden", String(!show));
 };
 
 const applyDarkMode = (enabled) => {
@@ -101,19 +110,21 @@ const renderGallery = (images) => {
 
   elements.mainImage.addEventListener("click", () => {
     elements.modalImage.src = elements.mainImage.src;
-    elements.modal.classList.add("show");
-    elements.modal.setAttribute("aria-hidden", "false");
+    toggleModal(elements.modal, true);
   });
+}
 
-  elements.modalClose.addEventListener("click", () => {
-    elements.modal.classList.remove("show");
-    elements.modal.setAttribute("aria-hidden", "true");
-  });
-
-  elements.modal.addEventListener("click", (event) => {
+const initGalleryModal = () => {
+  elements.modalClose?.addEventListener("click", () => toggleModal(elements.modal, false));
+  elements.modal?.addEventListener("click", (event) => {
     if (event.target === elements.modal) {
-      elements.modal.classList.remove("show");
-      elements.modal.setAttribute("aria-hidden", "true");
+      toggleModal(elements.modal, false);
+    }
+  });
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      toggleModal(elements.modal, false);
+      toggleModal(elements.successModal, false);
     }
   });
 };
@@ -169,18 +180,30 @@ const renderProperty = (property, allProperties) => {
     <tr><td>Baños</td><td>${property.bathrooms}</td></tr>
     <tr><td>Área</td><td>${property.areaM2} m²</td></tr>
     <tr><td>Distrito</td><td>${property.district}</td></tr>
+    <tr><td>ID</td><td>${property.id}</td></tr>
   `;
 
   const whatsappMessage = encodeURIComponent(
-    `Hola, quiero agendar una visita para ${property.title} en ${property.district}.`
+    `Hola, quiero agendar una visita para la propiedad ${property.id} (${property.title}) en ${property.district}.`
   );
-  const whatsappUrl = `https://wa.me/51999999999?text=${whatsappMessage}`;
+  const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${whatsappMessage}`;
   elements.whatsapp.href = whatsappUrl;
   elements.stickyWhatsapp.href = whatsappUrl;
 
   renderGallery(property.images);
   renderSimilar(allProperties, property);
   initMap(property);
+};
+
+const initSuccessModal = () => {
+  if (!elements.successModal) return;
+  const closeButton = elements.successModal.querySelector(".modal-close");
+  closeButton?.addEventListener("click", () => toggleModal(elements.successModal, false));
+  elements.successModal.addEventListener("click", (event) => {
+    if (event.target === elements.successModal) {
+      toggleModal(elements.successModal, false);
+    }
+  });
 };
 
 const initForms = () => {
@@ -190,11 +213,20 @@ const initForms = () => {
     if (honeypot) return;
     if (elements.contactForm.checkValidity()) {
       elements.contactFeedback.textContent = "¡Listo! Te contactaremos en menos de 24h.";
-      showToast("Mensaje enviado (demo)");
+      showToast("Solicitud recibida");
+      toggleModal(elements.successModal, true);
       elements.contactForm.reset();
     } else {
       elements.contactFeedback.textContent = "Revisa los campos requeridos.";
     }
+  });
+};
+
+const initNav = () => {
+  elements.navToggle?.addEventListener("click", () => {
+    const expanded = elements.navToggle.getAttribute("aria-expanded") === "true";
+    elements.navToggle.setAttribute("aria-expanded", String(!expanded));
+    elements.navMenu?.classList.toggle("open");
   });
 };
 
@@ -221,6 +253,9 @@ const loadProperty = async () => {
 const init = () => {
   initModeToggle();
   initForms();
+  initGalleryModal();
+  initSuccessModal();
+  initNav();
   loadProperty();
 };
 

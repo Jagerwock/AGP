@@ -11,8 +11,10 @@ const DISTRICTS = [
   "Lince",
 ];
 
-const USD_RATE = 3.8;
+const USD_RATE = 3.75;
 const ITEMS_PER_PAGE = 6;
+const WHATSAPP_NUMBER = "51XXXXXXXXX";
+const CALENDLY_LINK = "https://calendly.com";
 
 const state = {
   allProperties: [],
@@ -43,6 +45,7 @@ const elements = {
   navToggle: document.querySelector(".nav-toggle"),
   navMenu: document.querySelector(".nav-menu"),
   modeToggle: document.querySelector(".mode-toggle"),
+  modal: document.getElementById("success-modal"),
 };
 
 let map;
@@ -67,6 +70,12 @@ const showToast = (message) => {
   elements.toast.textContent = message;
   elements.toast.classList.add("show");
   setTimeout(() => elements.toast.classList.remove("show"), 3000);
+};
+
+const toggleModal = (show) => {
+  if (!elements.modal) return;
+  elements.modal.classList.toggle("show", show);
+  elements.modal.setAttribute("aria-hidden", String(!show));
 };
 
 const applyDarkMode = (enabled) => {
@@ -140,9 +149,8 @@ const buildCard = (property) => {
 };
 
 const renderProperties = () => {
-  const start = 0;
   const end = ITEMS_PER_PAGE * state.currentPage;
-  const slice = state.filtered.slice(start, end);
+  const slice = state.filtered.slice(0, end);
   if (!slice.length) {
     elements.grid.innerHTML = `<p>No se encontraron propiedades con esos filtros.</p>`;
   } else {
@@ -207,23 +215,39 @@ const initMap = () => {
   markersLayer = L.layerGroup().addTo(map);
 };
 
+const initModal = () => {
+  if (!elements.modal) return;
+  const closeButton = elements.modal.querySelector(".modal-close");
+  closeButton?.addEventListener("click", () => toggleModal(false));
+  elements.modal.addEventListener("click", (event) => {
+    if (event.target === elements.modal) {
+      toggleModal(false);
+    }
+  });
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      toggleModal(false);
+    }
+  });
+};
+
 const initForms = () => {
-  elements.form.addEventListener("submit", (event) => {
+  elements.form?.addEventListener("submit", (event) => {
     event.preventDefault();
     applyFilters();
   });
 
-  elements.clear.addEventListener("click", () => {
+  elements.clear?.addEventListener("click", () => {
     elements.form.reset();
     applyFilters();
   });
 
-  elements.loadMore.addEventListener("click", () => {
+  elements.loadMore?.addEventListener("click", () => {
     state.currentPage += 1;
     renderProperties();
   });
 
-  elements.currencyToggle.addEventListener("change", (event) => {
+  elements.currencyToggle?.addEventListener("change", (event) => {
     state.showUsd = event.target.checked;
     renderProperties();
   });
@@ -232,8 +256,9 @@ const initForms = () => {
     event.preventDefault();
     const feedback = elements.leadForm.querySelector(".form-feedback");
     if (elements.leadForm.checkValidity()) {
-      feedback.textContent = "¡Mensaje enviado (demo)! Te contactaremos pronto.";
-      showToast("Solicitud recibida (demo)");
+      feedback.textContent = "¡Solicitud recibida! Te contactaremos pronto.";
+      showToast("Solicitud recibida");
+      toggleModal(true);
       elements.leadForm.reset();
     } else {
       feedback.textContent = "Completa los campos requeridos.";
@@ -246,7 +271,8 @@ const initForms = () => {
     if (honeypot) return;
     if (elements.contactForm.checkValidity()) {
       elements.contactFeedback.textContent = "¡Listo! Te contactaremos en menos de 24h.";
-      showToast("Mensaje enviado (demo)");
+      showToast("Solicitud recibida");
+      toggleModal(true);
       elements.contactForm.reset();
     } else {
       elements.contactFeedback.textContent = "Revisa los campos requeridos.";
@@ -281,9 +307,16 @@ const init = async () => {
   populateDistricts();
   initMap();
   initNav();
+  initModal();
   initForms();
   await loadProperties();
   applyFilters();
 };
 
 init();
+
+window.AGP_CONFIG = {
+  whatsapp: WHATSAPP_NUMBER,
+  calendly: CALENDLY_LINK,
+  usdRate: USD_RATE,
+};

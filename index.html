@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Agente inmobiliario en Lima | Ventas y alquileres premium</title>
-  <meta name="description" content="Agente inmobiliario en Lima especializado en Miraflores, San Isidro, Barranco y más. Propiedades premium, asesoría legal y cierre seguro." />
+  <title>AGP Inmobiliaria | Agente inmobiliario en Lima</title>
+  <meta name="description" content="AGP Inmobiliaria en Lima. Propiedades premium, asesoría estratégica y captación de leads con visitas agendadas en Lima Metropolitana." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -20,8 +20,8 @@
   <header class="site-header" id="inicio">
     <nav class="navbar" aria-label="Principal">
       <a class="logo" href="#inicio">
-        <span>Valeria Torres</span>
-        <small>Agente inmobiliario</small>
+        <span>AGP Inmobiliaria</span>
+        <small>Lima Metropolitana · Perú</small>
       </a>
       <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu">
         <span class="sr-only">Mostrar menú</span>
@@ -30,6 +30,7 @@
       <div class="nav-menu" id="nav-menu">
         <a href="#inicio">Inicio</a>
         <a href="#propiedades">Propiedades</a>
+        <a href="#mapa">Mapa</a>
         <a href="#zonas">Zonas</a>
         <a href="#testimonios">Testimonios</a>
         <a href="#guias">Guías</a>
@@ -45,31 +46,36 @@
   <main>
     <section class="hero">
       <div class="hero-content">
-        <p class="eyebrow">Especialista en Lima Metropolitana</p>
-        <h1>Agente inmobiliario en Lima</h1>
+        <p class="eyebrow">AGP Inmobiliaria · Lima Metropolitana</p>
+        <h1>Agente inmobiliario en Lima con estrategia premium</h1>
         <p>
-          Asesoría premium para compra, venta y alquiler en Miraflores, San Isidro, Barranco,
-          Surco, La Molina y distritos estratégicos. Estrategia, marketing y cierres rápidos.
+          Somos AGP Inmobiliaria: equipo especializado en captación, marketing y cierres inmobiliarios en los
+          distritos más demandados de Lima. Diseñamos planes de venta y alquiler para propiedades de alto valor.
         </p>
         <div class="hero-actions">
           <a class="btn btn-primary" href="#contacto">Agendar visita</a>
-          <a class="btn btn-secondary" href="https://wa.me/51999999999" target="_blank" rel="noopener">WhatsApp</a>
-        </div>
-        <div class="trust-badges" aria-label="Confianza">
-          <span>SUNARP verificado</span>
-          <span>Notaría aliada</span>
-          <span>Asesoría legal</span>
-        </div>
+          <a class="btn btn-secondary" href="https://wa.me/51XXXXXXXXX" target="_blank" rel="noopener">WhatsApp</a>
+        <div class="hero-stats" aria-label="Indicadores AGP">
+          <div>
+            <span>+320 clientes asesorados</span>
+            <strong>5.0 reseñas</strong>
+          </div>
+          <div>
+            <span>Tiempo promedio de cierre</span>
+            <strong>38 días</strong>
+          </div>
+          <div>
+            <span>Estrategia legal y comercial</span>
+            <strong>Todo incluido</strong>
+          </div>
       </div>
    
       <div class="hero-card" aria-hidden="true">
-        <div class="hero-card__overlay"></div>
         <div class="hero-card__content">
-          <p class="hero-card__label">Propiedad destacada</p>
+          <p class="eyebrow">Propiedad destacada</p>
           <h3>Duplex con vista al mar · Miraflores</h3>
           <p>Desde S/ 1.95M · 4 dorm · 230 m²</p>
         </div>
-      </section>
       </div>
     </section>
 
@@ -85,7 +91,6 @@
             <option value="">Todos</option>
           </select>
         </div>
-      
         <div class="field">
           <label for="filter-operation">Operación</label>
           <select id="filter-operation" name="operation">
@@ -94,7 +99,6 @@
             <option value="alquiler">Alquiler</option>
           </select>
         </div>
-      
         <div class="field">
           <label for="filter-type">Tipo</label>
           <select id="filter-type" name="type">
@@ -105,7 +109,6 @@
             <option value="Terreno">Terreno</option>
           </select>
         </div>
-      
         <div class="field">
           <label for="filter-price-min">Precio mín. (S/)</label>
           <input id="filter-price-min" name="priceMin" type="number" min="0" placeholder="Ej. 300000" />
@@ -148,7 +151,8 @@
           <div class="property-grid" id="property-grid"></div>
           <button class="btn btn-secondary load-more" id="load-more">Cargar más</button>
         </div>
-        <div class="map-panel">
+        <div class="map-panel" id="mapa">
+          <p class="map-heading">Mapa de oportunidades en Lima</p>
           <div id="map" class="map" aria-label="Mapa de propiedades"></div>
         </div>
       </div>
@@ -156,14 +160,14 @@
 
     <section class="zones" id="zonas">
       <div class="section-heading">
-        <h2>Zonas donde trabajo</h2>
-        <p>Conozco el mercado local de Lima para optimizar el valor de cada propiedad.</p>
+        <h2>Zonas donde trabajamos</h2>
+        <p>Dominamos el mercado local para asegurar resultados en cada distrito.</p>
       </div>
       <div class="zones-grid" id="zones-grid"></div>
       <p class="zones-copy">
         En Lima Metropolitana, cada distrito tiene oportunidades únicas. Desde propiedades premium en
-        Miraflores y San Isidro hasta espacios familiares en Surco o La Molina, diseñamos estrategias de venta y
-        alquiler alineadas con tu objetivo.
+        Miraflores y San Isidro hasta opciones familiares en Surco o La Molina, diseñamos estrategias alineadas
+        con tu objetivo.
       </p>
     </section>
 
@@ -205,7 +209,7 @@
         <h2>Tasación gratis en 24h (Lima Metropolitana)</h2>
         <p>Recibe un estimado profesional para vender o alquilar con la estrategia correcta.</p>
       </div>
-      <form class="lead-form" id="lead-form">
+      <form class="lead-form" id="lead-form" novalidate>
         <label for="lead-name">Nombre</label>
         <input id="lead-name" type="text" name="name" required />
         <label for="lead-email">Email</label>
@@ -247,7 +251,7 @@
     <section class="contact" id="contacto">
       <div class="section-heading">
         <h2>Agendemos una visita estratégica</h2>
-        <p>Cuéntame tu objetivo y recibirás una propuesta personalizada en 24h.</p>
+        <p>Cuéntanos tu objetivo y recibirás una propuesta personalizada en menos de 24h.</p>
       </div>
       <div class="contact-grid">
         <form class="contact-form" id="contact-form" novalidate>
@@ -267,16 +271,16 @@
 
           <button class="btn btn-primary" type="submit">Enviar solicitud</button>
           <div class="contact-actions">
-            <a class="btn btn-secondary" href="https://wa.me/51999999999" target="_blank" rel="noopener">WhatsApp</a>
+            <a class="btn btn-secondary" href="https://wa.me/51XXXXXXXXX" target="_blank" rel="noopener">WhatsApp</a>
             <a class="btn btn-ghost" href="https://calendly.com" target="_blank" rel="noopener">Calendly</a>
           </div>
           <p class="form-feedback" id="contact-feedback" role="status" aria-live="polite"></p>
         </form>
         <div class="contact-info">
           <h3>Contacto directo</h3>
-          <p><strong>Dirección:</strong> Lima Metropolitana, Perú</p>
-          <p><strong>Email:</strong> hola@valeriatorres.com</p>
-          <p><strong>Teléfono:</strong> +51 999 999 999</p>
+          <p><strong>Ubicación:</strong> Lima Metropolitana, Perú</p>
+          <p><strong>Email:</strong> contacto@agpinmobiliaria.pe</p>
+          <p><strong>Teléfono:</strong> +51 XXXXXXXXX</p>
           <div class="contact-cards">
             <div>
               <h4>Horario</h4>
@@ -294,12 +298,12 @@
 
   <footer class="footer">
     <div>
-      <h3>Valeria Torres · Agente inmobiliario</h3>
+      <h3>AGP Inmobiliaria</h3>
       <p>Lima Metropolitana · Perú</p>
     </div>
     <div>
-      <p>Teléfono: +51 999 999 999</p>
-      <p>Email: hola@valeriatorres.com</p>
+      <p>Teléfono: +51 XXXXXXXXX</p>
+      <p>Email: contacto@agpinmobiliaria.pe</p>
     </div>
     <div class="footer-links">
       <a href="privacidad.html">Política de privacidad</a>
@@ -313,11 +317,23 @@
     </div>
   </footer>
 
-  <a class="floating-whatsapp" href="https://wa.me/51999999999" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp">
+  <a class="floating-whatsapp" href="https://wa.me/51XXXXXXXXX" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp">
     WhatsApp
   </a>
 
   <div class="toast" id="toast" role="status" aria-live="polite" aria-atomic="true"></div>
+
+  <div class="modal" id="success-modal" aria-hidden="true" role="dialog" aria-labelledby="modal-title">
+    <div class="modal-content">
+      <button class="modal-close" type="button" aria-label="Cerrar">×</button>
+      <h3 id="modal-title">Solicitud recibida</h3>
+      <p>Gracias por confiar en AGP Inmobiliaria. Respondemos en menos de 24h.</p>
+      <div class="contact-actions">
+        <a class="btn btn-primary" href="https://wa.me/51XXXXXXXXX" target="_blank" rel="noopener">WhatsApp</a>
+        <a class="btn btn-secondary" href="https://calendly.com" target="_blank" rel="noopener">Calendly</a>
+      </div>
+    </div>
+  </div>
 
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
   <script src="js/app.js" defer></script>

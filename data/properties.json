@@ -11,9 +11,9 @@
     "bathrooms": 3,
     "areaM2": 230,
     "images": [
-      "https://picsum.photos/800/600?random=11",
-      "https://picsum.photos/800/600?random=12",
-      "https://picsum.photos/800/600?random=13"
+      "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&w=1200&q=80"
     ],
     "description": "Duplex con terraza panorámica, ascensor directo y acabados de lujo. Ideal para familias que buscan comodidad frente al mar.",
     "features": [
@@ -37,9 +37,9 @@
     "bathrooms": 3,
     "areaM2": 210,
     "images": [
-      "https://picsum.photos/800/600?random=21",
-      "https://picsum.photos/800/600?random=22",
-      "https://picsum.photos/800/600?random=23"
+      "https://images.unsplash.com/photo-1502005097973-6a7082348e28?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1493809842364-78817add7ffb?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1507089947368-19c1da9775ae?auto=format&fit=crop&w=1200&q=80"
     ],
     "description": "Penthouse con rooftop y sala de estar abierta. Perfecto para ejecutivos que buscan exclusividad en San Isidro.",
     "features": [
@@ -63,9 +63,9 @@
     "bathrooms": 2,
     "areaM2": 120,
     "images": [
-      "https://picsum.photos/800/600?random=31",
-      "https://picsum.photos/800/600?random=32",
-      "https://picsum.photos/800/600?random=33"
+      "https://images.unsplash.com/photo-1449844908441-8829872d2607?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1501183638710-841dd1904471?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?auto=format&fit=crop&w=1200&q=80"
     ],
     "description": "Loft con doble altura, iluminación natural y espacios creativos a pasos del malecón.",
     "features": [
@@ -89,9 +89,9 @@
     "bathrooms": 4,
     "areaM2": 280,
     "images": [
-      "https://picsum.photos/800/600?random=41",
-      "https://picsum.photos/800/600?random=42",
-      "https://picsum.photos/800/600?random=43"
+      "https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1507089947368-19c1da9775ae?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1502005229762-cf1b2da7c5d6?auto=format&fit=crop&w=1200&q=80"
     ],
     "description": "Casa con jardín frontal y patio posterior. Seguridad 24/7 y excelente conectividad.",
     "features": [
@@ -115,9 +115,9 @@
     "bathrooms": 5,
     "areaM2": 350,
     "images": [
-      "https://picsum.photos/800/600?random=51",
-      "https://picsum.photos/800/600?random=52",
-      "https://picsum.photos/800/600?random=53"
+      "https://images.unsplash.com/photo-1507089947368-19c1da9775ae?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1502005229762-cf1b2da7c5d6?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1200&q=80"
     ],
     "description": "Residencia moderna con piscina y área social. Ideal para familias que buscan privacidad.",
     "features": [
@@ -141,9 +141,9 @@
     "bathrooms": 3,
     "areaM2": 180,
     "images": [
-      "https://picsum.photos/800/600?random=61",
-      "https://picsum.photos/800/600?random=62",
-      "https://picsum.photos/800/600?random=63"
+      "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1502005097973-6a7082348e28?auto=format&fit=crop&w=1200&q=80"
     ],
     "description": "Departamento boutique con vista al Golf, lobby de lujo y áreas comunes exclusivas.",
     "features": [
@@ -167,9 +167,9 @@
     "bathrooms": 2,
     "areaM2": 110,
     "images": [
-      "https://picsum.photos/800/600?random=71",
-      "https://picsum.photos/800/600?random=72",
-      "https://picsum.photos/800/600?random=73"
+      "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80"
     ],
     "description": "Oficina implementada con salas de reuniones y kitchenette. Excelente accesibilidad.",
     "features": [
@@ -193,9 +193,9 @@
     "bathrooms": 2,
     "areaM2": 140,
     "images": [
-      "https://picsum.photos/800/600?random=81",
-      "https://picsum.photos/800/600?random=82",
-      "https://picsum.photos/800/600?random=83"
+      "https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1507089947368-19c1da9775ae?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&w=1200&q=80"
     ],
     "description": "Departamento moderno con iluminación natural, cerca a servicios y parques.",
     "features": [
@@ -219,9 +219,9 @@
     "bathrooms": 2,
     "areaM2": 95,
     "images": [
-      "https://picsum.photos/800/600?random=91",
-      "https://picsum.photos/800/600?random=92",
-      "https://picsum.photos/800/600?random=93"
+      "https://images.unsplash.com/photo-1501183638710-841dd1904471?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1484101403633-562f891dc89a?auto=format&fit=crop&w=1200&q=80"
     ],
     "description": "Departamento ideal para familias jóvenes. Condominio con áreas comunes.",
     "features": [
@@ -245,9 +245,9 @@
     "bathrooms": 3,
     "areaM2": 200,
     "images": [
-      "https://picsum.photos/800/600?random=101",
-      "https://picsum.photos/800/600?random=102",
-      "https://picsum.photos/800/600?random=103"
+      "https://images.unsplash.com/photo-1502005229762-cf1b2da7c5d6?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1507089947368-19c1da9775ae?auto=format&fit=crop&w=1200&q=80"
     ],
     "description": "Casa remodelada con pisos de madera y patio interno. Ideal para familias tradicionales.",
     "features": [
@@ -271,9 +271,9 @@
     "bathrooms": 2,
     "areaM2": 105,
     "images": [
-      "https://picsum.photos/800/600?random=111",
-      "https://picsum.photos/800/600?random=112",
-      "https://picsum.photos/800/600?random=113"
+      "https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1493809842364-78817add7ffb?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1502005097973-6a7082348e28?auto=format&fit=crop&w=1200&q=80"
     ],
     "description": "Departamento moderno con acceso directo a vías principales y parques.",
     "features": [
@@ -297,9 +297,9 @@
     "bathrooms": 0,
     "areaM2": 420,
     "images": [
-      "https://picsum.photos/800/600?random=121",
-      "https://picsum.photos/800/600?random=122",
-      "https://picsum.photos/800/600?random=123"
+      "https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1502005097973-6a7082348e28?auto=format&fit=crop&w=1200&q=80"
     ],
     "description": "Terreno con zonificación residencial listo para desarrollar proyecto boutique.",
     "features": [
