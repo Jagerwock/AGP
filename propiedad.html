@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es" class="no-js">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Detalle de propiedad | Lima</title>
+  <meta name="description" content="Detalle de propiedad en Lima con galería, características y contacto directo." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <script>
+    document.documentElement.classList.remove('no-js');
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#detalle">Saltar al contenido principal</a>
+  <header class="site-header">
+    <nav class="navbar" aria-label="Principal">
+      <a class="logo" href="index.html">
+        <span>Valeria Torres</span>
+        <small>Agente inmobiliario</small>
+      </a>
+      <a class="btn btn-secondary" href="index.html#propiedades">Ver más propiedades</a>
+      <button class="mode-toggle" type="button" aria-pressed="false">
+        <span class="sr-only">Cambiar modo oscuro</span>
+        <span aria-hidden="true">🌙</span>
+      </button>
+    </nav>
+  </header>
+
+  <main id="detalle">
+    <section class="property-hero">
+      <div class="property-hero__content">
+        <p class="eyebrow" id="property-district">Distrito</p>
+        <h1 id="property-title">Propiedad</h1>
+        <p class="property-price" id="property-price"></p>
+        <p class="property-address" id="property-address"></p>
+        <div class="property-tags" id="property-tags"></div>
+        <div class="property-actions">
+          <a class="btn btn-primary" href="#contacto">Agendar visita</a>
+          <a class="btn btn-secondary" id="property-whatsapp" href="https://wa.me/51999999999" target="_blank" rel="noopener">WhatsApp</a>
+        </div>
+      </div>
+      <div class="property-gallery">
+        <div class="gallery-main">
+          <img id="gallery-main" alt="Foto principal" loading="lazy" />
+        </div>
+        <div class="gallery-thumbs" id="gallery-thumbs"></div>
+      </div>
+    </section>
+
+    <section class="property-details">
+      <div class="property-description">
+        <h2>Descripción</h2>
+        <p id="property-description"></p>
+        <ul class="property-features" id="property-features"></ul>
+      </div>
+      <div class="property-info">
+        <h2>Características</h2>
+        <table class="property-table" aria-label="Características">
+          <tbody id="property-table"></tbody>
+        </table>
+        <div id="property-map" class="map map--small" aria-label="Mapa de propiedad"></div>
+      </div>
+    </section>
+
+    <section class="similar-properties">
+      <div class="section-heading">
+        <h2>Propiedades similares</h2>
+        <p>Alternativas en el mismo distrito o tipo.</p>
+      </div>
+      <div class="property-grid" id="similar-grid"></div>
+    </section>
+
+    <section class="contact" id="contacto">
+      <div class="section-heading">
+        <h2>Agenda una visita privada</h2>
+        <p>Coordinemos una visita presencial o virtual en menos de 24h.</p>
+      </div>
+      <div class="contact-grid">
+        <form class="contact-form" id="contact-form" novalidate>
+          <label for="contact-name">Nombre completo</label>
+          <input id="contact-name" name="name" type="text" required />
+
+          <label for="contact-email">Email</label>
+          <input id="contact-email" name="email" type="email" required />
+
+          <label for="contact-phone">Teléfono</label>
+          <input id="contact-phone" name="phone" type="tel" pattern="[0-9+\s-]{7,}" required />
+
+          <label for="contact-message">Mensaje</label>
+          <textarea id="contact-message" name="message" rows="4" required></textarea>
+
+          <input type="text" name="website" class="honeypot" tabindex="-1" autocomplete="off" aria-hidden="true" />
+
+          <button class="btn btn-primary" type="submit">Enviar solicitud</button>
+          <div class="contact-actions">
+            <a class="btn btn-secondary" href="https://wa.me/51999999999" target="_blank" rel="noopener">WhatsApp</a>
+            <a class="btn btn-ghost" href="https://calendly.com" target="_blank" rel="noopener">Calendly</a>
+          </div>
+          <p class="form-feedback" id="contact-feedback" role="status" aria-live="polite"></p>
+        </form>
+        <div class="contact-info">
+          <h3>Contacto directo</h3>
+          <p><strong>Dirección:</strong> Lima Metropolitana, Perú</p>
+          <p><strong>Email:</strong> hola@valeriatorres.com</p>
+          <p><strong>Teléfono:</strong> +51 999 999 999</p>
+          <div class="contact-cards">
+            <div>
+              <h4>Asesoría legal</h4>
+              <p>Validación SUNARP y documentación completa.</p>
+            </div>
+            <div>
+              <h4>Optimización financiera</h4>
+              <p>Te guiamos en créditos y negociación.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="sticky-cta" id="sticky-cta">
+    <a class="btn btn-primary" href="#contacto">Agendar visita</a>
+    <a class="btn btn-secondary" id="sticky-whatsapp" href="https://wa.me/51999999999" target="_blank" rel="noopener">WhatsApp</a>
+  </div>
+
+  <div class="modal" id="gallery-modal" aria-hidden="true">
+    <button class="modal-close" type="button" aria-label="Cerrar">×</button>
+    <img id="modal-image" alt="Galería" />
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite" aria-atomic="true"></div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script src="js/property.js" defer></script>
+</body>
+</html>

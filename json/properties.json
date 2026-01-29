@@ -1,0 +1,314 @@
+[
+  {
+    "id": 1,
+    "title": "Departamento premium con vista al mar",
+    "district": "Miraflores",
+    "addressApprox": "Malecón 28 de Julio, Miraflores",
+    "operation": "venta",
+    "type": "Departamento",
+    "pricePen": 1950000,
+    "bedrooms": 4,
+    "bathrooms": 3,
+    "areaM2": 230,
+    "images": [
+      "https://picsum.photos/800/600?random=11",
+      "https://picsum.photos/800/600?random=12",
+      "https://picsum.photos/800/600?random=13"
+    ],
+    "description": "Duplex con terraza panorámica, ascensor directo y acabados de lujo. Ideal para familias que buscan comodidad frente al mar.",
+    "features": [
+      "Ascensor directo",
+      "Terraza panorámica",
+      "Cocina equipada",
+      "2 cocheras"
+    ],
+    "lat": -12.1211,
+    "lng": -77.0352
+  },
+  {
+    "id": 2,
+    "title": "Penthouse con rooftop privado",
+    "district": "San Isidro",
+    "addressApprox": "Av. Camino Real, San Isidro",
+    "operation": "venta",
+    "type": "Departamento",
+    "pricePen": 2450000,
+    "bedrooms": 3,
+    "bathrooms": 3,
+    "areaM2": 210,
+    "images": [
+      "https://picsum.photos/800/600?random=21",
+      "https://picsum.photos/800/600?random=22",
+      "https://picsum.photos/800/600?random=23"
+    ],
+    "description": "Penthouse con rooftop y sala de estar abierta. Perfecto para ejecutivos que buscan exclusividad en San Isidro.",
+    "features": [
+      "Rooftop con parrilla",
+      "Walking closet",
+      "Vista a parque",
+      "2 cocheras"
+    ],
+    "lat": -12.0972,
+    "lng": -77.0367
+  },
+  {
+    "id": 3,
+    "title": "Loft artístico en Barranco",
+    "district": "Barranco",
+    "addressApprox": "Jr. 28 de Julio, Barranco",
+    "operation": "alquiler",
+    "type": "Departamento",
+    "pricePen": 7800,
+    "bedrooms": 2,
+    "bathrooms": 2,
+    "areaM2": 120,
+    "images": [
+      "https://picsum.photos/800/600?random=31",
+      "https://picsum.photos/800/600?random=32",
+      "https://picsum.photos/800/600?random=33"
+    ],
+    "description": "Loft con doble altura, iluminación natural y espacios creativos a pasos del malecón.",
+    "features": [
+      "Doble altura",
+      "Balcón",
+      "Cocina abierta",
+      "Pet friendly"
+    ],
+    "lat": -12.1484,
+    "lng": -77.0215
+  },
+  {
+    "id": 4,
+    "title": "Casa familiar con jardín amplio",
+    "district": "Surco",
+    "addressApprox": "Chacarilla del Estanque, Surco",
+    "operation": "venta",
+    "type": "Casa",
+    "pricePen": 1850000,
+    "bedrooms": 4,
+    "bathrooms": 4,
+    "areaM2": 280,
+    "images": [
+      "https://picsum.photos/800/600?random=41",
+      "https://picsum.photos/800/600?random=42",
+      "https://picsum.photos/800/600?random=43"
+    ],
+    "description": "Casa con jardín frontal y patio posterior. Seguridad 24/7 y excelente conectividad.",
+    "features": [
+      "Jardín privado",
+      "Family room",
+      "Depósito",
+      "3 cocheras"
+    ],
+    "lat": -12.1324,
+    "lng": -76.9945
+  },
+  {
+    "id": 5,
+    "title": "Residencia con piscina",
+    "district": "La Molina",
+    "addressApprox": "Av. La Molina, La Molina",
+    "operation": "venta",
+    "type": "Casa",
+    "pricePen": 2650000,
+    "bedrooms": 5,
+    "bathrooms": 5,
+    "areaM2": 350,
+    "images": [
+      "https://picsum.photos/800/600?random=51",
+      "https://picsum.photos/800/600?random=52",
+      "https://picsum.photos/800/600?random=53"
+    ],
+    "description": "Residencia moderna con piscina y área social. Ideal para familias que buscan privacidad.",
+    "features": [
+      "Piscina",
+      "Terraza techada",
+      "Cuarto de servicio",
+      "4 cocheras"
+    ],
+    "lat": -12.0897,
+    "lng": -76.9438
+  },
+  {
+    "id": 6,
+    "title": "Departamento boutique cerca al Golf",
+    "district": "San Isidro",
+    "addressApprox": "Av. Pezet, San Isidro",
+    "operation": "alquiler",
+    "type": "Departamento",
+    "pricePen": 9500,
+    "bedrooms": 3,
+    "bathrooms": 3,
+    "areaM2": 180,
+    "images": [
+      "https://picsum.photos/800/600?random=61",
+      "https://picsum.photos/800/600?random=62",
+      "https://picsum.photos/800/600?random=63"
+    ],
+    "description": "Departamento boutique con vista al Golf, lobby de lujo y áreas comunes exclusivas.",
+    "features": [
+      "Vista al Golf",
+      "Gimnasio",
+      "Lobby doble altura",
+      "2 cocheras"
+    ],
+    "lat": -12.0906,
+    "lng": -77.0453
+  },
+  {
+    "id": 7,
+    "title": "Oficina prime lista para operar",
+    "district": "Jesús María",
+    "addressApprox": "Av. Salaverry, Jesús María",
+    "operation": "alquiler",
+    "type": "Oficina",
+    "pricePen": 6200,
+    "bedrooms": 0,
+    "bathrooms": 2,
+    "areaM2": 110,
+    "images": [
+      "https://picsum.photos/800/600?random=71",
+      "https://picsum.photos/800/600?random=72",
+      "https://picsum.photos/800/600?random=73"
+    ],
+    "description": "Oficina implementada con salas de reuniones y kitchenette. Excelente accesibilidad.",
+    "features": [
+      "Sala de reuniones",
+      "Estacionamientos visitantes",
+      "Seguridad 24/7",
+      "Luz natural"
+    ],
+    "lat": -12.0761,
+    "lng": -77.0497
+  },
+  {
+    "id": 8,
+    "title": "Departamento moderno en Magdalena",
+    "district": "Magdalena",
+    "addressApprox": "Av. Javier Prado Oeste, Magdalena",
+    "operation": "venta",
+    "type": "Departamento",
+    "pricePen": 980000,
+    "bedrooms": 3,
+    "bathrooms": 2,
+    "areaM2": 140,
+    "images": [
+      "https://picsum.photos/800/600?random=81",
+      "https://picsum.photos/800/600?random=82",
+      "https://picsum.photos/800/600?random=83"
+    ],
+    "description": "Departamento moderno con iluminación natural, cerca a servicios y parques.",
+    "features": [
+      "Balcón",
+      "Cocina semiabierta",
+      "Área de lavandería",
+      "1 cochera"
+    ],
+    "lat": -12.0954,
+    "lng": -77.0678
+  },
+  {
+    "id": 9,
+    "title": "Departamento familiar en San Miguel",
+    "district": "San Miguel",
+    "addressApprox": "Av. La Marina, San Miguel",
+    "operation": "alquiler",
+    "type": "Departamento",
+    "pricePen": 4200,
+    "bedrooms": 3,
+    "bathrooms": 2,
+    "areaM2": 95,
+    "images": [
+      "https://picsum.photos/800/600?random=91",
+      "https://picsum.photos/800/600?random=92",
+      "https://picsum.photos/800/600?random=93"
+    ],
+    "description": "Departamento ideal para familias jóvenes. Condominio con áreas comunes.",
+    "features": [
+      "Área de juegos",
+      "Gimnasio",
+      "Seguridad 24/7",
+      "1 cochera"
+    ],
+    "lat": -12.074,
+    "lng": -77.0986
+  },
+  {
+    "id": 10,
+    "title": "Casa clásica remodelada",
+    "district": "Pueblo Libre",
+    "addressApprox": "Av. Brasil, Pueblo Libre",
+    "operation": "venta",
+    "type": "Casa",
+    "pricePen": 1350000,
+    "bedrooms": 4,
+    "bathrooms": 3,
+    "areaM2": 200,
+    "images": [
+      "https://picsum.photos/800/600?random=101",
+      "https://picsum.photos/800/600?random=102",
+      "https://picsum.photos/800/600?random=103"
+    ],
+    "description": "Casa remodelada con pisos de madera y patio interno. Ideal para familias tradicionales.",
+    "features": [
+      "Patio interno",
+      "Cocina renovada",
+      "Depósito",
+      "2 cocheras"
+    ],
+    "lat": -12.0724,
+    "lng": -77.0631
+  },
+  {
+    "id": 11,
+    "title": "Departamento corporativo en Lince",
+    "district": "Lince",
+    "addressApprox": "Av. Arequipa, Lince",
+    "operation": "venta",
+    "type": "Departamento",
+    "pricePen": 890000,
+    "bedrooms": 2,
+    "bathrooms": 2,
+    "areaM2": 105,
+    "images": [
+      "https://picsum.photos/800/600?random=111",
+      "https://picsum.photos/800/600?random=112",
+      "https://picsum.photos/800/600?random=113"
+    ],
+    "description": "Departamento moderno con acceso directo a vías principales y parques.",
+    "features": [
+      "Sala amplia",
+      "Balcón",
+      "Lavandería",
+      "1 cochera"
+    ],
+    "lat": -12.0828,
+    "lng": -77.035
+  },
+  {
+    "id": 12,
+    "title": "Terreno listo para proyecto",
+    "district": "Surco",
+    "addressApprox": "Av. Primavera, Surco",
+    "operation": "venta",
+    "type": "Terreno",
+    "pricePen": 2100000,
+    "bedrooms": 0,
+    "bathrooms": 0,
+    "areaM2": 420,
+    "images": [
+      "https://picsum.photos/800/600?random=121",
+      "https://picsum.photos/800/600?random=122",
+      "https://picsum.photos/800/600?random=123"
+    ],
+    "description": "Terreno con zonificación residencial listo para desarrollar proyecto boutique.",
+    "features": [
+      "Zonificación residencial",
+      "Frente amplio",
+      "Documentación saneada",
+      "Acceso rápido a vías"
+    ],
+    "lat": -12.1113,
+    "lng": -76.9799
+  }
+]
