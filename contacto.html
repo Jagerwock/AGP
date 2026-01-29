@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Términos y condiciones | AGP Inmobiliaria</title>
-  <meta name="description" content="Términos y condiciones de uso del sitio de AGP Inmobiliaria." />
+  <title>Contacto | AGP Inmobiliaria</title>
+  <meta name="description" content="Contacta a AGP Inmobiliaria para visitas, tasaciones y asesoría personalizada en Lima." />
   <link rel="stylesheet" href="css/styles.css" />
 </head>
-<body data-page="terminos">
+<body data-page="contacto">
   <div class="topbar">
     <div class="container">
       <span>📍 Lima Metropolitana</span>
@@ -60,11 +60,57 @@
 
   <section class="section">
     <div class="container">
-      <h1 class="section-title">Términos y condiciones</h1>
-      <div class="card">
-        <p>El contenido de este sitio es informativo y puede cambiar sin previo aviso. Las propiedades publicadas son demostrativas y están sujetas a verificación comercial.</p>
-        <p>AGP Inmobiliaria no se responsabiliza por decisiones tomadas únicamente en base a la información del sitio. Recomendamos solicitar asesoría personalizada para cada operación.</p>
-        <p>El uso del sitio implica la aceptación de estos términos. Para consultas, contáctanos en contacto@agpinmobiliaria.pe.</p>
+      <h1 class="section-title">Conversemos sobre tu próxima inversión</h1>
+      <p class="section-subtitle">Completa el formulario y un asesor de AGP te contactará en menos de 24 horas.</p>
+      <div class="properties-layout">
+        <form class="filters" data-contact-form>
+          <div>
+            <label for="name">Nombre completo</label>
+            <input id="name" name="name" type="text" placeholder="Ej: Rafael Paredes" required />
+          </div>
+          <div>
+            <label for="email">Correo corporativo</label>
+            <input id="email" name="email" type="email" placeholder="tuemail@dominio.com" required />
+          </div>
+          <div>
+            <label for="phone">Teléfono</label>
+            <input id="phone" name="phone" type="tel" pattern="[0-9 +]{7,}" placeholder="999 999 999" required />
+          </div>
+          <div>
+            <label for="service">Servicio</label>
+            <select id="service" name="service" required>
+              <option value="">Seleccionar</option>
+              <option value="Compra">Compra</option>
+              <option value="Alquiler">Alquiler</option>
+              <option value="Tasación">Tasación</option>
+              <option value="Inversión">Inversión</option>
+            </select>
+          </div>
+          <div>
+            <label for="message">Mensaje</label>
+            <textarea id="message" name="message" rows="4" placeholder="Cuéntanos sobre el inmueble o tu necesidad." required></textarea>
+          </div>
+          <input type="text" name="company" style="display:none" tabindex="-1" autocomplete="off" />
+          <button class="btn btn-primary" type="submit">Enviar mensaje</button>
+          <p><strong>Respuesta rápida:</strong> También puedes escribirnos por WhatsApp o agendar una llamada.</p>
+          <div class="hero-actions">
+            <a class="btn btn-outline" data-whatsapp="Hola AGP, quiero asesoría personalizada.">WhatsApp</a>
+            <a class="btn btn-outline" href="https://calendly.com/" target="_blank" rel="noopener">Calendly (placeholder)</a>
+          </div>
+        </form>
+
+        <div class="card">
+          <h3>Área de atención</h3>
+          <p>Miraflores, San Isidro, Barranco, Surco, La Molina, Jesús María, Magdalena, San Miguel, Pueblo Libre y Lince.</p>
+          <p><strong>Dirección:</strong> Av. Larco 1234, Miraflores - Lima</p>
+          <p><strong>Horario:</strong> Lun - Sáb 9:00 a.m. - 7:00 p.m.</p>
+          <iframe
+            title="Mapa de Lima Metropolitana"
+            src="https://www.openstreetmap.org/export/embed.html?bbox=-77.11%2C-12.2%2C-76.95%2C-12.04&layer=mapnik"
+            style="width:100%;height:280px;border:0;border-radius:12px;"
+            loading="lazy"
+          ></iframe>
+        </div>
       </div>
     </div>
   </section>
@@ -108,6 +154,8 @@
     <a class="btn btn-primary" href="contacto.html">Agendar visita</a>
     <a class="btn btn-outline" data-whatsapp="Hola AGP, quiero coordinar una visita.">WhatsApp</a>
   </div>
+
+  <div class="toast" data-toast></div>
 
   <script src="js/app.js"></script>
 </body>

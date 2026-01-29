@@ -2,36 +2,113 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Política de privacidad | AGP Inmobiliaria</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <meta name="description" content="Política de privacidad de AGP Inmobiliaria." />
   <link rel="stylesheet" href="css/styles.css" />
 </head>
-<body>
-    <header class="site-header">
-    <nav class="navbar" aria-label="Principal">
-      <a class="logo" href="index.html">
-        <span>AGP Inmobiliaria</span>
-        <small>Lima Metropolitana · Perú</small>
+<body data-page="privacidad">
+  <div class="topbar">
+    <div class="container">
+      <span>📍 Lima Metropolitana</span>
+      <span>📞 +51 1 555 1234</span>
+      <span>💬 WhatsApp: +51 999 999 999</span>
+      <span>⏰ Lun - Sáb 9:00 a.m. - 7:00 p.m.</span>
+      <span>✉️ contacto@agpinmobiliaria.pe</span>
+    </div>
+  </div>
+
+  <header class="navbar">
+    <div class="container">
+      <a class="brand" href="index.html">
+        <img src="assets/logo-agp.png" alt="Logo AGP Inmobiliaria" />
+        <div>
+          <div>AGP Inmobiliaria</div>
+          <small>Asesores en Lima</small>
+        </div>
       </a>
-    </nav>
+      <nav class="nav-links">
+        <a href="index.html" data-nav="inicio">Inicio</a>
+        <a href="propiedades.html" data-nav="propiedades">Propiedades</a>
+        <a href="zonas.html" data-nav="zonas">Zonas</a>
+        <a href="guias.html" data-nav="guias">Guías</a>
+        <a href="index.html#nosotros" data-nav="nosotros">Nosotros</a>
+        <a href="contacto.html" data-nav="contacto">Contacto</a>
+      </nav>
+      <div class="nav-actions">
+        <a class="btn btn-outline" data-whatsapp="Hola AGP, quiero información.">WhatsApp</a>
+        <a class="btn btn-primary" href="contacto.html">Agendar visita</a>
+        <button class="theme-toggle" data-theme-toggle aria-label="Cambiar tema">🌓</button>
+      </div>
+      <button class="mobile-menu" data-drawer-toggle aria-label="Abrir menú">☰</button>
+    </div>
   </header>
-  <main class="legal-page">
-    <a href="index.html" class="btn btn-ghost">← Volver al inicio</a>
-    <h1>Política de privacidad</h1>
-    <p>Esta política describe cómo AGP Inmobiliaria gestiona la información enviada desde los formularios de esta web.</p>
-    <h2>Uso de la información</h2>
-    <ul>
-      <li>Los datos se utilizan únicamente para contactar al usuario sobre servicios inmobiliarios en Lima.</li>
-      <li>No se comparten datos con terceros sin autorización expresa.</li>
-      <li>Los mensajes enviados son una demostración (no se almacenan en servidores).</li>
-    </ul>
-    <h2>Derechos del usuario</h2>
-    <p>El usuario puede solicitar la eliminación de sus datos enviando un correo a contacto@agpinmobiliaria.pe.</p>
-    <h2>Actualizaciones</h2>
-    <p>Esta política puede actualizarse para reflejar mejoras en la gestión de la información.</p>
-  </main>
+
+  <div class="drawer" data-drawer>
+    <div class="drawer-content">
+      <button class="btn btn-outline" data-drawer-close>Cerrar</button>
+      <a href="index.html">Inicio</a>
+      <a href="propiedades.html">Propiedades</a>
+      <a href="zonas.html">Zonas</a>
+      <a href="guias.html">Guías</a>
+      <a href="index.html#nosotros">Nosotros</a>
+      <a href="contacto.html">Contacto</a>
+      <a class="btn btn-primary" href="contacto.html">Agendar visita</a>
+      <a class="btn btn-outline" data-whatsapp="Hola AGP, quiero coordinar una visita.">WhatsApp</a>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <h1 class="section-title">Política de privacidad</h1>
+      <div class="card">
+        <p>AGP Inmobiliaria protege la información personal que nos compartes en formularios, WhatsApp o llamadas. Utilizamos los datos únicamente para brindarte asesoría inmobiliaria y propuestas personalizadas.</p>
+        <p>No compartimos información con terceros sin tu autorización previa. Puedes solicitar la actualización o eliminación de tus datos escribiendo a contacto@agpinmobiliaria.pe.</p>
+        <p>Al usar este sitio aceptas el tratamiento descrito. Para más información, contáctanos directamente.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <strong>AGP Inmobiliaria</strong>
+        <p>Av. Larco 1234, Miraflores - Lima</p>
+        <p>contacto@agpinmobiliaria.pe</p>
+      </div>
+      <div>
+        <strong>Servicios</strong>
+        <ul>
+          <li><a href="propiedades.html">Comprar</a></li>
+          <li><a href="propiedades.html">Alquilar</a></li>
+          <li><a href="contacto.html">Tasación</a></li>
+        </ul>
+      </div>
+      <div>
+        <strong>Legal</strong>
+        <ul>
+          <li><a href="privacidad.html">Política de privacidad</a></li>
+          <li><a href="terminos.html">Términos y condiciones</a></li>
+        </ul>
+      </div>
+      <div>
+        <strong>Explorar</strong>
+        <ul>
+          <li><a href="zonas.html">Zonas</a></li>
+          <li><a href="guias.html">Guías</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="container" style="margin-top: 24px;">
+      <small>© 2024 AGP Inmobiliaria. Todos los derechos reservados.</small>
+    </div>
+  </footer>
+
+  <div class="mobile-cta">
+    <a class="btn btn-primary" href="contacto.html">Agendar visita</a>
+    <a class="btn btn-outline" data-whatsapp="Hola AGP, quiero coordinar una visita.">WhatsApp</a>
+  </div>
+
+  <script src="js/app.js"></script>
 </body>
 </html>

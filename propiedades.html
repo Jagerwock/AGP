@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Detalle de propiedad | AGP Inmobiliaria</title>
-  <meta name="description" content="Detalle completo de propiedad en Lima con galería, características y mapa." />
+  <title>Propiedades en Lima | AGP Inmobiliaria</title>
+  <meta name="description" content="Explora propiedades en Miraflores, San Isidro, Barranco, Surco y más. Filtros avanzados, mapa interactivo y asesoría premium." />
   <link rel="stylesheet" href="css/styles.css" />
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 </head>
@@ -37,7 +37,7 @@
         <a href="contacto.html" data-nav="contacto">Contacto</a>
       </nav>
       <div class="nav-actions">
-        <a class="btn btn-outline" data-whatsapp="Hola AGP, quiero información.">WhatsApp</a>
+        <a class="btn btn-outline" data-whatsapp="Hola AGP, quiero información de propiedades.">WhatsApp</a>
         <a class="btn btn-primary" href="contacto.html">Agendar visita</a>
         <button class="theme-toggle" data-theme-toggle aria-label="Cambiar tema">🌓</button>
       </div>
@@ -60,13 +60,77 @@
   </div>
 
   <section class="section">
-    <div class="container property-detail" data-property-detail></div>
-  </section>
-
-  <section class="section">
     <div class="container">
-      <h2 class="section-title">Propiedades similares</h2>
-      <div class="card-grid three" data-similar></div>
+      <h1 class="section-title">Propiedades en Lima</h1>
+      <p class="section-subtitle">Filtra por distrito, operación y características para encontrar tu próximo inmueble.</p>
+
+      <div class="properties-layout">
+        <div>
+          <form class="filters" data-filters>
+            <div>
+              <label for="district">Distrito</label>
+              <select id="district" name="district">
+                <option value="">Todos</option>
+                <option value="Miraflores">Miraflores</option>
+                <option value="San Isidro">San Isidro</option>
+                <option value="Barranco">Barranco</option>
+                <option value="Surco">Surco</option>
+                <option value="La Molina">La Molina</option>
+                <option value="Jesús María">Jesús María</option>
+                <option value="Magdalena">Magdalena</option>
+                <option value="San Miguel">San Miguel</option>
+                <option value="Pueblo Libre">Pueblo Libre</option>
+                <option value="Lince">Lince</option>
+              </select>
+            </div>
+            <div>
+              <label for="operation">Operación</label>
+              <select id="operation" name="operation">
+                <option value="">Todas</option>
+                <option value="Venta">Venta</option>
+                <option value="Alquiler">Alquiler</option>
+              </select>
+            </div>
+            <div>
+              <label for="type">Tipo</label>
+              <select id="type" name="type">
+                <option value="">Todos</option>
+                <option value="Departamento">Departamento</option>
+                <option value="Casa">Casa</option>
+                <option value="Oficina">Oficina</option>
+                <option value="Local">Local</option>
+              </select>
+            </div>
+            <div>
+              <label for="minPrice">Precio mínimo (S/)</label>
+              <input id="minPrice" name="minPrice" type="number" min="0" placeholder="350000" />
+            </div>
+            <div>
+              <label for="maxPrice">Precio máximo (S/)</label>
+              <input id="maxPrice" name="maxPrice" type="number" min="0" placeholder="2000000" />
+            </div>
+            <div>
+              <label for="bedrooms">Dormitorios mín.</label>
+              <input id="bedrooms" name="bedrooms" type="number" min="0" placeholder="2" />
+            </div>
+            <div>
+              <label for="bathrooms">Baños mín.</label>
+              <input id="bathrooms" name="bathrooms" type="number" min="0" placeholder="2" />
+            </div>
+            <div>
+              <label for="minArea">Área mín. (m²)</label>
+              <input id="minArea" name="minArea" type="number" min="0" placeholder="80" />
+            </div>
+          </form>
+
+          <div class="section" style="padding: 32px 0 0;">
+            <div data-property-cards></div>
+            <div class="pagination" data-pagination></div>
+          </div>
+        </div>
+
+        <div class="map-wrapper" id="propertiesMap" aria-label="Mapa de propiedades"></div>
+      </div>
     </div>
   </section>
 
@@ -107,15 +171,11 @@
 
   <div class="mobile-cta">
     <a class="btn btn-primary" href="contacto.html">Agendar visita</a>
-    <a class="btn btn-outline" data-whatsapp-message data-whatsapp="">WhatsApp</a>
-  </div>
-
-  <div class="modal" data-modal>
-    <img data-modal-img alt="Galería" />
+    <a class="btn btn-outline" data-whatsapp="Hola AGP, quiero información.">WhatsApp</a>
   </div>
 
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script src="js/app.js"></script>
-  <script src="js/propiedad.js"></script>
+  <script src="js/propiedades.js"></script>
 </body>
 </html>

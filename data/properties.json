@@ -1,314 +1,313 @@
-[
-  {
-    "id": 1,
-    "title": "Departamento premium con vista al mar",
-    "district": "Miraflores",
-    "addressApprox": "Malecón 28 de Julio, Miraflores",
-    "operation": "venta",
-    "type": "Departamento",
-    "pricePen": 1950000,
-    "bedrooms": 4,
-    "bathrooms": 3,
-    "areaM2": 230,
-    "images": [
-      "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&w=1200&q=80"
-    ],
-    "description": "Duplex con terraza panorámica, ascensor directo y acabados de lujo. Ideal para familias que buscan comodidad frente al mar.",
-    "features": [
-      "Ascensor directo",
-      "Terraza panorámica",
-      "Cocina equipada",
-      "2 cocheras"
-    ],
-    "lat": -12.1211,
-    "lng": -77.0352
-  },
-  {
-    "id": 2,
-    "title": "Penthouse con rooftop privado",
-    "district": "San Isidro",
-    "addressApprox": "Av. Camino Real, San Isidro",
-    "operation": "venta",
-    "type": "Departamento",
-    "pricePen": 2450000,
-    "bedrooms": 3,
-    "bathrooms": 3,
-    "areaM2": 210,
-    "images": [
-      "https://images.unsplash.com/photo-1502005097973-6a7082348e28?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1493809842364-78817add7ffb?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1507089947368-19c1da9775ae?auto=format&fit=crop&w=1200&q=80"
-    ],
-    "description": "Penthouse con rooftop y sala de estar abierta. Perfecto para ejecutivos que buscan exclusividad en San Isidro.",
-    "features": [
-      "Rooftop con parrilla",
-      "Walking closet",
-      "Vista a parque",
-      "2 cocheras"
-    ],
-    "lat": -12.0972,
-    "lng": -77.0367
-  },
-  {
-    "id": 3,
-    "title": "Loft artístico en Barranco",
-    "district": "Barranco",
-    "addressApprox": "Jr. 28 de Julio, Barranco",
-    "operation": "alquiler",
-    "type": "Departamento",
-    "pricePen": 7800,
-    "bedrooms": 2,
-    "bathrooms": 2,
-    "areaM2": 120,
-    "images": [
-      "https://images.unsplash.com/photo-1449844908441-8829872d2607?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1501183638710-841dd1904471?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?auto=format&fit=crop&w=1200&q=80"
-    ],
-    "description": "Loft con doble altura, iluminación natural y espacios creativos a pasos del malecón.",
-    "features": [
-      "Doble altura",
-      "Balcón",
-      "Cocina abierta",
-      "Pet friendly"
-    ],
-    "lat": -12.1484,
-    "lng": -77.0215
-  },
-  {
-    "id": 4,
-    "title": "Casa familiar con jardín amplio",
-    "district": "Surco",
-    "addressApprox": "Chacarilla del Estanque, Surco",
-    "operation": "venta",
-    "type": "Casa",
-    "pricePen": 1850000,
-    "bedrooms": 4,
-    "bathrooms": 4,
-    "areaM2": 280,
-    "images": [
-      "https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1507089947368-19c1da9775ae?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1502005229762-cf1b2da7c5d6?auto=format&fit=crop&w=1200&q=80"
-    ],
-    "description": "Casa con jardín frontal y patio posterior. Seguridad 24/7 y excelente conectividad.",
-    "features": [
-      "Jardín privado",
-      "Family room",
-      "Depósito",
-      "3 cocheras"
-    ],
-    "lat": -12.1324,
-    "lng": -76.9945
-  },
-  {
-    "id": 5,
-    "title": "Residencia con piscina",
-    "district": "La Molina",
-    "addressApprox": "Av. La Molina, La Molina",
-    "operation": "venta",
-    "type": "Casa",
-    "pricePen": 2650000,
-    "bedrooms": 5,
-    "bathrooms": 5,
-    "areaM2": 350,
-    "images": [
-      "https://images.unsplash.com/photo-1507089947368-19c1da9775ae?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1502005229762-cf1b2da7c5d6?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1200&q=80"
-    ],
-    "description": "Residencia moderna con piscina y área social. Ideal para familias que buscan privacidad.",
-    "features": [
-      "Piscina",
-      "Terraza techada",
-      "Cuarto de servicio",
-      "4 cocheras"
-    ],
-    "lat": -12.0897,
-    "lng": -76.9438
-  },
-  {
-    "id": 6,
-    "title": "Departamento boutique cerca al Golf",
-    "district": "San Isidro",
-    "addressApprox": "Av. Pezet, San Isidro",
-    "operation": "alquiler",
-    "type": "Departamento",
-    "pricePen": 9500,
-    "bedrooms": 3,
-    "bathrooms": 3,
-    "areaM2": 180,
-    "images": [
-      "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1502005097973-6a7082348e28?auto=format&fit=crop&w=1200&q=80"
-    ],
-    "description": "Departamento boutique con vista al Golf, lobby de lujo y áreas comunes exclusivas.",
-    "features": [
-      "Vista al Golf",
-      "Gimnasio",
-      "Lobby doble altura",
-      "2 cocheras"
-    ],
-    "lat": -12.0906,
-    "lng": -77.0453
-  },
-  {
-    "id": 7,
-    "title": "Oficina prime lista para operar",
-    "district": "Jesús María",
-    "addressApprox": "Av. Salaverry, Jesús María",
-    "operation": "alquiler",
-    "type": "Oficina",
-    "pricePen": 6200,
-    "bedrooms": 0,
-    "bathrooms": 2,
-    "areaM2": 110,
-    "images": [
-      "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80"
-    ],
-    "description": "Oficina implementada con salas de reuniones y kitchenette. Excelente accesibilidad.",
-    "features": [
-      "Sala de reuniones",
-      "Estacionamientos visitantes",
-      "Seguridad 24/7",
-      "Luz natural"
-    ],
-    "lat": -12.0761,
-    "lng": -77.0497
-  },
-  {
-    "id": 8,
-    "title": "Departamento moderno en Magdalena",
-    "district": "Magdalena",
-    "addressApprox": "Av. Javier Prado Oeste, Magdalena",
-    "operation": "venta",
-    "type": "Departamento",
-    "pricePen": 980000,
-    "bedrooms": 3,
-    "bathrooms": 2,
-    "areaM2": 140,
-    "images": [
-      "https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1507089947368-19c1da9775ae?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&w=1200&q=80"
-    ],
-    "description": "Departamento moderno con iluminación natural, cerca a servicios y parques.",
-    "features": [
-      "Balcón",
-      "Cocina semiabierta",
-      "Área de lavandería",
-      "1 cochera"
-    ],
-    "lat": -12.0954,
-    "lng": -77.0678
-  },
-  {
-    "id": 9,
-    "title": "Departamento familiar en San Miguel",
-    "district": "San Miguel",
-    "addressApprox": "Av. La Marina, San Miguel",
-    "operation": "alquiler",
-    "type": "Departamento",
-    "pricePen": 4200,
-    "bedrooms": 3,
-    "bathrooms": 2,
-    "areaM2": 95,
-    "images": [
-      "https://images.unsplash.com/photo-1501183638710-841dd1904471?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1484101403633-562f891dc89a?auto=format&fit=crop&w=1200&q=80"
-    ],
-    "description": "Departamento ideal para familias jóvenes. Condominio con áreas comunes.",
-    "features": [
-      "Área de juegos",
-      "Gimnasio",
-      "Seguridad 24/7",
-      "1 cochera"
-    ],
-    "lat": -12.074,
-    "lng": -77.0986
-  },
-  {
-    "id": 10,
-    "title": "Casa clásica remodelada",
-    "district": "Pueblo Libre",
-    "addressApprox": "Av. Brasil, Pueblo Libre",
-    "operation": "venta",
-    "type": "Casa",
-    "pricePen": 1350000,
-    "bedrooms": 4,
-    "bathrooms": 3,
-    "areaM2": 200,
-    "images": [
-      "https://images.unsplash.com/photo-1502005229762-cf1b2da7c5d6?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1507089947368-19c1da9775ae?auto=format&fit=crop&w=1200&q=80"
-    ],
-    "description": "Casa remodelada con pisos de madera y patio interno. Ideal para familias tradicionales.",
-    "features": [
-      "Patio interno",
-      "Cocina renovada",
-      "Depósito",
-      "2 cocheras"
-    ],
-    "lat": -12.0724,
-    "lng": -77.0631
-  },
-  {
-    "id": 11,
-    "title": "Departamento corporativo en Lince",
-    "district": "Lince",
-    "addressApprox": "Av. Arequipa, Lince",
-    "operation": "venta",
-    "type": "Departamento",
-    "pricePen": 890000,
-    "bedrooms": 2,
-    "bathrooms": 2,
-    "areaM2": 105,
-    "images": [
-      "https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1493809842364-78817add7ffb?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1502005097973-6a7082348e28?auto=format&fit=crop&w=1200&q=80"
-    ],
-    "description": "Departamento moderno con acceso directo a vías principales y parques.",
-    "features": [
-      "Sala amplia",
-      "Balcón",
-      "Lavandería",
-      "1 cochera"
-    ],
-    "lat": -12.0828,
-    "lng": -77.035
-  },
-  {
-    "id": 12,
-    "title": "Terreno listo para proyecto",
-    "district": "Surco",
-    "addressApprox": "Av. Primavera, Surco",
-    "operation": "venta",
-    "type": "Terreno",
-    "pricePen": 2100000,
-    "bedrooms": 0,
-    "bathrooms": 0,
-    "areaM2": 420,
-    "images": [
-      "https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1502005097973-6a7082348e28?auto=format&fit=crop&w=1200&q=80"
-    ],
-    "description": "Terreno con zonificación residencial listo para desarrollar proyecto boutique.",
-    "features": [
-      "Zonificación residencial",
-      "Frente amplio",
-      "Documentación saneada",
-      "Acceso rápido a vías"
-    ],
-    "lat": -12.1113,
-    "lng": -76.9799
-  }
-]
+{
+  "usd_rate": 3.75,
+  "properties": [
+    {
+      "id": "AGP-001",
+      "title": "Departamento con terraza en Miraflores",
+      "district": "Miraflores",
+      "operation": "Venta",
+      "type": "Departamento",
+      "price_soles": 980000,
+      "area_m2": 120,
+      "bedrooms": 3,
+      "bathrooms": 3,
+      "parking": 2,
+      "address": "Calle Berlín 345",
+      "lat": -12.121,
+      "lng": -77.03,
+      "description": "Departamento moderno con terraza privada, cocina abierta y vista a parque interno. Edificio con lobby y seguridad 24/7.",
+      "features": ["Terraza privada", "Cocina equipada", "Guardianía", "Ascensor directo"],
+      "images": [
+        "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=900&q=80",
+        "https://images.unsplash.com/photo-1493809842364-78817add7ffb?auto=format&fit=crop&w=900&q=80",
+        "https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=900&q=80"
+      ]
+    },
+    {
+      "id": "AGP-002",
+      "title": "Penthouse ejecutivo en San Isidro",
+      "district": "San Isidro",
+      "operation": "Venta",
+      "type": "Departamento",
+      "price_soles": 2450000,
+      "area_m2": 220,
+      "bedrooms": 4,
+      "bathrooms": 4,
+      "parking": 3,
+      "address": "Av. Pardo y Aliaga 780",
+      "lat": -12.099,
+      "lng": -77.035,
+      "description": "Penthouse con vista panorámica al Golf, acabados de lujo y sala de estar privada.",
+      "features": ["Vista al Golf", "Family room", "Terraza con BBQ", "Depósito"],
+      "images": [
+        "https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=900&q=80",
+        "https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&w=900&q=80",
+        "https://images.unsplash.com/photo-1507089947368-19c1da9775ae?auto=format&fit=crop&w=900&q=80"
+      ]
+    },
+    {
+      "id": "AGP-003",
+      "title": "Loft artístico en Barranco",
+      "district": "Barranco",
+      "operation": "Alquiler",
+      "type": "Departamento",
+      "price_soles": 4800,
+      "area_m2": 80,
+      "bedrooms": 1,
+      "bathrooms": 2,
+      "parking": 1,
+      "address": "Jr. Pedro de Osma 220",
+      "lat": -12.148,
+      "lng": -77.02,
+      "description": "Loft con doble altura, arte local y cercanía a cafés y galerías. Ideal para ejecutivos creativos.",
+      "features": ["Doble altura", "Amoblado", "Pet friendly", "Vista parcial al mar"],
+      "images": [
+        "https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&w=900&q=80",
+        "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=900&q=80",
+        "https://images.unsplash.com/photo-1501045661006-fcebe0257c3f?auto=format&fit=crop&w=900&q=80"
+      ]
+    },
+    {
+      "id": "AGP-004",
+      "title": "Casa familiar en Surco",
+      "district": "Surco",
+      "operation": "Venta",
+      "type": "Casa",
+      "price_soles": 1850000,
+      "area_m2": 320,
+      "bedrooms": 4,
+      "bathrooms": 4,
+      "parking": 3,
+      "address": "Av. Caminos del Inca 1560",
+      "lat": -12.128,
+      "lng": -76.997,
+      "description": "Casa remodelada con jardín amplio, zona de parrilla y sala de estar independiente.",
+      "features": ["Jardín privado", "Zona de parrilla", "Cuarto de servicio", "Family room"],
+      "images": [
+        "https://images.unsplash.com/photo-1568605114967-8130f3a36994?auto=format&fit=crop&w=900&q=80",
+        "https://images.unsplash.com/photo-1502005097973-6a7082348e28?auto=format&fit=crop&w=900&q=80",
+        "https://images.unsplash.com/photo-1507089947368-19c1da9775ae?auto=format&fit=crop&w=900&q=80"
+      ]
+    },
+    {
+      "id": "AGP-005",
+      "title": "Casa con jardín en La Molina",
+      "district": "La Molina",
+      "operation": "Venta",
+      "type": "Casa",
+      "price_soles": 2100000,
+      "area_m2": 380,
+      "bedrooms": 4,
+      "bathrooms": 5,
+      "parking": 4,
+      "address": "Av. La Fontana 970",
+      "lat": -12.088,
+      "lng": -76.95,
+      "description": "Residencia amplia con jardín, piscina pequeña y vista a la Molina vieja.",
+      "features": ["Piscina", "Cocina amplia", "Terraza techada", "Depósito"],
+      "images": [
+        "https://images.unsplash.com/photo-1502005097973-6a7082348e28?auto=format&fit=crop&w=900&q=80",
+        "https://images.unsplash.com/photo-1568605114967-8130f3a36994?auto=format&fit=crop&w=900&q=80",
+        "https://images.unsplash.com/photo-1480074568708-e7b720bb3f09?auto=format&fit=crop&w=900&q=80"
+      ]
+    },
+    {
+      "id": "AGP-006",
+      "title": "Departamento ejecutivo en Jesús María",
+      "district": "Jesús María",
+      "operation": "Alquiler",
+      "type": "Departamento",
+      "price_soles": 3200,
+      "area_m2": 90,
+      "bedrooms": 2,
+      "bathrooms": 2,
+      "parking": 1,
+      "address": "Av. San Felipe 1020",
+      "lat": -12.078,
+      "lng": -77.047,
+      "description": "Departamento moderno con vista a parque San Felipe y gimnasio en el edificio.",
+      "features": ["Gimnasio", "Sala de reuniones", "Pet friendly", "Seguridad 24/7"],
+      "images": [
+        "https://images.unsplash.com/photo-1507089947368-19c1da9775ae?auto=format&fit=crop&w=900&q=80",
+        "https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=900&q=80",
+        "https://images.unsplash.com/photo-1493809842364-78817add7ffb?auto=format&fit=crop&w=900&q=80"
+      ]
+    },
+    {
+      "id": "AGP-007",
+      "title": "Flat con vista al mar en Magdalena",
+      "district": "Magdalena",
+      "operation": "Venta",
+      "type": "Departamento",
+      "price_soles": 890000,
+      "area_m2": 110,
+      "bedrooms": 3,
+      "bathrooms": 2,
+      "parking": 2,
+      "address": "Av. Brasil 3400",
+      "lat": -12.089,
+      "lng": -77.068,
+      "description": "Flat con vista parcial al mar, cerca a la Costa Verde y centros comerciales.",
+      "features": ["Balcón", "Área de lavandería", "Depósito", "Recepción"],
+      "images": [
+        "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=900&q=80",
+        "https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&w=900&q=80",
+        "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=900&q=80"
+      ]
+    },
+    {
+      "id": "AGP-008",
+      "title": "Departamento familiar en San Miguel",
+      "district": "San Miguel",
+      "operation": "Venta",
+      "type": "Departamento",
+      "price_soles": 690000,
+      "area_m2": 95,
+      "bedrooms": 3,
+      "bathrooms": 2,
+      "parking": 1,
+      "address": "Av. La Marina 2900",
+      "lat": -12.077,
+      "lng": -77.092,
+      "description": "Departamento en condominio con áreas verdes, piscina y juegos para niños.",
+      "features": ["Piscina", "Áreas verdes", "Sala multiusos", "Seguridad"],
+      "images": [
+        "https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=900&q=80",
+        "https://images.unsplash.com/photo-1507089947368-19c1da9775ae?auto=format&fit=crop&w=900&q=80",
+        "https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=900&q=80"
+      ]
+    },
+    {
+      "id": "AGP-009",
+      "title": "Departamento clásico en Pueblo Libre",
+      "district": "Pueblo Libre",
+      "operation": "Alquiler",
+      "type": "Departamento",
+      "price_soles": 2700,
+      "area_m2": 85,
+      "bedrooms": 2,
+      "bathrooms": 2,
+      "parking": 1,
+      "address": "Av. Bolívar 1200",
+      "lat": -12.074,
+      "lng": -77.06,
+      "description": "Departamento iluminado en zona céntrica con acceso a colegios y cafés.",
+      "features": ["Balcón", "Cocina cerrada", "Lavandería", "Ascensor"],
+      "images": [
+        "https://images.unsplash.com/photo-1501045661006-fcebe0257c3f?auto=format&fit=crop&w=900&q=80",
+        "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=900&q=80",
+        "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=900&q=80"
+      ]
+    },
+    {
+      "id": "AGP-010",
+      "title": "Departamento boutique en Lince",
+      "district": "Lince",
+      "operation": "Venta",
+      "type": "Departamento",
+      "price_soles": 720000,
+      "area_m2": 88,
+      "bedrooms": 2,
+      "bathrooms": 2,
+      "parking": 1,
+      "address": "Av. Arequipa 2200",
+      "lat": -12.09,
+      "lng": -77.038,
+      "description": "Departamento con vista abierta, cerca a centros empresariales y vías principales.",
+      "features": ["Balcón", "Recepción", "Gimnasio", "Zona de cowork"],
+      "images": [
+        "https://images.unsplash.com/photo-1493809842364-78817add7ffb?auto=format&fit=crop&w=900&q=80",
+        "https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=900&q=80",
+        "https://images.unsplash.com/photo-1507089947368-19c1da9775ae?auto=format&fit=crop&w=900&q=80"
+      ]
+    },
+    {
+      "id": "AGP-011",
+      "title": "Oficina prime en San Isidro",
+      "district": "San Isidro",
+      "operation": "Alquiler",
+      "type": "Oficina",
+      "price_soles": 15000,
+      "area_m2": 180,
+      "bedrooms": 0,
+      "bathrooms": 2,
+      "parking": 3,
+      "address": "Av. Camino Real 390",
+      "lat": -12.097,
+      "lng": -77.037,
+      "description": "Oficina implementada con salas de reuniones y vista al centro financiero.",
+      "features": ["Plantas libres", "Recepción", "Seguridad", "Estacionamientos"],
+      "images": [
+        "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=900&q=80",
+        "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=900&q=80",
+        "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=900&q=80"
+      ]
+    },
+    {
+      "id": "AGP-012",
+      "title": "Local comercial en Miraflores",
+      "district": "Miraflores",
+      "operation": "Alquiler",
+      "type": "Local",
+      "price_soles": 22000,
+      "area_m2": 140,
+      "bedrooms": 0,
+      "bathrooms": 2,
+      "parking": 2,
+      "address": "Av. Larco 850",
+      "lat": -12.119,
+      "lng": -77.028,
+      "description": "Local con alto tráfico peatonal, ideal para retail premium o gastronomía.",
+      "features": ["Doble altura", "Frente a avenida", "Depósito", "Salida de humos"],
+      "images": [
+        "https://images.unsplash.com/photo-1464278533981-50106e6176b1?auto=format&fit=crop&w=900&q=80",
+        "https://images.unsplash.com/photo-1493809842364-78817add7ffb?auto=format&fit=crop&w=900&q=80",
+        "https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=900&q=80"
+      ]
+    },
+    {
+      "id": "AGP-013",
+      "title": "Departamento con vista a parque en Jesús María",
+      "district": "Jesús María",
+      "operation": "Venta",
+      "type": "Departamento",
+      "price_soles": 760000,
+      "area_m2": 98,
+      "bedrooms": 3,
+      "bathrooms": 2,
+      "parking": 1,
+      "address": "Av. Garzón 1170",
+      "lat": -12.075,
+      "lng": -77.051,
+      "description": "Departamento con vista directa al parque, iluminación natural y cocina integrada.",
+      "features": ["Vista a parque", "Sala comedor amplia", "Zona de lavandería", "Ascensor"],
+      "images": [
+        "https://images.unsplash.com/photo-1507089947368-19c1da9775ae?auto=format&fit=crop&w=900&q=80",
+        "https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=900&q=80",
+        "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=900&q=80"
+      ]
+    },
+    {
+      "id": "AGP-014",
+      "title": "Departamento moderno en San Miguel",
+      "district": "San Miguel",
+      "operation": "Alquiler",
+      "type": "Departamento",
+      "price_soles": 3100,
+      "area_m2": 92,
+      "bedrooms": 2,
+      "bathrooms": 2,
+      "parking": 1,
+      "address": "Av. Patriotas 580",
+      "lat": -12.085,
+      "lng": -77.094,
+      "description": "Departamento equipado con balcón y áreas comunes premium, cerca a centros comerciales.",
+      "features": ["Balcón", "Piscina", "Coworking", "Seguridad"],
+      "images": [
+        "https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=900&q=80",
+        "https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=900&q=80",
+        "https://images.unsplash.com/photo-1507089947368-19c1da9775ae?auto=format&fit=crop&w=900&q=80"
+      ]
+    }
+  ]
+}
