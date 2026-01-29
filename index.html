@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AGP Inmobiliaria | Agente inmobiliario premium</title>
+  <meta
+    name="description"
+    content="AGP Inmobiliaria: encuentra tu hogar ideal con un agente de confianza. Propiedades premium, asesoría experta y atención personalizada." />
+  <meta
+    name="keywords"
+    content="agente inmobiliario, propiedades en venta, departamentos, casas de lujo, AGP Inmobiliaria" />
+  <meta name="author" content="AGP Inmobiliaria" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;700;800&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css"/>
+  <script src="scripts.js" defer></script>
+</head>
+<body>
+  <div class="page">
+    <header class="site-header" id="inicio">
+      <div class="container header-inner">
+        <div class="brand">
+          <div class="brand-mark" aria-hidden="true">AGP</div>
+          <div>
+            <p class="brand-title">AGP Inmobiliaria</p>
+            <span class="brand-subtitle">Luxury & Trust Realty</span>
+          </div>
+        </div>
+        <nav class="nav">
+          <a href="#inicio">Inicio</a>
+          <a href="#propiedades">Propiedades</a>
+          <a href="#mapa">Mapa</a>
+          <a href="#agente">Agente</a>
+          <a href="#contacto">Contacto</a>
+        </nav>
+        <div class="header-actions">
+          <button class="btn btn-outline" id="toggle-theme" type="button">
+            Modo oscuro
+          </button>
+          <a class="btn btn-primary" href="#contacto">Agendar asesoría</a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container hero-grid">
+          <div class="hero-copy">
+            <p class="eyebrow">Agente inmobiliario premium en tu ciudad</p>
+            <h1>Encuentra tu hogar ideal con un agente de confianza</h1>
+            <p class="hero-description">
+              Combina análisis de mercado, marketing de alto impacto y atención personalizada
+              para ayudarte a comprar o vender con seguridad y resultados reales.
+            </p>
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="#propiedades">Ver propiedades</a>
+              <a class="btn btn-secondary" href="#contacto">Contactar agente</a>
+            </div>
+            <div class="hero-stats">
+              <div>
+                <span class="stat-value">+350</span>
+                <span class="stat-label">Operaciones exitosas</span>
+              </div>
+              <div>
+                <span class="stat-value">98%</span>
+                <span class="stat-label">Clientes satisfechos</span>
+              </div>
+              <div>
+                <span class="stat-value">24h</span>
+                <span class="stat-label">Tiempo medio de respuesta</span>
+              </div>
+            </div>
+          </div>
+          <div class="hero-media">
+            <div class="hero-card">
+              <span class="hero-card-label">Propiedad destacada</span>
+              <h3>Residencia Vista Azul</h3>
+              <p>4 habitaciones · 320 m² · Terraza panorámica</p>
+              <div class="hero-card-actions">
+                <a class="btn btn-secondary" href="#propiedades">Ver detalles</a>
+                <button class="btn btn-outline" type="button">Video tour</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="search" aria-label="Buscador avanzado de propiedades">
+        <div class="container">
+          <div class="section-heading">
+            <h2>Buscador avanzado</h2>
+            <p>Filtra por zona, precio y características clave para encontrar tu próxima inversión.</p>
+          </div>
+          <form class="search-form" id="search-form">
+            <label>
+              Ciudad/Zona
+              <input type="text" name="location" placeholder="Ej: Polanco, Madrid" />
+            </label>
+            <label>
+              Precio mínimo
+              <input type="number" name="priceMin" placeholder="USD" min="0" />
+            </label>
+            <label>
+              Precio máximo
+              <input type="number" name="priceMax" placeholder="USD" min="0" />
+            </label>
+            <label>
+              Tipo
+              <select name="type">
+                <option value="">Todos</option>
+                <option value="Casa">Casa</option>
+                <option value="Departamento">Departamento</option>
+                <option value="Terreno">Terreno</option>
+              </select>
+            </label>
+            <label>
+              Operación
+              <select name="operation">
+                <option value="">Comprar / Alquilar</option>
+                <option value="Venta">Comprar</option>
+                <option value="Alquiler">Alquilar</option>
+              </select>
+            </label>
+            <label>
+              Habitaciones
+              <select name="bedrooms">
+                <option value="">Todas</option>
+                <option value="1">1+</option>
+                <option value="2">2+</option>
+                <option value="3">3+</option>
+                <option value="4">4+</option>
+              </select>
+            </label>
+            <label>
+              Baños
+              <select name="bathrooms">
+                <option value="">Todos</option>
+                <option value="1">1+</option>
+                <option value="2">2+</option>
+                <option value="3">3+</option>
+              </select>
+            </label>
+            <button class="btn btn-primary" type="submit">Buscar propiedades</button>
+          </form>
+        </div>
+      </section>
+
+      <section class="listings" id="propiedades">
+        <div class="container">
+          <div class="section-heading">
+            <h2>Listado de propiedades</h2>
+            <p>Seleccionadas por ubicación estratégica, plusvalía y diseño premium.</p>
+          </div>
+          <div class="listings-grid" id="properties-grid"></div>
+        </div>
+      </section>
+
+      <section class="map-section" id="mapa">
+        <div class="container map-grid">
+          <div>
+            <div class="section-heading">
+              <h2>Mapa interactivo</h2>
+              <p>Ubica inmuebles clave y analiza accesibilidad, servicios y conectividad.</p>
+            </div>
+            <ul class="map-highlights">
+              <li>Rutas rápidas a centros financieros y comerciales.</li>
+              <li>Escuelas, hospitales y zonas verdes a pocos minutos.</li>
+              <li>Información estratégica para decidir con confianza.</li>
+            </ul>
+          </div>
+          <div class="map-frame">
+            <iframe
+              title="Mapa de propiedades"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3762.6591844527203!2d-99.1708705!3d19.4326077!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1f92d0f0c9a33%3A0x4bd23c3c6da2c9b2!2sPolanco%2C%20CDMX!5e0!3m2!1ses!2smx!4v1710000000000!5m2!1ses!2smx"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+        </div>
+      </section>
+
+      <section class="property-detail" id="propiedad-destacada">
+        <div class="container detail-grid">
+          <div>
+            <div class="section-heading">
+              <h2>Ficha de propiedad</h2>
+              <p>Detalles completos para decisiones informadas y visitas programadas.</p>
+            </div>
+            <div class="detail-gallery" id="detail-gallery"></div>
+          </div>
+          <div class="detail-info" id="detail-info"></div>
+        </div>
+      </section>
+
+      <section class="agent" id="agente">
+        <div class="container agent-grid">
+          <div class="agent-card">
+            <div class="agent-photo" aria-hidden="true"></div>
+            <div>
+              <h3>Andrea Gómez Palacio</h3>
+              <p class="agent-role">Broker inmobiliaria · 12 años de experiencia</p>
+              <p>
+                Especialista en residencias premium y asesoría integral. Certificada por
+                asociaciones inmobiliarias internacionales y enfocada en generar confianza,
+                negociación estratégica y cierre eficiente.
+              </p>
+              <ul class="agent-highlights">
+                <li>Certificación CRS (Certified Residential Specialist).</li>
+                <li>Red exclusiva de compradores de alto perfil.</li>
+                <li>Marketing digital y staging profesional.</li>
+              </ul>
+              <a class="btn btn-secondary" href="#contacto">Conocer disponibilidad</a>
+            </div>
+          </div>
+          <div class="trust-card">
+            <h3>Confianza y autoridad</h3>
+            <p>
+              El 92% de las propiedades se venden en menos de 45 días gracias a la estrategia
+              de posicionamiento y contenido premium de AGP Inmobiliaria.
+            </p>
+            <div class="trust-metrics">
+              <div>
+                <span class="stat-value">$120M</span>
+                <span class="stat-label">Ventas gestionadas</span>
+              </div>
+              <div>
+                <span class="stat-value">5/5</span>
+                <span class="stat-label">Reputación promedio</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="testimonials">
+        <div class="container">
+          <div class="section-heading">
+            <h2>Testimonios</h2>
+            <p>Opiniones reales de clientes que lograron vender o comprar con seguridad.</p>
+          </div>
+          <div class="testimonials-grid">
+            <article>
+              <div class="stars">★★★★★</div>
+              <p>
+                “Andrea entendió nuestras necesidades desde el primer día. Vendimos por encima
+                del precio esperado y con asesoría impecable.”
+              </p>
+              <strong>María F.</strong>
+            </article>
+            <article>
+              <div class="stars">★★★★★</div>
+              <p>
+                “Nos ayudaron a encontrar un departamento con excelente ubicación. La guía en
+                cada paso fue clave para cerrar rápido.”
+              </p>
+              <strong>Carlos & Valentina</strong>
+            </article>
+            <article>
+              <div class="stars">★★★★★</div>
+              <p>
+                “Un equipo de marketing de alto nivel. La sesión de fotos y el tour virtual
+                fueron determinantes para atraer compradores.”
+              </p>
+              <strong>Javier M.</strong>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="contact" id="contacto">
+        <div class="container contact-grid">
+          <div>
+            <div class="section-heading">
+              <h2>Formulario de contacto</h2>
+              <p>Agenda una visita, recibe asesoría o solicita un análisis de mercado.</p>
+            </div>
+            <form class="contact-form">
+              <label>
+                Nombre
+                <input type="text" name="name" placeholder="Tu nombre" required />
+              </label>
+              <label>
+                Email
+                <input type="email" name="email" placeholder="correo@email.com" required />
+              </label>
+              <label>
+                Teléfono
+                <input type="tel" name="phone" placeholder="+52 55 0000 0000" required />
+              </label>
+              <label>
+                Mensaje
+                <textarea name="message" rows="4" placeholder="Cuéntanos sobre tu necesidad" required></textarea>
+              </label>
+              <button class="btn btn-primary" type="submit">Enviar solicitud</button>
+            </form>
+          </div>
+          <div class="contact-card">
+            <h3>Contacto directo</h3>
+            <p>
+              Respuesta en menos de 24 horas. Agenda recorridos, recibe comparativos y
+              recomendaciones personalizadas.
+            </p>
+            <div class="contact-actions">
+              <a class="btn btn-secondary" href="tel:+525500000000">Llamar ahora</a>
+              <a class="btn btn-outline" href="https://wa.me/525500000000">WhatsApp</a>
+            </div>
+            <div class="contact-info">
+              <p><strong>Dirección:</strong> Av. Reforma 250, CDMX</p>
+              <p><strong>Email:</strong> contacto@agpinmobiliaria.com</p>
+              <p><strong>Horario:</strong> Lun - Sáb · 9:00 a 19:00</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer-grid">
+        <div>
+          <p class="brand-title">AGP Inmobiliaria</p>
+          <p>Dirección: Av. Reforma 250, CDMX</p>
+          <p>Teléfono: +52 55 0000 0000</p>
+          <p>Email: contacto@agpinmobiliaria.com</p>
+        </div>
+        <div>
+          <h4>Redes sociales</h4>
+          <ul>
+            <li><a href="https://instagram.com">Instagram</a></li>
+            <li><a href="https://facebook.com">Facebook</a></li>
+            <li><a href="https://linkedin.com">LinkedIn</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="#">Aviso legal</a></li>
+            <li><a href="#">Política de privacidad</a></li>
+          </ul>
+        </div>
+      </div>
+      <p class="footer-bottom">© 2024 AGP Inmobiliaria. Todos los derechos reservados.</p>
+    </footer>
+  </div>
+
+  <a class="whatsapp-float" href="https://wa.me/525500000000" aria-label="WhatsApp">
+    <span>WhatsApp</span>
+  </a>
+</body>
+</html>
