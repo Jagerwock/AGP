@@ -1,4 +1,5 @@
 const BODY = document.body;
+const WHATSAPP_NUMBER = '51XXXXXXXXX';
 
 const themeToggle = document.querySelector('[data-theme-toggle]');
 const storedTheme = localStorage.getItem('agp-theme');
@@ -41,67 +42,49 @@ if (pageKey) {
   });
 }
 
-const scrollSections = document.querySelectorAll('[data-scrollspy]');
-if (scrollSections.length > 0) {
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          const key = entry.target.getAttribute('id');
-          navLinks.forEach((link) => {
-            link.classList.toggle('active', link.dataset.nav === key);
-          });
-        }
-      });
-    },
-    { threshold: 0.6 }
-  );
-  scrollSections.forEach((section) => observer.observe(section));
-}
+const toast = document.querySelector('[data-toast]');
+const showToast = (message) => {
+  if (!toast) return;
+  toast.textContent = message;
+  toast.classList.add('show');
+  setTimeout(() => toast.classList.remove('show'), 4500);
+};
 
 const contactForm = document.querySelector('[data-contact-form]');
 if (contactForm) {
-  const toast = document.querySelector('[data-toast]');
   contactForm.addEventListener('submit', (event) => {
     event.preventDefault();
     const honeypot = contactForm.querySelector('input[name="company"]');
-    if (honeypot && honeypot.value) {
-      return;
-    }
-    const data = new FormData(contactForm);
-    const name = data.get('name');
-    const email = data.get('email');
-    const phone = data.get('phone');
-    if (!name || !email || !phone) {
-      return;
-    }
-    if (toast) {
-      toast.classList.add('show');
-      toast.textContent = '¡Gracias! Tu mensaje fue enviado. Un asesor de AGP te contactará pronto.';
-      setTimeout(() => toast.classList.remove('show'), 5000);
-    }
+    if (honeypot && honeypot.value) return;
+    showToast('¡Gracias! Un asesor de AGP Inmobiliaria te contactará en breve.');
     contactForm.reset();
   });
 }
 
 const leadForm = document.querySelector('[data-lead-form]');
 if (leadForm) {
-  const toast = document.querySelector('[data-toast]');
   leadForm.addEventListener('submit', (event) => {
     event.preventDefault();
-    if (toast) {
-      toast.classList.add('show');
-      toast.textContent = 'Solicitud recibida. Te confirmaremos la tasación gratuita en 24 horas.';
-      setTimeout(() => toast.classList.remove('show'), 5000);
-    }
+    showToast('Solicitud recibida. Te confirmaremos la tasación gratuita en 24 horas.');
     leadForm.reset();
   });
 }
 
 const whatsappLinks = document.querySelectorAll('[data-whatsapp]');
 whatsappLinks.forEach((link) => {
-  const message = encodeURIComponent(link.dataset.whatsapp || 'Hola AGP Inmobiliaria, quisiera más información.');
-  link.setAttribute('href', `https://wa.me/51999999999?text=${message}`);
+  const message = encodeURIComponent(link.dataset.whatsapp || 'Hola AGP Inmobiliaria, quiero información.');
+  link.setAttribute('href', `https://wa.me/${WHATSAPP_NUMBER}?text=${message}`);
   link.setAttribute('target', '_blank');
   link.setAttribute('rel', 'noopener');
 });
+
+const contactMap = document.querySelector('[data-contact-map]');
+if (contactMap && window.L) {
+  const lat = parseFloat(contactMap.dataset.lat);
+  const lng = parseFloat(contactMap.dataset.lng);
+  const map = L.map('contactMap', { scrollWheelZoom: false }).setView([lat, lng], 14);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; OpenStreetMap contributors',
+  }).addTo(map);
+  L.marker([lat, lng]).addTo(map).bindPopup('AGP Inmobiliaria - Lima');
+}

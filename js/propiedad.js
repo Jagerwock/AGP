@@ -2,14 +2,10 @@ const detailContainer = document.querySelector('[data-property-detail]');
 const similarContainer = document.querySelector('[data-similar]');
 const modal = document.querySelector('[data-modal]');
 const modalImg = document.querySelector('[data-modal-img]');
+const WHATSAPP_NUMBER = '51XXXXXXXXX';
 
 const formatPrice = (price) =>
   new Intl.NumberFormat('es-PE', { style: 'currency', currency: 'PEN', maximumFractionDigits: 0 }).format(price);
-
-const formatUsd = (price, rate) =>
-  new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(
-    price / rate
-  );
 
 const initMap = (property) => {
   const map = L.map('propertyMap', { scrollWheelZoom: false }).setView([property.lat, property.lng], 15);
@@ -38,7 +34,7 @@ if (modal) {
   });
 }
 
-const renderDetail = (property, usdRate) => {
+const renderDetail = (property) => {
   if (!detailContainer) return;
 
   detailContainer.innerHTML = `
@@ -50,7 +46,8 @@ const renderDetail = (property, usdRate) => {
         <div class="gallery-thumbs">
           ${property.images
             .map(
-              (img) => `<img src="${img}" alt="${property.title}" loading="lazy" data-thumb="${img}" />`
+              (img, index) =>
+                `<img src="${img}" alt="${property.title}" loading="lazy" data-thumb="${img}" class="${index === 0 ? 'active' : ''}" />`
             )
             .join('')}
         </div>
@@ -59,25 +56,29 @@ const renderDetail = (property, usdRate) => {
     <section class="card">
       <span class="badge">${property.operation}</span>
       <h1>${property.title}</h1>
-      <p class="property-price">${formatPrice(property.price_soles)} <small>(USD ${formatUsd(
-    property.price_soles,
-    usdRate
-  )})</small></p>
-      <p>${property.district} · ${property.address}</p>
-      <div class="tags">
-        <span>${property.area_m2} m²</span>
-        <span>${property.bedrooms} dormitorios</span>
-        <span>${property.bathrooms} baños</span>
-        <span>${property.parking} estacionamientos</span>
+      <p class="property-price">${formatPrice(property.pricePen)}</p>
+      <p>${property.district} · ${property.addressApprox}</p>
+      <div class="property-attributes">
+        <div class="attribute-item"><svg class="icon" aria-hidden="true"><use href="#icon-bed"></use></svg>${property.bedrooms} dormitorios</div>
+        <div class="attribute-item"><svg class="icon" aria-hidden="true"><use href="#icon-bath"></use></svg>${property.bathrooms} baños</div>
+        <div class="attribute-item"><svg class="icon" aria-hidden="true"><use href="#icon-parking"></use></svg>${property.parking} estacionamientos</div>
+        <div class="attribute-item"><svg class="icon" aria-hidden="true"><use href="#icon-area"></use></svg>${property.areaM2} m²</div>
+        ${property.maintenance ? `<div class="attribute-item"><svg class="icon" aria-hidden="true"><use href="#icon-wallet"></use></svg>Mantenimiento S/ ${property.maintenance}</div>` : ''}
       </div>
       <p>${property.description}</p>
-      <table class="table">
-        ${property.features.map((feature) => `<tr><td>${feature}</td></tr>`).join('')}
-      </table>
+      <h2>Características</h2>
+      <ul class="features-list">
+        ${property.features
+          .map(
+            (feature) =>
+              `<li><svg class="icon" aria-hidden="true"><use href="#icon-check"></use></svg><span>${feature}</span></li>`
+          )
+          .join('')}
+      </ul>
     </section>
     <section class="card">
       <h2>Ubicación en ${property.district}</h2>
-      <div class="map-wrapper" id="propertyMap" style="min-height:320px"></div>
+      <div class="map-wrapper" id="propertyMap"></div>
     </section>
   `;
 
@@ -85,11 +86,13 @@ const renderDetail = (property, usdRate) => {
   const main = detailContainer.querySelector('[data-gallery-main]');
   thumbs.forEach((thumb) => {
     thumb.addEventListener('click', () => {
+      thumbs.forEach((item) => item.classList.remove('active'));
+      thumb.classList.add('active');
       if (main) {
         main.src = thumb.dataset.thumb;
       }
-      openModal(thumb.dataset.thumb, property.title);
     });
+    thumb.addEventListener('dblclick', () => openModal(thumb.dataset.thumb, property.title));
   });
 
   if (main) {
@@ -110,13 +113,16 @@ const renderSimilar = (properties, currentId) => {
       card.className = 'property-card';
       card.innerHTML = `
         <img src="${item.images[0]}" alt="${item.title}" loading="lazy" />
-        <div>
+        <div class="property-body">
           <span class="badge">${item.operation}</span>
           <h3>${item.title}</h3>
-          <p class="property-price">${formatPrice(item.price_soles)}</p>
+          <p class="property-price">${formatPrice(item.pricePen)}</p>
           <p>${item.district}</p>
         </div>
-        <a class="btn btn-outline" href="propiedad.html?id=${item.id}">Ver detalle</a>
+        <div class="card-actions">
+          <a class="btn btn-outline" href="propiedad.html?id=${item.id}">Ver detalle</a>
+          <span class="badge">${item.type}</span>
+        </div>
       `;
       similarContainer.appendChild(card);
     });
@@ -127,24 +133,27 @@ const init = async () => {
   const propertyId = params.get('id');
   const response = await fetch('data/properties.json');
   const json = await response.json();
-  const usdRate = json.usd_rate || 3.75;
   const property = json.properties.find((item) => item.id === propertyId);
 
   if (!property) {
     if (detailContainer) {
-      detailContainer.innerHTML = '<p>Propiedad no encontrada. Vuelve al listado.</p>';
+      detailContainer.innerHTML = '<p>Propiedad no encontrada. Vuelve al listado principal.</p>';
     }
     return;
   }
 
-  renderDetail(property, usdRate);
+  renderDetail(property);
   const similar = json.properties.filter((item) => item.district === property.district || item.type === property.type);
   renderSimilar(similar, property.id);
 
-  const whatsappBtn = document.querySelector('[data-whatsapp-message]');
+  const whatsappBtn = document.querySelector('[data-whatsapp-dynamic]');
   if (whatsappBtn) {
-    const message = encodeURIComponent(`Hola AGP Inmobiliaria, me interesa la propiedad ${property.title} (${property.id}).`);
-    whatsappBtn.setAttribute('href', `https://wa.me/51999999999?text=${message}`);
+    const message = encodeURIComponent(
+      `Hola AGP Inmobiliaria, quiero información sobre ${property.title} (ID ${property.id}).`
+    );
+    whatsappBtn.setAttribute('href', `https://wa.me/${WHATSAPP_NUMBER}?text=${message}`);
+    whatsappBtn.setAttribute('target', '_blank');
+    whatsappBtn.setAttribute('rel', 'noopener');
   }
 };
 

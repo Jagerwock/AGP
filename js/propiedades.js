@@ -1,25 +1,22 @@
 let map;
 let markersLayer;
 let propertiesData = [];
-let usdRate = 3.75;
 let currentPage = 1;
 const perPage = 6;
 
 const filtersForm = document.querySelector('[data-filters]');
 const cardsContainer = document.querySelector('[data-property-cards]');
 const paginationContainer = document.querySelector('[data-pagination]');
+const resultsCount = document.querySelector('[data-results-count]');
+const mapToggle = document.querySelector('[data-map-toggle]');
+const mapPanel = document.querySelector('[data-map-panel]');
 
 const formatPrice = (price) =>
   new Intl.NumberFormat('es-PE', { style: 'currency', currency: 'PEN', maximumFractionDigits: 0 }).format(price);
 
-const formatUsd = (price) =>
-  new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(
-    price / usdRate
-  );
-
 const renderMap = (items) => {
   if (!map) {
-    map = L.map('propertiesMap', { scrollWheelZoom: false }).setView([-12.096, -77.03], 12);
+    map = L.map('propertiesMap', { scrollWheelZoom: false }).setView([-12.097, -77.037], 12);
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '&copy; OpenStreetMap contributors',
     }).addTo(map);
@@ -28,11 +25,17 @@ const renderMap = (items) => {
 
   markersLayer.clearLayers();
 
+  if (items.length === 0) {
+    return;
+  }
+
+  const bounds = [];
   items.forEach((property) => {
     const marker = L.marker([property.lat, property.lng]).addTo(markersLayer);
     marker.bindPopup(
-      `<strong>${property.title}</strong><br>${property.district} · ${formatPrice(property.price_soles)}<br><a href="propiedad.html?id=${property.id}">Ver detalle</a>`
+      `<strong>${property.title}</strong><br>${property.district} · ${formatPrice(property.pricePen)}<br><a href="propiedad.html?id=${property.id}">Ver detalle</a>`
     );
+    bounds.push([property.lat, property.lng]);
     marker.on('click', () => {
       const card = document.querySelector(`[data-card-id="${property.id}"]`);
       if (card) {
@@ -42,6 +45,9 @@ const renderMap = (items) => {
       }
     });
   });
+  if (bounds.length > 1) {
+    map.fitBounds(bounds, { padding: [30, 30] });
+  }
 };
 
 const getFiltered = () => {
@@ -61,11 +67,11 @@ const getFiltered = () => {
       (!district || property.district === district) &&
       (!operation || property.operation === operation) &&
       (!type || property.type === type) &&
-      property.price_soles >= minPrice &&
-      property.price_soles <= maxPrice &&
+      property.pricePen >= minPrice &&
+      property.pricePen <= maxPrice &&
       property.bedrooms >= minBeds &&
       property.bathrooms >= minBaths &&
-      property.area_m2 >= minArea
+      property.areaM2 >= minArea
     );
   });
 };
@@ -74,7 +80,7 @@ const renderCards = (items) => {
   if (!cardsContainer) return;
   cardsContainer.innerHTML = '';
   if (items.length === 0) {
-    cardsContainer.innerHTML = '<p>No encontramos propiedades con esos filtros.</p>';
+    cardsContainer.innerHTML = '<p>No encontramos propiedades con esos filtros. Prueba ajustar los rangos.</p>';
     return;
   }
 
@@ -84,22 +90,25 @@ const renderCards = (items) => {
     card.dataset.cardId = property.id;
     card.innerHTML = `
       <img src="${property.images[0]}" alt="${property.title}" loading="lazy" />
-      <div>
+      <div class="property-body">
         <span class="badge">${property.operation}</span>
         <h3>${property.title}</h3>
-        <p class="property-price">${formatPrice(property.price_soles)} <small>(USD ${formatUsd(property.price_soles)})</small></p>
-        <p>${property.district} · ${property.address}</p>
+        <p class="property-price">${formatPrice(property.pricePen)}</p>
+        <p>${property.district} · ${property.addressApprox}</p>
         <div class="property-meta">
-          <span>${property.area_m2} m²</span>
-          <span>${property.bedrooms} hab.</span>
-          <span>${property.bathrooms} baños</span>
-          <span>${property.parking} est.</span>
+          <span><svg class="icon" aria-hidden="true"><use href="#icon-area"></use></svg>${property.areaM2} m²</span>
+          <span><svg class="icon" aria-hidden="true"><use href="#icon-bed"></use></svg>${property.bedrooms} dorm.</span>
+          <span><svg class="icon" aria-hidden="true"><use href="#icon-bath"></use></svg>${property.bathrooms} baños</span>
+          <span><svg class="icon" aria-hidden="true"><use href="#icon-parking"></use></svg>${property.parking} est.</span>
         </div>
       </div>
-      <a class="btn btn-outline" href="propiedad.html?id=${property.id}">Ver detalle</a>
+      <div class="card-actions">
+        <a class="btn btn-outline" href="propiedad.html?id=${property.id}">Ver detalle</a>
+        <span class="badge">${property.type}</span>
+      </div>
     `;
     card.addEventListener('click', (event) => {
-      if (event.target.tagName.toLowerCase() !== 'a') {
+      if (event.target.tagName.toLowerCase() !== 'a' && map) {
         map.setView([property.lat, property.lng], 15, { animate: true });
       }
     });
@@ -130,13 +139,15 @@ const updateView = () => {
   renderCards(paged);
   renderPagination(filtered.length);
   renderMap(filtered);
+  if (resultsCount) {
+    resultsCount.textContent = `${filtered.length} propiedades encontradas`;
+  }
 };
 
 const init = async () => {
   const response = await fetch('data/properties.json');
   const json = await response.json();
   propertiesData = json.properties;
-  usdRate = json.usd_rate || usdRate;
 
   const params = new URLSearchParams(window.location.search);
   const districtParam = params.get('district');
@@ -150,6 +161,16 @@ const init = async () => {
     filtersForm.addEventListener('input', () => {
       currentPage = 1;
       updateView();
+    });
+  }
+
+  if (mapToggle && mapPanel) {
+    mapToggle.addEventListener('click', () => {
+      mapPanel.classList.toggle('is-open');
+      mapToggle.textContent = mapPanel.classList.contains('is-open') ? 'Ocultar mapa' : 'Ver mapa';
+      if (map) {
+        setTimeout(() => map.invalidateSize(), 200);
+      }
     });
   }
 };
