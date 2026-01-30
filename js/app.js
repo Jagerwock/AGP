@@ -1,17 +1,35 @@
 const BODY = document.body;
 const WHATSAPP_NUMBER = '51XXXXXXXXX';
 
+const THEME_KEY = 'agp-theme';
+
 const themeToggle = document.querySelector('[data-theme-toggle]');
-const storedTheme = localStorage.getItem('agp-theme');
-if (storedTheme) {
-  BODY.setAttribute('data-theme', storedTheme);
-}
+const prefersDark = () => window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+const setTheme = (theme) => {
+  BODY.setAttribute('data-theme', theme);
+  localStorage.setItem(THEME_KEY, theme);
+  if (!themeToggle) return;
+  const isDark = theme === 'dark';
+  themeToggle.classList.toggle('is-dark', isDark);
+  themeToggle.setAttribute('aria-pressed', isDark.toString());
+  themeToggle.setAttribute('title', isDark ? 'Cambiar a modo claro' : 'Cambiar a modo ocaso');
+  const icon = themeToggle.querySelector('[data-theme-icon]');
+  const label = themeToggle.querySelector('[data-theme-label]');
+  if (icon) icon.textContent = isDark ? '🌙' : '☀️';
+  if (label) label.textContent = isDark ? 'Ocaso' : 'Claro';
+};
+
+const storedTheme = localStorage.getItem(THEME_KEY);
+const initialTheme = storedTheme || (prefersDark() ? 'dark' : 'light');
+setTheme(initialTheme);
 
 if (themeToggle) {
   themeToggle.addEventListener('click', () => {
+    BODY.classList.add('theme-transition');
     const nextTheme = BODY.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-    BODY.setAttribute('data-theme', nextTheme);
-    localStorage.setItem('agp-theme', nextTheme);
+    setTheme(nextTheme);
+    setTimeout(() => BODY.classList.remove('theme-transition'), 350);
   });
 }
 

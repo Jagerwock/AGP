@@ -45,13 +45,13 @@
         </div>
         <div class="topbar-social">
           <a href="https://wa.me/51XXXXXXXXX" aria-label="WhatsApp" title="WhatsApp" class="social-icon">
-            <svg class="icon" aria-hidden="true"><use href="#icon-whatsapp"></use></svg>
+            <svg class="icon" aria-hidden="true" fill="currentColor"><use href="#icon-whatsapp"></use></svg>
           </a>
           <a href="https://instagram.com" aria-label="Instagram" title="Instagram" class="social-icon">
-            <svg class="icon" aria-hidden="true"><use href="#icon-instagram"></use></svg>
+            <svg class="icon" aria-hidden="true" fill="currentColor"><use href="#icon-instagram"></use></svg>
           </a>
           <a href="https://tiktok.com" aria-label="TikTok" title="TikTok" class="social-icon">
-            <svg class="icon" aria-hidden="true"><use href="#icon-tiktok"></use></svg>
+            <svg class="icon" aria-hidden="true" fill="currentColor"><use href="#icon-tiktok"></use></svg>
           </a>
         </div>
       </div>
@@ -75,7 +75,10 @@
         <div class="nav-actions">
           <a class="btn btn-outline" data-whatsapp="Hola AGP Inmobiliaria, quiero información sobre propiedades disponibles.">WhatsApp</a>
           <a class="btn btn-primary" href="contacto.html">Agendar visita</a>
-          <button class="theme-toggle" data-theme-toggle aria-label="Cambiar tema">🌓</button>
+          <button class="theme-toggle" data-theme-toggle type="button" aria-pressed="false" title="Cambiar a modo noche">
+            <span class="theme-toggle__icon" data-theme-icon>☀️</span>
+            <span class="theme-toggle__label" data-theme-label>Claro</span>
+          </button>
         </div>
         <button class="mobile-menu" data-drawer-toggle aria-label="Abrir menú">☰</button>
       </div>
@@ -202,13 +205,13 @@
             <h4>Síguenos</h4>
             <div class="social-links">
               <a href="https://wa.me/51XXXXXXXXX" aria-label="WhatsApp" class="social-icon">
-                <svg class="icon" aria-hidden="true"><use href="#icon-whatsapp"></use></svg>
+                <svg class="icon" aria-hidden="true" fill="currentColor"><use href="#icon-whatsapp"></use></svg>
               </a>
               <a href="https://instagram.com" aria-label="Instagram" class="social-icon">
-                <svg class="icon" aria-hidden="true"><use href="#icon-instagram"></use></svg>
+                <svg class="icon" aria-hidden="true" fill="currentColor"><use href="#icon-instagram"></use></svg>
               </a>
               <a href="https://tiktok.com" aria-label="TikTok" class="social-icon">
-                <svg class="icon" aria-hidden="true"><use href="#icon-tiktok"></use></svg>
+                <svg class="icon" aria-hidden="true" fill="currentColor"><use href="#icon-tiktok"></use></svg>
               </a>
             </div>
             <small>© 2024 AGP Inmobiliaria.</small>
@@ -221,7 +224,7 @@
     </footer>
 
     <a class="whatsapp-float" data-whatsapp="Hola AGP Inmobiliaria, quiero información sobre propiedades disponibles." aria-label="WhatsApp">
-      <svg class="icon icon-lg" aria-hidden="true"><use href="#icon-whatsapp"></use></svg>
+      <svg class="icon icon--xl" aria-hidden="true" fill="currentColor"><use href="#icon-whatsapp"></use></svg>
     </a>
 
     <div class="toast" data-toast></div>

@@ -96,10 +96,10 @@ const renderCards = (items) => {
         <p class="property-price">${formatPrice(property.pricePen)}</p>
         <p>${property.district} · ${property.addressApprox}</p>
         <div class="property-meta">
-          <span><svg class="icon" aria-hidden="true"><use href="#icon-area"></use></svg>${property.areaM2} m²</span>
-          <span><svg class="icon" aria-hidden="true"><use href="#icon-bed"></use></svg>${property.bedrooms} dorm.</span>
-          <span><svg class="icon" aria-hidden="true"><use href="#icon-bath"></use></svg>${property.bathrooms} baños</span>
-          <span><svg class="icon" aria-hidden="true"><use href="#icon-parking"></use></svg>${property.parking} est.</span>
+          <span><svg class="icon" aria-hidden="true" fill="currentColor"><use href="#icon-area"></use></svg>${property.areaM2} m²</span>
+          <span><svg class="icon" aria-hidden="true" fill="currentColor"><use href="#icon-bed"></use></svg>${property.bedrooms} dorm.</span>
+          <span><svg class="icon" aria-hidden="true" fill="currentColor"><use href="#icon-bath"></use></svg>${property.bathrooms} baños</span>
+          <span><svg class="icon" aria-hidden="true" fill="currentColor"><use href="#icon-parking"></use></svg>${property.parking} est.</span>
         </div>
       </div>
       <div class="card-actions">
