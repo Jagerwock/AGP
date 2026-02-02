@@ -462,6 +462,11 @@ textarea {
   height: 22px;
 }
 
+.icon--xl {
+  width: 32px;
+  height: 32px;
+}
+
 .services {
   display: grid;
   gap: 20px;
@@ -711,14 +716,14 @@ textarea {
   position: fixed;
   right: calc(20px + env(safe-area-inset-right));
   bottom: calc(20px + env(safe-area-inset-bottom));
-  width: 56px;
-  height: 56px;
+  width: 84px;
+  height: 84px;
   border-radius: 50%;
   background: #25d366;
   color: #fff;
   display: grid;
   place-items: center;
-  box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4);
+  box-shadow: 0 12px 32px rgba(37, 211, 102, 0.45);
   z-index: 1500;
   transition: var(--transition);
 }
