@@ -5,8 +5,8 @@
   --surface: #ffffff;
   --text: #0b1220;
   --muted: #475569;
-  --gold-500: #d4a017;
-  --gold-600: #b8860b;
+  --gold-500: #e2b537;
+  --gold-600: #c9961a;
   --border: #d8e0ea;
   --shadow: 0 20px 50px rgba(7, 22, 39, 0.16);
   --radius-lg: 20px;
@@ -204,6 +204,7 @@ textarea {
   gap: 18px;
   align-items: center;
   font-weight: 600;
+  font-size: 1.02rem;
 }
 
 .nav-links a {
@@ -281,20 +282,22 @@ textarea {
 .btn-primary {
   background: var(--gold-500);
   color: #1a1a1a;
+  box-shadow: 0 14px 30px rgba(226, 181, 55, 0.28);
 }
 
 .btn-primary:hover {
   background: var(--gold-600);
+  transform: translateY(-1px);
 }
 
 .btn-outline {
-  border: 1px solid var(--border);
+  border: 1px solid var(--gold-500);
   color: var(--text);
   background: transparent;
 }
 
 .btn-outline:hover {
-  border-color: var(--gold-500);
+  border-color: var(--gold-600);
   color: var(--gold-600);
 }
 
@@ -349,13 +352,17 @@ textarea {
   padding: 120px 0;
 }
 
-.hero .badge {
-  background: rgba(212, 160, 23, 0.2);
-  color: #fff;
+.hero-accent {
+  display: inline-block;
+  width: 54px;
+  height: 4px;
+  border-radius: 999px;
+  background: var(--gold-500);
+  margin-bottom: 18px;
 }
 
 .hero h1 {
-  font-size: clamp(2.4rem, 3vw, 3.2rem);
+  font-size: clamp(2.8rem, 3.4vw, 3.8rem);
   max-width: 640px;
   margin: 16px 0;
 }
@@ -363,6 +370,16 @@ textarea {
 .hero p {
   max-width: 600px;
   margin-bottom: 24px;
+}
+
+.hero .btn-outline {
+  color: #fff;
+  border-color: var(--gold-500);
+}
+
+.hero .btn-outline:hover {
+  color: #fff;
+  border-color: var(--gold-600);
 }
 
 .badge {
