@@ -4,8 +4,12 @@ const modal = document.querySelector('[data-modal]');
 const modalImg = document.querySelector('[data-modal-img]');
 const WHATSAPP_NUMBER = '51XXXXXXXXX';
 
-const formatPrice = (price) =>
-  new Intl.NumberFormat('es-PE', { style: 'currency', currency: 'PEN', maximumFractionDigits: 0 }).format(price);
+const mapContainer = document.querySelector('#propertyMap');
+  if (!mapContainer) return;
+  if (!window.L) {
+    mapContainer.innerHTML = '<div class="map-placeholder">Mapa no disponible en este entorno.</div>';
+    return;
+  }
 
 const initMap = (property) => {
   const map = L.map('propertyMap', { scrollWheelZoom: false }).setView([property.lat, property.lng], 15);
@@ -57,7 +61,7 @@ const renderDetail = (property) => {
     <section class="card property-details">
       <span class="badge">${property.operation}</span>
       <h1>${property.title}</h1>
-      <p class="property-price">${formatPrice(property.pricePen)}</p>
+      <p class="property-price">${AGPRender.formatPrice(property.pricePen)}</p>
       <p>${property.district} · ${property.addressApprox}</p>
       <div class="property-attributes">
         <div class="attribute-item"><svg class="icon" aria-hidden="true" fill="currentColor"><use href="#icon-bed"></use></svg>${property.bedrooms} dormitorios</div>
@@ -76,6 +80,8 @@ const renderDetail = (property) => {
           )
           .join('')}
       </ul>
+      <h2>Ubicación</h2>
+      <p class="muted-text">${property.district} · ${property.addressApprox}</p>
     </section>
     <aside class="property-aside">
       <div class="property-aside__sticky">
@@ -123,38 +129,67 @@ const renderDetail = (property) => {
   initMap(property);
 };
 
-const renderSimilar = (properties, currentId) => {
+const getSimilarProperties = (properties, current) => {
+  const typeFamilies = {
+    Departamento: ['Departamento', 'Dúplex'],
+    'Dúplex': ['Dúplex', 'Departamento'],
+    Penthouse: ['Penthouse', 'Departamento'],
+    Casa: ['Casa'],
+    Oficina: ['Oficina'],
+  };
+  const similarTypes = typeFamilies[current.type] || [current.type];
+  const candidates = properties.filter((item) => item.id !== current.id);
+
+  const scored = candidates.map((item) => {
+    const sameDistrict = item.district === current.district;
+    const sameOperation = item.operation === current.operation;
+    const similarType = similarTypes.includes(item.type);
+    const priceDelta = Math.abs(item.pricePen - current.pricePen);
+    const within = priceDelta / current.pricePen <= 0.15;
+    let score = priceDelta;
+    if (sameDistrict) score -= 500000;
+    if (sameOperation) score -= 250000;
+    if (similarType) score -= 150000;
+    if (within) score -= 100000;
+    return { item, score };
+  });
+
+  return scored
+    .sort((a, b) => a.score - b.score)
+    .map((entry) => entry.item)
+    .slice(0, 6);
+};
+
+const renderSimilar = (items) => {
   if (!similarContainer) return;
   similarContainer.innerHTML = '';
-  properties
-    .filter((item) => item.id !== currentId)
-    .slice(0, 3)
-    .forEach((item) => {
-      const card = document.createElement('article');
-      card.className = 'property-card';
-      card.innerHTML = `
-        <img src="${item.images[0]}" alt="${item.title}" loading="lazy" />
-        <div class="property-body">
-          <span class="badge">${item.operation}</span>
-          <h3>${item.title}</h3>
-          <p class="property-price">${formatPrice(item.pricePen)}</p>
-          <p>${item.district}</p>
-        </div>
-        <div class="card-actions">
-          <a class="btn btn-outline" href="propiedad.html?id=${item.id}">Ver detalle</a>
-          <span class="badge">${item.type}</span>
-        </div>
-      `;
-      similarContainer.appendChild(card);
-    });
+  items.forEach((item) => {
+    const card = AGPRender.createCardElement(item);
+    similarContainer.appendChild(card);
+  });
 };
 
 const init = async () => {
   const params = new URLSearchParams(window.location.search);
   const propertyId = params.get('id');
-  const response = await fetch('data/properties.json');
-  const json = await response.json();
-  const property = json.properties.find((item) => item.id === propertyId);
+  if (!propertyId) {
+    if (detailContainer) {
+      detailContainer.innerHTML = '<p>Propiedad no encontrada. Vuelve al listado principal.</p>';
+    }
+    return;
+  }
+
+  let properties = [];
+  try {
+    properties = await AGPData.fetchProperties();
+  } catch (error) {
+    if (detailContainer) {
+      detailContainer.innerHTML = '<p>No pudimos cargar la propiedad. Intenta nuevamente en unos minutos.</p>';
+    }
+    return;
+  }
+
+  const property = properties.find((item) => item.id === propertyId);
 
   if (!property) {
     if (detailContainer) {
@@ -164,8 +199,8 @@ const init = async () => {
   }
 
   renderDetail(property);
-  const similar = json.properties.filter((item) => item.district === property.district || item.type === property.type);
-  renderSimilar(similar, property.id);
+  const similar = getSimilarProperties(properties, property);
+  renderSimilar(similar);
 
   const whatsappBtns = document.querySelectorAll('[data-whatsapp-dynamic]');
   if (whatsappBtns.length) {

@@ -6,6 +6,7 @@
     <title>Propiedades | AGP Inmobiliaria</title>
     <meta name="description" content="Listado de propiedades en Surco, San Borja, Miraflores, San Isidro, Jesús María y Magdalena." />
     <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/components.css" />
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
   </head>
 
@@ -97,41 +98,70 @@
         <h1 class="section-title">Propiedades en Lima</h1>
         <p class="section-subtitle">Explora inmuebles en los distritos de mayor demanda. Filtra por operación, tipo y presupuesto.</p>
 
-        <div class="property-layout">
-          <div class="listing-panel">
-            <form class="filters card" data-filters>
-              <div class="filter-grid">
-                <div>
-                  <label for="district">Distrito</label>
-                  <select id="district" name="district">
-                    <option value="">Todos</option>
-                    <option>Surco</option>
-                    <option>San Borja</option>
-                    <option>Miraflores</option>
-                    <option>San Isidro</option>
-                    <option>Jesús María</option>
-                    <option>Magdalena</option>
-                  </select>
-                </div>
-                <div>
-                  <label for="operation">Operación</label>
-                  <select id="operation" name="operation">
-                    <option value="">Todas</option>
-                    <option>Venta</option>
-                    <option>Alquiler</option>
-                  </select>
-                </div>
-                <div>
-                  <label for="type">Tipo</label>
-                  <select id="type" name="type">
-                    <option value="">Todos</option>
-                    <option>Departamento</option>
-                    <option>Casa</option>
-                    <option>Penthouse</option>
-                    <option>Dúplex</option>
-                    <option>Oficina</option>
-                  </select>
-                </div>
+        <article class="card featured-project">
+          <div class="featured-media">
+            <img src="Images/BellaVista.jpeg" alt="Residencial Vista Bella en Surco" loading="lazy" />
+          </div>
+          <div class="featured-content">
+            <span class="badge">Residencial Vista Bella</span>
+            <h2>Flats y Dúplex desde 95 m² hasta 182 m²</h2>
+            <p class="featured-price">desde: $ 229,000</p>
+            <div class="featured-meta">
+              <span>Entrega Julio 2026</span>
+              <span>Surco (Urb. Vista Alegre) - Vista a parque Argentina.</span>
+            </div>
+          </div>
+        </article>
+
+        <div class="filters-shell" data-filters>
+          <div class="segmented-control" role="tablist" aria-label="Operación">
+            <button type="button" class="is-active" data-operation-tab data-value="Venta" aria-pressed="true">Comprar</button>
+            <button type="button" data-operation-tab data-value="Alquiler" aria-pressed="false">Alquilar</button>
+            <button type="button" data-operation-tab data-value="all" aria-pressed="false">Todo</button>
+          </div>
+
+          <div class="card quick-filters">
+            <div class="quick-row">
+              <div class="field">
+                <label for="district">Distrito</label>
+                <select id="district" name="district">
+                  <option value="">Todos</option>
+                  <option>Surco</option>
+                  <option>San Borja</option>
+                  <option>Miraflores</option>
+                  <option>San Isidro</option>
+                  <option>Jesús María</option>
+                  <option>Magdalena</option>
+                </select>
+              </div>
+              <button class="chip" type="button" data-price-toggle aria-expanded="false">Precio</button>
+              <div class="chip-group" role="group" aria-label="Dormitorios">
+                <button class="chip" type="button" data-bedrooms data-value="1">1+</button>
+                <button class="chip" type="button" data-bedrooms data-value="2">2+</button>
+                <button class="chip" type="button" data-bedrooms data-value="3">3+</button>
+                <button class="chip" type="button" data-bedrooms data-value="4">4+</button>
+              </div>
+              <button class="btn btn-outline" type="button" data-more-filters>Más filtros</button>
+            </div>
+
+            <div class="filter-actions">
+              <span data-results-count>0 propiedades encontradas</span>
+              <div class="sort-select">
+                <label for="sort">Ordenar</label>
+                <select id="sort" name="sort" data-sort>
+                  <option value="recent">Más recientes</option>
+                  <option value="price-asc">Menor precio</option>
+                  <option value="price-desc">Mayor precio</option>
+                </select>
+              </div>
+              <div class="view-toggle" role="group" aria-label="Vista">
+                <button type="button" class="is-active" data-view-toggle="list">Lista</button>
+                <button type="button" data-view-toggle="map">Mapa</button>
+              </div>
+            </div>
+
+            <div class="filters-panel" data-price-panel>
+              <div class="panel-grid">
                 <div>
                   <label for="minPrice">Precio mín (S/)</label>
                   <input id="minPrice" name="minPrice" type="number" placeholder="200000" min="0" />
@@ -140,42 +170,50 @@
                   <label for="maxPrice">Precio máx (S/)</label>
                   <input id="maxPrice" name="maxPrice" type="number" placeholder="2500000" min="0" />
                 </div>
-                <div>
-                  <label for="bedrooms">Dormitorios</label>
-                  <select id="bedrooms" name="bedrooms">
-                    <option value="">Todos</option>
-                    <option value="1">1+</option>
-                    <option value="2">2+</option>
-                    <option value="3">3+</option>
-                    <option value="4">4+</option>
-                  </select>
-                </div>
-                <div>
-                  <label for="bathrooms">Baños</label>
-                  <select id="bathrooms" name="bathrooms">
-                    <option value="">Todos</option>
-                    <option value="1">1+</option>
-                    <option value="2">2+</option>
-                    <option value="3">3+</option>
-                  </select>
-                </div>
-                <div>
-                  <label for="minArea">Área mínima (m²)</label>
-                  <input id="minArea" name="minArea" type="number" placeholder="60" min="0" />
-                </div>
+              </div>
+              </div>
+          </div>
+
+          <div class="filters-panel" data-advanced-panel>
+            <div class="panel-grid">
+              <div>
+                <label for="type">Tipo</label>
+                <select id="type" name="type">
+                  <option value="">Todos</option>
+                  <option>Departamento</option>
+                  <option>Casa</option>
+                  <option>Penthouse</option>
+                  <option>Dúplex</option>
+                  <option>Oficina</option>
+                </select>
+              </div>
+            <div>
+                <label for="bathrooms">Baños</label>
+                <select id="bathrooms" name="bathrooms">
+                  <option value="">Todos</option>
+                  <option value="1">1+</option>
+                  <option value="2">2+</option>
+                  <option value="3">3+</option>
+                </select>
               </div>
               <div>
-                <button class="btn btn-outline map-toggle" type="button" data-map-toggle>Ver mapa</button>
-                <span data-results-count>0 propiedades encontradas</span>
+                <label for="minArea">Área mínima (m²)</label>
+                <input id="minArea" name="minArea" type="number" placeholder="60" min="0" />
               </div>
-            </form>
+            </div>
+          </div>
 
+          <div class="active-chips" data-active-chips></div>
+          </div>
+          <div class="property-layout" data-layout data-view="split">
+          <div class="listing-panel">
             <div class="card-grid two" data-property-cards></div>
             <div class="pagination" data-pagination></div>
           </div>
 
           <aside class="map-panel" data-map-panel>
             <div id="propertiesMap"></div>
+            <div class="map-card-floating" data-map-card></div>
           </aside>
         </div>
       </div>
@@ -227,6 +265,8 @@
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
     <script src="js/app.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/render.js"></script>
     <script src="js/propiedades.js"></script>
   </body>
 </html>
