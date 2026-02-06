@@ -485,16 +485,26 @@ textarea {
 
 .property-card__tag {
   position: absolute;
-  top: 20px;
-  right: 20px;
-  background: rgba(7, 22, 39, 0.92);
+  top: 22px;
+  right: -44px;
   color: #fff;
-  padding: 4px 10px;
-  border-radius: 999px;
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.3px;
-  box-shadow: 0 10px 20px rgba(7, 22, 39, 0.35);
+  padding: 6px 48px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  transform: rotate(45deg);
+  box-shadow: 0 12px 24px rgba(7, 22, 39, 0.25);
+  border-radius: 4px;
+}
+
+.property-card__tag--venta {
+  background: #1c4aa5;
+}
+
+.property-card__tag--alquiler {
+  background: #f0c33c;
+  color: #2a1b00;
 }
 
 .property-card .property-body {

@@ -140,11 +140,16 @@ const renderSimilar = (allProperties, current) => {
 
   elements.similar.innerHTML = similar
     .map(
-      (property) => `
+      (property) => {
+        const operationClass =
+          property.operation?.toLowerCase() === "alquiler"
+            ? "property-card__tag--alquiler"
+            : "property-card__tag--venta";
+        return `
       <article class="property-card">
         <div class="property-card__media">
           <img src="${property.images[0]}" alt="${property.title}" loading="lazy" />
-          <span class="property-card__tag">${property.operation}</span>
+          <span class="property-card__tag ${operationClass}">${property.operation}</span>
         </div>
         <div class="property-body">
           <h3>${property.title}</h3>
@@ -158,7 +163,8 @@ const renderSimilar = (allProperties, current) => {
           <a class="btn btn-outline" href="propiedad.html?id=${property.id}">Ver detalle</a>
         </div>
       </article>
-    `
+    `;
+      }
     )
     .join("");
 };
