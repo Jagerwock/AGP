@@ -142,16 +142,20 @@ const renderSimilar = (allProperties, current) => {
     .map(
       (property) => `
       <article class="property-card">
-        <img src="${property.images[0]}" alt="${property.title}" loading="lazy" />
-        <div class="property-card__body">
-          <span class="badge">${property.operation}</span>
+        <div class="property-card__media">
+          <img src="${property.images[0]}" alt="${property.title}" loading="lazy" />
+          <span class="property-card__tag">${property.operation}</span>
+        </div>
+        <div class="property-body">
           <h3>${property.title}</h3>
-          <p><strong>${formatCurrency(property.pricePen)}</strong></p>
-          <div class="property-card__meta">
-            <span>${property.district}</span>
+          <p class="property-price">${formatCurrency(property.pricePen)}</p>
+          <p>${property.district}</p>
+          <div class="property-meta">
             <span>${property.areaM2} m² · ${property.bedrooms} hab</span>
           </div>
-          <a class="btn btn-secondary" href="propiedad.html?id=${property.id}">Ver detalle</a>
+          </div>
+        <div class="card-actions">
+          <a class="btn btn-outline" href="propiedad.html?id=${property.id}">Ver detalle</a>
         </div>
       </article>
     `

@@ -106,3 +106,24 @@ if (contactMap && window.L) {
   }).addTo(map);
   L.marker([lat, lng]).addTo(map).bindPopup('AGP Inmobiliaria - Lima');
 }
+
+const revealElements = document.querySelectorAll('.section, .property-card, .card, .service-item');
+revealElements.forEach((element) => element.classList.add('reveal'));
+
+if ('IntersectionObserver' in window) {
+  const observer = new IntersectionObserver(
+    (entries, currentObserver) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          currentObserver.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.12 }
+  );
+
+  revealElements.forEach((element) => observer.observe(element));
+} else {
+  revealElements.forEach((element) => element.classList.add('is-visible'));
+}
