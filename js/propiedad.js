@@ -4,19 +4,20 @@ const modal = document.querySelector('[data-modal]');
 const modalImg = document.querySelector('[data-modal-img]');
 const WHATSAPP_NUMBER = '51XXXXXXXXX';
 
-const mapContainer = document.querySelector('#propertyMap');
-  if (!mapContainer) return;
-  if (!window.L) {
-    mapContainer.innerHTML = '<div class="map-placeholder">Mapa no disponible en este entorno.</div>';
-    return;
-  }
-
 const initMap = (property) => {
-  const map = L.map('propertyMap', { scrollWheelZoom: false }).setView([property.lat, property.lng], 15);
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; OpenStreetMap contributors',
-  }).addTo(map);
-  L.marker([property.lat, property.lng]).addTo(map).bindPopup(property.title).openPopup();
+  const mapContainer = document.querySelector('#propertyMap');
+  if (!mapContainer) return;
+  const lat = property.lat || -12.0464;
+  const lng = property.lng || -77.0428;
+  const query = encodeURIComponent(`${lat},${lng}`);
+  mapContainer.innerHTML = `
+    <iframe
+      title="Mapa de ${property.title}"
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"
+      src="https://www.google.com/maps?q=${query}&z=15&output=embed">
+    </iframe>
+  `;
 };
 
 const openModal = (src, alt) => {
@@ -42,61 +43,64 @@ const renderDetail = (property) => {
   if (!detailContainer) return;
 
   detailContainer.innerHTML = `
-    <section class="card property-gallery">
-      <div class="gallery">
-        <div class="gallery-main">
+    <div class="property-detail-grid">
+      <section class="card property-gallery">
+        <div class="gallery">
+          <div class="gallery-main">
+            <img src="${property.images[0]}" alt="${property.title}" loading="lazy" data-gallery-main />
+          </div>
+          <div class="gallery-thumbs">
+            ${property.images
+              .map(
+                (img, index) =>
+                  `<img src="${img}" alt="${property.title}" loading="lazy" data-thumb="${img}" class="${index === 0 ? 'active' : ''}" />`
+              )
+              .join('')}
+          </div>
+        </div>
+        <button class="btn btn-outline map-scroll" type="button" data-map-scroll>Ver mapa</button>
+      </section>
+      <aside class="property-aside">
+        <div class="property-aside__sticky">
+          <section class="card map-card" id="property-map">
+            <h2>Ubicación en ${property.district}</h2>
+            <div class="map-wrapper" id="propertyMap"></div>
+          </section>
+          <section class="card property-cta">
+            <h3>Agenda tu visita</h3>
+            <p class="muted-text">Coordina con nuestros asesores una visita personalizada.</p>
+            <a class="btn btn-primary" href="contacto.html">Agendar visita</a>
+            <a class="btn btn-outline" data-whatsapp-dynamic>WhatsApp</a>
+          </section>
           <img src="${property.images[0]}" alt="${property.title}" loading="lazy" data-gallery-main />
         </div>
-        <div class="gallery-thumbs">
-          ${property.images
+        </aside>
+      <section class="card property-details">
+        <span class="badge">${property.operation}</span>
+        <h1>${property.title}</h1>
+        <p class="property-price">${AGPRender.formatPrice(property.pricePen)}</p>
+        <p>${property.district} · ${property.addressApprox}</p>
+        <div class="property-attributes">
+          <div class="attribute-item"><svg class="icon" aria-hidden="true" fill="currentColor"><use href="#icon-bed"></use></svg>${property.bedrooms} dormitorios</div>
+          <div class="attribute-item"><svg class="icon" aria-hidden="true" fill="currentColor"><use href="#icon-bath"></use></svg>${property.bathrooms} baños</div>
+          <div class="attribute-item"><svg class="icon" aria-hidden="true" fill="currentColor"><use href="#icon-parking"></use></svg>${property.parking} estacionamientos</div>
+          <div class="attribute-item"><svg class="icon" aria-hidden="true" fill="currentColor"><use href="#icon-area"></use></svg>${property.areaM2} m²</div>
+          ${property.maintenance ? `<div class="attribute-item"><svg class="icon" aria-hidden="true" fill="currentColor"><use href="#icon-wallet"></use></svg>Mantenimiento S/ ${property.maintenance}</div>` : ''}
+        </div>
+        <p>${property.description}</p>
+        <h2>Características</h2>
+        <ul class="features-list">
+          ${property.features
             .map(
-              (img, index) =>
-                `<img src="${img}" alt="${property.title}" loading="lazy" data-thumb="${img}" class="${index === 0 ? 'active' : ''}" />`
+              (feature) =>
+                `<li><svg class="icon" aria-hidden="true" fill="currentColor"><use href="#icon-check"></use></svg><span>${feature}</span></li>`
             )
             .join('')}
-        </div>
-      </div>
-      <button class="btn btn-outline map-scroll" type="button" data-map-scroll>Ver mapa</button>
-    </section>
-    <section class="card property-details">
-      <span class="badge">${property.operation}</span>
-      <h1>${property.title}</h1>
-      <p class="property-price">${AGPRender.formatPrice(property.pricePen)}</p>
-      <p>${property.district} · ${property.addressApprox}</p>
-      <div class="property-attributes">
-        <div class="attribute-item"><svg class="icon" aria-hidden="true" fill="currentColor"><use href="#icon-bed"></use></svg>${property.bedrooms} dormitorios</div>
-        <div class="attribute-item"><svg class="icon" aria-hidden="true" fill="currentColor"><use href="#icon-bath"></use></svg>${property.bathrooms} baños</div>
-        <div class="attribute-item"><svg class="icon" aria-hidden="true" fill="currentColor"><use href="#icon-parking"></use></svg>${property.parking} estacionamientos</div>
-        <div class="attribute-item"><svg class="icon" aria-hidden="true" fill="currentColor"><use href="#icon-area"></use></svg>${property.areaM2} m²</div>
-        ${property.maintenance ? `<div class="attribute-item"><svg class="icon" aria-hidden="true" fill="currentColor"><use href="#icon-wallet"></use></svg>Mantenimiento S/ ${property.maintenance}</div>` : ''}
-      </div>
-      <p>${property.description}</p>
-      <h2>Características</h2>
-      <ul class="features-list">
-        ${property.features
-          .map(
-            (feature) =>
-              `<li><svg class="icon" aria-hidden="true" fill="currentColor"><use href="#icon-check"></use></svg><span>${feature}</span></li>`
-          )
-          .join('')}
-      </ul>
-      <h2>Ubicación</h2>
-      <p class="muted-text">${property.district} · ${property.addressApprox}</p>
-    </section>
-    <aside class="property-aside">
-      <div class="property-aside__sticky">
-        <section class="card map-card" id="property-map">
-          <h2>Ubicación en ${property.district}</h2>
-          <div class="map-wrapper" id="propertyMap"></div>
-        </section>
-        <section class="card property-cta">
-          <h3>Agenda tu visita</h3>
-          <p class="muted-text">Coordina con nuestros asesores una visita personalizada.</p>
-          <a class="btn btn-primary" href="contacto.html">Agendar visita</a>
-          <a class="btn btn-outline" data-whatsapp-dynamic>WhatsApp</a>
-        </section>
-      </div>
-    </aside>
+        </ul>
+        <h2>Ubicación</h2>
+        <p class="muted-text">${property.district} · ${property.addressApprox}</p>
+      </section>
+    </div>
   `;
 
   const thumbs = detailContainer.querySelectorAll('[data-thumb]');

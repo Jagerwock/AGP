@@ -7,9 +7,11 @@ window.AGPRender = (() => {
     card.className = 'property-card';
     card.dataset.cardId = property.id;
     card.innerHTML = `
-      <img src="${property.images[0]}" alt="${property.title}" loading="lazy" />
+      <div class="property-card__media">
+        <img src="${property.images[0]}" alt="${property.title}" loading="lazy" />
+        <span class="property-card__tag">${property.operation}</span>
+      </div>
       <div class="property-body">
-        <span class="badge">${property.operation}</span>
         <h3>${property.title}</h3>
         <p class="property-price">${formatPrice(property.pricePen)}</p>
         <p>${property.district} · ${property.addressApprox || ''}</p>
@@ -21,8 +23,7 @@ window.AGPRender = (() => {
         </div>
       </div>
       <div class="card-actions">
-        <a class="btn btn-outline" href="propiedad.html?id=${property.id}">Ver detalle</a>
-        <span class="badge">${property.type}</span>
+        <a class="btn btn-outline" href="propiedad.html?id=${property.id}">Ver propiedad</a>
       </div>
     `;
     return card;
