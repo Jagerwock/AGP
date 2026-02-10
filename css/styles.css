@@ -42,6 +42,9 @@ body {
   color: var(--text);
   line-height: 1.6;
   font-size: 17px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 section[id] {
@@ -1022,18 +1025,22 @@ textarea {
 }
 
 .hero-shell {
-  max-width: 840px;
+   max-width: 980px;
 }
 
 .hero h1 {
-  line-height: 1.14;
+  line-height: 1.08;
   gap: 10px;
 }
 
 .hero-line--1,
 .hero-line--2,
 .hero-line--3 {
-  font-size: clamp(2.5rem, 3.5vw, 3.7rem);
+  font-size: clamp(2.7rem, 3.8vw, 3.95rem);
+}
+
+.hero-line--1 {
+  white-space: nowrap;
 }
 
 .hero p {
@@ -1131,17 +1138,18 @@ textarea {
 }
 
 .footer {
-  margin-top: 36px;
-  padding: 0;
-  background: #001833;
+  margin-top: auto;
+  padding: 0 0 20px;
+  background: transparent;
 }
 
 .footer-shell {
   background: #001833;
-  border-radius: 36px;
-  padding: 32px 0 14px;
+  border-radius: 44px 44px 0 0;
+  padding: 38px 0 18px;
   overflow: hidden;
   width: 100%;
+  margin: 0;
 }
 
 .footer-grid,
@@ -1165,9 +1173,18 @@ textarea {
 }
 
 .footer-grid {
-  gap: 24px;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 56px;
+  grid-template-columns: minmax(320px, 1.5fr) minmax(190px, 1fr) minmax(260px, 1fr);
   align-items: start;
+}
+
+.footer-brand {
+  max-width: 360px;
+}
+
+.footer-grid > :nth-child(2),
+.footer-grid > :nth-child(3) {
+  padding-top: 10px;
 }
 
 .footer-contact-item {
@@ -1268,6 +1285,10 @@ textarea {
     padding: 96px 0 112px;
   }
 
+  .hero-line--1 {
+    white-space: normal;
+  }
+
   .services-featured,
   .quick-actions-grid,
   .quick-form .card-grid.three {
@@ -1283,13 +1304,33 @@ textarea {
   }
 
   .footer-shell {
+    width: 100%;
     border-radius: 24px 24px 0 0;
     padding: 24px 0 14px;
   }
 
   .footer-grid {
+    gap: 22px;
     grid-template-columns: 1fr;
   }
 
+  .footer-grid > :nth-child(2),
+  .footer-grid > :nth-child(3) {
+    padding-top: 0;
+  }
+
   .gallery-main img { height: 340px; }
+}
+
+.footer {
+  padding: 0;
+  background: #001833;
+  border-radius: 44px 44px 0 0;
+}
+
+.footer-shell{
+  background: #001833;
+  border-radius: 44px 44px 0 0;
+  overflow: hidden; 
+  margin: 0;
 }
