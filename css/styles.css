@@ -230,6 +230,7 @@ textarea {
   display: flex;
   gap: 12px;
   align-items: center;
+  margin-left: 28px;
 }
 
 .theme-toggle {
@@ -1137,8 +1138,9 @@ textarea {
 
 .footer-shell {
   background: #001833;
-  border-radius: 36px 36px 0 0;
+  border-radius: 36px;
   padding: 32px 0 14px;
+  overflow: hidden;
   width: 100%;
 }
 
@@ -1152,11 +1154,6 @@ textarea {
 .footer-logo {
   width: min(280px, 100%);
   margin-bottom: 14px;
-  filter: brightness(0) invert(1);
-}
-
-.footer-brand {
-  max-width: 320px;
 }
 
 .footer-grid h4 {
@@ -1169,11 +1166,17 @@ textarea {
 
 .footer-grid {
   gap: 24px;
-  grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr) minmax(0, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: start;
 }
 
 .footer-contact-item {
   color: rgba(255, 255, 255, 0.92);
+}
+
+.footer-contact-icon {
+  color: var(--gold-500);
+  font-weight: 700;
 }
 
 .footer-follow-title {
