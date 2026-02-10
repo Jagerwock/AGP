@@ -1068,16 +1068,18 @@ textarea {
 
 .services-featured {
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 24px;
+  gap: 16px;
 }
 
 .service-feature {
   position: relative;
-  min-height: 280px;
+  min-height: 210px;
   border-radius: var(--radius-md);
   overflow: hidden;
   border: 1px solid rgba(255,255,255,0.22);
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .service-feature img {
@@ -1092,31 +1094,42 @@ textarea {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(7, 22, 39, 0.72), rgba(7, 22, 39, 0.88));
+  background: rgba(7, 22, 39, 0.7);
+  transition: var(--transition);
 }
 
 .service-feature__base,
 .service-feature__hover {
-  position: relative;
+  position: absolute;
+  inset: 0;
   z-index: 1;
   padding: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
 .service-feature__base h3 {
   font-size: clamp(1.5rem, 2vw, 2rem);
-  margin-top: 120px;
+  margin: 0;
 }
 
 .service-feature__hover {
-  position: absolute;
-  inset: auto 0 0;
   opacity: 0;
-  transform: translateY(12px);
+  transform: scale(0.98);
   transition: var(--transition);
 }
 
-.service-feature:hover .service-feature__hover { opacity: 1; transform: translateY(0); }
-.service-feature:hover .service-feature__base { opacity: 0.15; }
+.service-feature__hover p {
+  max-width: 40ch;
+  margin: 0 0 14px;
+}
+
+.service-feature:hover::after { background: rgba(7, 22, 39, 0.45); }
+.service-feature:hover .service-feature__hover { opacity: 1; transform: scale(1); }
+.service-feature:hover .service-feature__base { opacity: 0; }
 
 .quick-actions-wrap {
   background: #e9edf3;
