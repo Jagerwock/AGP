@@ -2,6 +2,13 @@ window.AGPRender = (() => {
   const formatPrice = (price) =>
     new Intl.NumberFormat('es-PE', { style: 'currency', currency: 'PEN', maximumFractionDigits: 0 }).format(price);
 
+  const normalizeTypeKey = (type = '') =>
+    type
+      .toLowerCase()
+      .normalize('NFD')
+      .replace(/[̀-ͯ]/g, '')
+      .replace(/[^a-z0-9]+/g, '-');
+
   const createCardElement = (property) => {
     const card = document.createElement('article');
     card.className = 'property-card';
@@ -16,6 +23,7 @@ window.AGPRender = (() => {
         <span class="property-card__tag ${operationClass}">${property.operation}</span>
       </div>
       <div class="property-body">
+      <a class="property-type-chip property-type-chip--${normalizeTypeKey(property.type)}" href="propiedades.html?type=${encodeURIComponent(property.type)}">${property.type}</a>
         <h3>${property.title}</h3>
         <p class="property-price">${formatPrice(property.pricePen)}</p>
         <p>${property.district} · ${property.addressApprox || ''}</p>

@@ -51,7 +51,7 @@
         </div>
         <div class="topbar-social">
           <a href="https://wa.me/51XXXXXXXXX" aria-label="WhatsApp" title="WhatsApp" class="social-icon">
-            <svg class="icon" aria-hidden="true" fill="currentColor"><use href="#icon-whatsapp"></use></svg>
+            <img src="Images/WA_Icon.svg" alt="" class="icon icon-wa" />
           </a>
           <a href="https://instagram.com" aria-label="Instagram" title="Instagram" class="social-icon">
             <svg class="icon" aria-hidden="true" fill="currentColor"><use href="#icon-instagram"></use></svg>
@@ -66,7 +66,7 @@
     <header class="navbar">
       <div class="container">
         <a class="brand" href="index.html">
-          <img src="Images/Logo_AGP_Azul.svg" alt="Logo AGP Inmobiliaria" />
+          <img src="Images/Icon_AGP_Azul.svg" alt="Ícono AGP Inmobiliaria" />
           <div>
             <div>AGP Inmobiliaria</div>
             <small>Portal premium en Lima</small>
@@ -101,16 +101,18 @@
 
     <section class="hero" id="inicio">
       <div class="container">
-        <span class="hero-accent" aria-hidden="true"></span>
-        <h1>
-          <span class="hero-line hero-line--1">Compra, alquila o vende tu</span>
-          <span class="hero-line hero-line--2">propiedad con asesoría</span>
-          <span class="hero-line hero-line--3">profesional</span>
-        </h1>
-        <p>Somos especialistas en Surco, San Borja, Miraflores, San Isidro, Jesús María y Magdalena.</p>
-        <div class="hero-actions">
-          <a class="btn btn-primary" href="propiedades.html">Ver Propiedades</a>
-          <a class="btn btn-outline" href="#vende-tu-propiedad">Ofrecer Propiedad</a>
+        <div class="hero-shell">
+          <span class="hero-accent" aria-hidden="true"></span>
+          <h1>
+            <span class="hero-line hero-line--1">Compra, alquila o vende tu</span>
+            <span class="hero-line hero-line--2">propiedad con asesoría</span>
+            <span class="hero-line hero-line--3">profesional</span>
+          </h1>
+          <p>Somos especialistas en Surco, San Borja, Miraflores, San Isidro, Jesús María y Magdalena.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="propiedades.html">Ver Propiedades</a>
+            <a class="btn btn-outline" href="#vende-tu-propiedad">Ofrecer Propiedad</a>
+          </div>
         </div>
       </div>
     </section>
@@ -126,6 +128,7 @@
               <span class="property-card__tag property-card__tag--venta">Venta</span>
             </div>
             <div class="property-body">
+              <span class="property-type-chip property-type-chip--departamento">Departamento</span>
               <h3>Departamento con terraza panorámica</h3>
               <p class="property-price">S/ 980,000</p>
               <p>Miraflores · Vista al parque</p>
@@ -146,6 +149,7 @@
               <span class="property-card__tag property-card__tag--venta">Venta</span>
             </div>
             <div class="property-body">
+              <span class="property-type-chip property-type-chip--duplex">Dúplex</span>
               <h3>Penthouse ejecutivo con rooftop</h3>
               <p class="property-price">S/ 2,450,000</p>
               <p>San Isidro · Club privado</p>
@@ -166,6 +170,7 @@
               <span class="property-card__tag property-card__tag--alquiler">Alquiler</span>
             </div>
             <div class="property-body">
+              <span class="property-type-chip property-type-chip--departamento">Departamento</span>
               <h3>Departamento familiar cerca a parques</h3>
               <p class="property-price">S/ 5,200 / mes</p>
               <p>Surco · Cerros de Camacho</p>
@@ -188,23 +193,27 @@
       <div class="container">
         <h2 class="section-title">Servicios AGP</h2>
         <p class="section-subtitle">Gestión integral de ventas, alquileres y valorizaciones para inmuebles de alto valor.</p>
-        <div class="services">
-          <div class="service-item">
-            <h3>Venta residencial y corporativa</h3>
-            <p>Estrategia de comercialización, staging y negociación con data de mercado en tiempo real.</p>
-          </div>
-          <div class="service-item">
-            <h3>Alquileres ejecutivos</h3>
-            <p>Filtrado de clientes, contratos claros y seguimiento post firma.</p>
-          </div>
-          <div class="service-item">
-            <h3>Tasación premium</h3>
-            <p>Informe técnico con comparables reales en Surco, Miraflores, San Borja y San Isidro.</p>
-          </div>
-          <div class="service-item">
-            <h3>Gestión legal y notarial</h3>
-            <p>Revisión registral, saneamiento y acompañamiento integral en cada etapa.</p>
-          </div>
+        <div class="services services-featured">
+          <a class="service-feature" href="#contacto">
+            <img src="Images/01.jpg" alt="Consigue una propiedad" loading="lazy" />
+            <div class="service-feature__base">
+              <h3>Consigue una propiedad</h3>
+            </div>
+            <div class="service-feature__hover">
+              <p>Tenemos la propiedad ideal para ti con gestión profesional.</p>
+              <span class="btn btn-primary">Consigue una propiedad</span>
+            </div>
+          </a>
+          <a class="service-feature" href="#vende-tu-propiedad">
+            <img src="Images/02.jpg" alt="Vende tu propiedad" loading="lazy" />
+            <div class="service-feature__base">
+              <h3>Vende tu propiedad</h3>
+            </div>
+            <div class="service-feature__hover">
+              <p>Especialistas en vender tu propiedad al mejor valor y en menor tiempo posible.</p>
+              <span class="btn btn-primary">Vende tu propiedad</span>
+            </div>
+          </a>
         </div>
       </div>
     </section>
@@ -250,10 +259,11 @@
 
     <section class="section" id="vende-tu-propiedad">
       <div class="container">
-        <h2 class="section-title">Tasación gratuita en 24 horas</h2>
-        <p class="section-subtitle">Recibe un análisis profesional y confidencial de tu inmueble.</p>
-        <form class="card" data-lead-form>
-          <div class="card-grid three">
+        <div class="quick-actions-wrap">
+          <form class="card quick-form" data-lead-form>
+            <h2 class="section-title">Tasación gratuita en 24 horas</h2>
+            <p class="section-subtitle">Recibe un análisis profesional y confidencial de tu inmueble.</p>
+            <div class="card-grid three">
             <div>
               <label for="lead-name">Nombre completo</label>
               <input id="lead-name" name="name" type="text" placeholder="Ej: Daniela Rojas" required />
@@ -275,26 +285,22 @@
               </select>
             </div>
           </div>
-          <div style="margin-top:20px">
-            <button class="btn btn-primary" type="submit">Solicitar tasación</button>
-          </div>
-        </form>
-      </div>
-    </section>
-
-    <section class="section" id="contacto">
-      <div class="container">
-        <div class="card-grid two">
-          <div class="card">
-            <h2>Agenda una visita personalizada</h2>
-            <p>Comparte tu distrito ideal y te enviamos opciones verificadas con recorridos privados.</p>
-            <a class="btn btn-primary" href="contacto.html">Ir a contacto</a>
-          </div>
-          <div class="card">
-            <h2>¿Quieres vender rápido?</h2>
-            <p>Diseñamos una estrategia de marketing premium para captar compradores calificados.</p>
-            <a class="btn btn-outline" data-whatsapp="Hola AGP Inmobiliaria, quiero vender una propiedad.">Hablar por WhatsApp</a>
-          </div>
+          <div class="quick-actions__button">
+              <button class="btn btn-primary" type="submit">Solicitar tasación</button>
+            </div>
+          </form>
+    <section class="quick-actions-grid" id="contacto">
+            <article class="card quick-action-card">
+              <h3>Agenda una visita personalizada</h3>
+              <p>Cuéntanos qué buscas y te presentamos propiedades que se adaptan a tus necesidades.</p>
+              <a class="btn btn-primary" href="contacto.html">Asesoría personalizada</a>
+            </article>
+            <article class="card quick-action-card">
+              <h3>¿Quieres vender más rápido?</h3>
+              <p>Diseñamos una estrategia de marketing premium para captar compradores calificados.</p>
+              <a class="btn btn-primary" data-whatsapp="Hola AGP Inmobiliaria, quiero vender una propiedad.">Hablar por WhatsApp</a>
+            </article>
+          </section>
         </div>
       </div>
     </section>
@@ -303,23 +309,26 @@
       <div class="container">
         <div class="footer-grid">
           <div>
-            <h3>AGP Inmobiliaria</h3>
-            <p>Portal inmobiliario premium en Lima. Gestión estratégica para inversiones seguras.</p>
+            <img class="footer-logo" src="Images/Logo_AGP_Azul.svg" alt="Logo AGP Inmobiliaria" />
+            <p>Gestión inmobiliaria profesional para vender, alquilar y encontrar propiedades con confianza.</p>
           </div>
           <div>
-            <h4>Zonas</h4>
-            <p>Surco · San Borja · Miraflores · San Isidro · Jesús María · Magdalena</p>
+           <h4>Explora</h4>
+            <p><a href="index.html">Inicio</a></p>
+            <p><a href="propiedades.html">Propiedades en venta</a></p>
+            <p><a href="#vende-tu-propiedad">Vende tu propiedad</a></p>
+            <p><a href="#nosotros">Nosotros</a></p>
           </div>
           <div>
             <h4>Contacto</h4>
-            <p>+51 1 555 9900</p>
-            <p>contacto@agpinmobiliaria.pe</p>
+            <p>☎ +51 999 999 999</p>
+            <p>✉ contacto@agpinmobiliaria.pe</p>
           </div>
           <div>
             <h4>Síguenos</h4>
             <div class="social-links">
               <a href="https://wa.me/51XXXXXXXXX" aria-label="WhatsApp" class="social-icon">
-                <svg class="icon" aria-hidden="true" fill="currentColor"><use href="#icon-whatsapp"></use></svg>
+                <img src="Images/WA_Icon.svg" alt="" class="icon icon-wa" />
               </a>
               <a href="https://instagram.com" aria-label="Instagram" class="social-icon">
                 <svg class="icon" aria-hidden="true" fill="currentColor"><use href="#icon-instagram"></use></svg>
@@ -328,17 +337,17 @@
                 <svg class="icon" aria-hidden="true" fill="currentColor"><use href="#icon-tiktok"></use></svg>
               </a>
             </div>
-            <small>© 2024 AGP Inmobiliaria. Todos los derechos reservados.</small>
           </div>
         </div>
-        <div style="margin-top:30px">
-          <a href="privacidad.html">Política de privacidad</a> · <a href="terminos.html">Términos y condiciones</a>
+       <div class="footer-bottom">
+          <span><a href="privacidad.html">Política de privacidad</a> · <a href="terminos.html">Términos y condiciones</a></span>
+          <small>© 2026 AGP Inmobiliaria. Todos los derechos reservados.</small>
         </div>
       </div>
     </footer>
 
     <a class="whatsapp-float" data-whatsapp="Hola AGP Inmobiliaria, quiero información sobre propiedades disponibles." aria-label="WhatsApp">
-      <svg class="icon icon--xl" aria-hidden="true" fill="currentColor"><use href="#icon-whatsapp"></use></svg>
+      <img src="Images/WA_Icon.svg" alt="" class="icon icon-wa-float" />
     </a>
 
     <div class="toast" data-toast></div>

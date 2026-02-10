@@ -4,18 +4,26 @@ const modal = document.querySelector('[data-modal]');
 const modalImg = document.querySelector('[data-modal-img]');
 const WHATSAPP_NUMBER = '51XXXXXXXXX';
 
+const getImageLabel = (property, index) => {
+  const fallbackLabels = ['Fachada principal', 'Sala principal', 'Dormitorio principal', 'Cocina equipada', 'Terraza'];
+  if (Array.isArray(property.imageLabels) && property.imageLabels[index]) {
+    return property.imageLabels[index];
+  }
+  return fallbackLabels[index] || `Ambiente ${index + 1}`;
+};
+
 const initMap = (property) => {
   const mapContainer = document.querySelector('#propertyMap');
   if (!mapContainer) return;
   const lat = property.lat || -12.0464;
   const lng = property.lng || -77.0428;
-  const query = encodeURIComponent(`${lat},${lng}`);
+  const pinLabel = encodeURIComponent(`${property.addressApprox}, ${property.district}`);
   mapContainer.innerHTML = `
     <iframe
       title="Mapa de ${property.title}"
       loading="lazy"
       referrerpolicy="no-referrer-when-downgrade"
-      src="https://www.google.com/maps?q=${query}&z=15&output=embed">
+      src="https://www.google.com/maps?q=${lat},${lng}%20(${pinLabel})&z=16&output=embed">
     </iframe>
   `;
 };
@@ -47,24 +55,31 @@ const renderDetail = (property) => {
       <section class="card property-gallery">
         <div class="gallery">
           <div class="gallery-main">
+          <button class="gallery-arrow gallery-arrow--left" type="button" data-gallery-prev aria-label="Imagen anterior">❮</button>
             <img src="${property.images[0]}" alt="${property.title}" loading="lazy" data-gallery-main />
+            <button class="gallery-arrow gallery-arrow--right" type="button" data-gallery-next aria-label="Imagen siguiente">❯</button>
+            <span class="gallery-caption" data-gallery-caption>${getImageLabel(property, 0)}</span>
           </div>
           <div class="gallery-thumbs">
             ${property.images
               .map(
                 (img, index) =>
-                  `<img src="${img}" alt="${property.title}" loading="lazy" data-thumb="${img}" class="${index === 0 ? 'active' : ''}" />`
+                  `<button type="button" class="gallery-thumb-btn ${index === 0 ? 'active' : ''}" data-thumb-index="${index}" data-thumb="${img}">
+                    <img src="${img}" alt="${getImageLabel(property, index)}" loading="lazy" />
+                  </button>`
               )
               .join('')}
           </div>
         </div>
-        <button class="btn btn-outline map-scroll" type="button" data-map-scroll>Ver mapa</button>
       </section>
+
       <aside class="property-aside">
         <div class="property-aside__sticky">
           <section class="card map-card" id="property-map">
             <h2>Ubicación en ${property.district}</h2>
+            <p class="muted-text">${property.addressApprox}</p>
             <div class="map-wrapper" id="propertyMap"></div>
+            <a class="btn btn-outline" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=${property.lat},${property.lng}">Abrir mapa completo</a>
           </section>
           <section class="card property-cta">
             <h3>Agenda tu visita</h3>
@@ -72,9 +87,9 @@ const renderDetail = (property) => {
             <a class="btn btn-primary" href="contacto.html">Agendar visita</a>
             <a class="btn btn-outline" data-whatsapp-dynamic>WhatsApp</a>
           </section>
-          <img src="${property.images[0]}" alt="${property.title}" loading="lazy" data-gallery-main />
         </div>
-        </aside>
+      </aside>
+
       <section class="card property-details">
         <span class="badge">${property.operation}</span>
         <h1>${property.title}</h1>
@@ -97,37 +112,41 @@ const renderDetail = (property) => {
             )
             .join('')}
         </ul>
-        <h2>Ubicación</h2>
-        <p class="muted-text">${property.district} · ${property.addressApprox}</p>
       </section>
     </div>
   `;
 
-  const thumbs = detailContainer.querySelectorAll('[data-thumb]');
+  const thumbs = detailContainer.querySelectorAll('[data-thumb-index]');         
   const main = detailContainer.querySelector('[data-gallery-main]');
+  const caption = detailContainer.querySelector('[data-gallery-caption]');
+  const prevBtn = detailContainer.querySelector('[data-gallery-prev]');
+  const nextBtn = detailContainer.querySelector('[data-gallery-next]');
+  let currentIndex = 0;
+
+  const setGalleryImage = (nextIndex) => {
+    currentIndex = (nextIndex + property.images.length) % property.images.length;
+    if (main) {
+      main.src = property.images[currentIndex];
+    }
+    if (caption) {
+      caption.textContent = getImageLabel(property, currentIndex);
+    }
+    thumbs.forEach((thumb) => {
+      thumb.classList.toggle('active', parseInt(thumb.dataset.thumbIndex || '0', 10) === currentIndex);
+    });
+  };
   thumbs.forEach((thumb) => {
     thumb.addEventListener('click', () => {
-      thumbs.forEach((item) => item.classList.remove('active'));
-      thumb.classList.add('active');
-      if (main) {
-        main.src = thumb.dataset.thumb;
-      }
+      const nextIndex = parseInt(thumb.dataset.thumbIndex || '0', 10);
+      setGalleryImage(nextIndex);
     });
-    thumb.addEventListener('dblclick', () => openModal(thumb.dataset.thumb, property.title));
   });
+
+  if (prevBtn) prevBtn.addEventListener('click', () => setGalleryImage(currentIndex - 1));
+  if (nextBtn) nextBtn.addEventListener('click', () => setGalleryImage(currentIndex + 1));
 
   if (main) {
     main.addEventListener('click', () => openModal(main.src, property.title));
-  }
-
-  const mapScrollBtn = detailContainer.querySelector('[data-map-scroll]');
-  if (mapScrollBtn) {
-    mapScrollBtn.addEventListener('click', () => {
-      const mapTarget = document.querySelector('#property-map');
-      if (mapTarget) {
-        mapTarget.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-    });
   }
 
   initMap(property);

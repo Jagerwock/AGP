@@ -298,8 +298,13 @@ const init = async () => {
 
   const params = new URLSearchParams(window.location.search);
   const districtParam = params.get('district');
+  const typeParam = params.get('type');
   if (districtParam) {
     state.district = districtParam;
+  }
+
+  if (typeParam) {
+    state.type = typeParam;
   }
 
   applyStateToInputs();
