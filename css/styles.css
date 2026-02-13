@@ -357,79 +357,67 @@ textarea {
 }
 
 .hero {
+  background: linear-gradient(120deg, rgba(7, 22, 39, 0.9), rgba(7, 22, 39, 0.7)),
+    url("https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=1600&q=80") center/cover;
   color: #fff;
-  padding: 130px 0 150px;
-  border-radius: 0 0 56px 56px;
-  background:
-    linear-gradient(90deg, rgba(6, 20, 38, 0.22) 0%, rgba(6, 20, 38, 0.4) 48%, rgba(4, 16, 32, 0.9) 100%),
-    url("../Images/BellaVista.jpeg") center/cover no-repeat;
+  padding: 120px 0;
 }
 
-.hero-shell {
-  max-width: 980px;
-  margin-left: auto;
-  display: flex;
-  justify-content: flex-end;
-}
-
-.hero-content {
-  width: min(100%, 430px);
-  display: grid;
-  grid-template-columns: 4px 1fr;
-  gap: 22px;
-  align-items: start;
-  background: linear-gradient(90deg, rgba(8, 28, 52, 0.2), rgba(7, 26, 49, 0.82));
-  border-radius: 12px;
-  padding: 26px 24px;
-}
-
-.hero-divider {
-  width: 4px;
-  min-height: 220px;
+.hero-accent {
+  display: inline-block;
+  width: 74px;
+  height: 4px;
   border-radius: 999px;
   background: var(--gold-500);
+  margin-bottom: 18px;
 }
 
-.hero-copy h1 {
-  margin: 0;
-  font-size: clamp(2.5rem, 3vw, 3.3rem);
-  line-height: 1.04;
+.hero h1 {
+  font-size: clamp(2.8rem, 3.4vw, 3.8rem);
+  max-width: 720px;
+  margin: 16px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  line-height: 1.05;
 }
 
-.hero-subtitle {
-  margin: 10px 0 0;
-  color: rgba(255, 255, 255, 0.85);
-  font-size: 1.05rem;
+.hero-line {
+  display: block;
 }
 
-.hero-price {
-  margin: 18px 0 0;
-  font-size: 2rem;
-  font-weight: 800;
-  line-height: 1;
+.hero-line--1 {
+  font-size: clamp(2.4rem, 3.1vw, 3.4rem);
 }
 
-.hero-delivery {
-  margin: 4px 0 0;
-  font-size: 0.95rem;
-  color: rgba(255, 255, 255, 0.88);
+.hero-line--2 {
+  font-size: clamp(2.4rem, 3.1vw, 3.4rem);
 }
 
-.hero-location {
-  margin: 10px 0 0;
-  font-size: 0.72rem;
-  color: rgba(255, 255, 255, 0.72);
+.hero-line--3 {
+  font-size: clamp(2.4rem, 3.1vw, 3.4rem);
+}
+
+.hero p {
+  max-width: 600px;
+  margin-bottom: 24px;
 }
 
 .hero-actions {
-  margin-top: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  align-items: center;
 }
 
-.hero-actions .btn-primary {
-  margin-top: 0;
-  font-size: 0.92rem;
-  border-radius: 999px;
-  padding: 10px 20px;
+.hero .btn-outline {
+  color: #fff;
+  border-color: var(--gold-500);
+}
+
+.hero .btn-outline:hover {
+  color: #fff;
+  border-color: var(--gold-600);
 }
 
 .badge {
@@ -1003,23 +991,7 @@ textarea {
   }
 
   .hero {
-    padding: 86px 0 98px;
-  }
-
-  .hero-content {
-    grid-template-columns: 1fr;
-    gap: 14px;
-    padding: 22px 18px;
-  }
-
-  .hero-divider {
-    width: 64px;
-    min-height: 3px;
-    height: 3px;
-  }
-
-  .hero-copy h1 {
-    font-size: clamp(2rem, 8vw, 2.5rem);
+    padding: 90px 0;
   }
 
   .topbar .topbar-info {
@@ -1045,6 +1017,35 @@ textarea {
 .brand img {
   width: 52px;
   height: 52px;
+}
+
+.hero {
+  padding: 130px 0 150px;
+  border-radius: 0 0 56px 56px;
+}
+
+.hero-shell {
+   max-width: 980px;
+}
+
+.hero h1 {
+  line-height: 1.08;
+  gap: 10px;
+}
+
+.hero-line--1,
+.hero-line--2,
+.hero-line--3 {
+  font-size: clamp(2.7rem, 3.8vw, 3.95rem);
+}
+
+.hero-line--1 {
+  white-space: nowrap;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  max-width: 720px;
 }
 
 .property-type-chip {
@@ -1341,12 +1342,8 @@ textarea {
     padding: 96px 0 112px;
   }
 
-   .hero-shell {
-    justify-content: center;
-  }
-
-  .hero-content {
-    width: min(100%, 520px);
+  .hero-line--1 {
+    white-space: normal;
   }
 
   .services-featured,
