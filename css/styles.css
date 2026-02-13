@@ -1242,11 +1242,15 @@ textarea {
 
 .footer-contact-item {
   color: rgba(255, 255, 255, 0.92);
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
-.footer-contact-icon {
-  color: var(--gold-500);
-  font-weight: 700;
+.footer-contact-icon-image {
+  width: 16px;
+  height: 16px;
+  flex: 0 0 16px;
 }
 
 .footer-follow-title {
