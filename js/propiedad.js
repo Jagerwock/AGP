@@ -204,7 +204,7 @@ const init = async () => {
 
   let properties = [];
   try {
-    properties = await AGPData.fetchProperties();
+    properties = await AGPData.fetchAllProperties();
   } catch (error) {
     if (detailContainer) {
       detailContainer.innerHTML = '<p>No pudimos cargar la propiedad. Intenta nuevamente en unos minutos.</p>';

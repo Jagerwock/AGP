@@ -395,3 +395,46 @@
     align-items: flex-start;
   }
 }
+.admin-panel {
+  display: grid;
+  gap: 16px;
+  margin-bottom: 24px;
+  border: 1px solid rgba(226, 181, 55, 0.5);
+  background: linear-gradient(180deg, rgba(226, 181, 55, 0.1), rgba(10, 31, 53, 0.02));
+}
+
+.admin-panel__header {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.admin-panel__eyebrow {
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--gold-700);
+  font-weight: 700;
+  font-size: 0.78rem;
+}
+
+.admin-panel h2 {
+  margin: 4px 0 0;
+}
+
+.admin-form {
+  display: grid;
+  gap: 12px;
+}
+
+.admin-form textarea {
+  width: 100%;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  padding: 10px 12px;
+  resize: vertical;
+}

@@ -29,6 +29,11 @@ const minAreaInput = document.querySelector('[name="minArea"]');
 const minPriceInput = document.querySelector('[name="minPrice"]');
 const maxPriceInput = document.querySelector('[name="maxPrice"]');
 
+const adminAccessButton = document.querySelector('[data-admin-access-btn]');
+const adminPanel = document.querySelector('[data-admin-panel]');
+const adminForm = document.querySelector('[data-admin-form]');
+const adminLogoutButton = document.querySelector('[data-admin-logout]');
+
 const defaultState = {
   operation: 'Venta',
   district: '',
@@ -42,6 +47,28 @@ const defaultState = {
 };
 
 const state = { ...defaultState };
+
+const notify = (message) => {
+  if (typeof showToast === 'function') {
+    showToast(message);
+    return;
+  }
+  window.alert(message);
+};
+
+const ensureDistrictOptions = () => {
+  if (!districtSelect) return;
+  const currentOptions = new Set(Array.from(districtSelect.options).map((option) => option.value || option.textContent));
+  propertiesData.forEach((property) => {
+    const district = property.district;
+    if (!district || currentOptions.has(district)) return;
+    const option = document.createElement('option');
+    option.value = district;
+    option.textContent = district;
+    districtSelect.appendChild(option);
+    currentOptions.add(district);
+  });
+};
 
 const setActiveButton = (buttons, value) => {
   buttons.forEach((button) => {
@@ -250,6 +277,8 @@ const updateView = () => {
   updateStateFromInputs();
   renderActiveChips();
   const filtered = sortItems(getFiltered());
+  const totalPages = Math.max(1, Math.ceil(filtered.length / perPage));
+  currentPage = Math.min(currentPage, totalPages);
   const start = (currentPage - 1) * perPage;
   const paged = filtered.slice(start, start + perPage);
   renderCards(paged);
@@ -283,18 +312,145 @@ const setView = (view) => {
   }
 };
 
+const promptAdminAccess = () => {
+  const identifier = window.prompt('Usuario administrador (correo autorizado):');
+  if (!identifier) return false;
+  const pin = window.prompt('Clave de acceso:');
+  if (!pin) return false;
+  const allowed = AGPData.authenticateAdmin({ identifier, pin });
+  if (!allowed) {
+    notify('Acceso denegado. Este usuario no está habilitado para administrar.');
+    return false;
+  }
+  notify('Acceso administrador habilitado.');
+  return true;
+};
+
+const setAdminVisibility = (isVisible) => {
+  if (adminAccessButton) {
+    adminAccessButton.hidden = !isVisible;
+  }
+  if (!isVisible && adminPanel) {
+    adminPanel.hidden = true;
+  }
+};
+
+const buildAdminPropertyFromForm = (formData) => {
+  const lines = (key) =>
+    (formData.get(key) || '')
+      .toString()
+      .split('\n')
+      .map((item) => item.trim())
+      .filter(Boolean);
+
+  return {
+    id: `adm-${Date.now()}`,
+    title: (formData.get('title') || '').toString().trim(),
+    district: (formData.get('district') || '').toString().trim(),
+    operation: (formData.get('operation') || 'Venta').toString(),
+    type: 'Departamento',
+    pricePen: Number(formData.get('pricePen') || 0),
+    bedrooms: Number(formData.get('bedrooms') || 0),
+    bathrooms: Number(formData.get('bathrooms') || 0),
+    parking: Number(formData.get('parking') || 0),
+    areaM2: Number(formData.get('areaM2') || 0),
+    maintenance: Number(formData.get('maintenance') || 0),
+    addressApprox: (formData.get('addressApprox') || '').toString().trim(),
+    lat: Number(formData.get('lat') || -12.097),
+    lng: Number(formData.get('lng') || -77.037),
+    description: (formData.get('description') || '').toString().trim(),
+    images: lines('images'),
+    features: lines('features'),
+    imageLabels: lines('images').map((_, index) => `Foto ${index + 1}`),
+    source: 'admin',
+  };
+};
+
+const initAdminMode = () => {
+  const enableAdmin = () => {
+    setAdminVisibility(true);
+    if (adminPanel) {
+      adminPanel.hidden = false;
+      adminPanel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
+  const canViewAdmin = AGPData.isAdminSessionActive();
+  setAdminVisibility(canViewAdmin);
+
+  if (adminAccessButton) {
+    adminAccessButton.addEventListener('click', () => {
+      if (!AGPData.isAdminSessionActive()) {
+        const granted = promptAdminAccess();
+        if (!granted) return;
+        setAdminVisibility(true);
+      }
+      if (adminPanel) {
+        adminPanel.hidden = !adminPanel.hidden;
+      }
+    });
+  }
+
+  if (adminLogoutButton) {
+    adminLogoutButton.addEventListener('click', () => {
+      AGPData.logoutAdmin();
+      setAdminVisibility(false);
+      notify('Sesión de administrador cerrada.');
+    });
+  }
+
+  document.addEventListener('keydown', (event) => {
+    if (event.altKey && event.shiftKey && event.key.toLowerCase() === 'a') {
+      event.preventDefault();
+      if (AGPData.isAdminSessionActive()) {
+        enableAdmin();
+        return;
+      }
+      const granted = promptAdminAccess();
+      if (granted) {
+        enableAdmin();
+      }
+    }
+  });
+
+  if (adminForm) {
+    adminForm.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      if (!AGPData.isAdminSessionActive()) {
+        notify('Tu sesión de administrador expiró. Vuelve a iniciar sesión.');
+        return;
+      }
+      const formData = new FormData(adminForm);
+      const newProperty = buildAdminPropertyFromForm(formData);
+      AGPData.saveAdminProperty(newProperty);
+      propertiesData = await AGPData.fetchAllProperties();
+      ensureDistrictOptions();
+      if (!state.district) {
+        state.type = 'Departamento';
+      }
+      currentPage = 1;
+      applyStateToInputs();
+      updateView();
+      adminForm.reset();
+      notify('Departamento agregado correctamente.');
+    });
+  }
+};
+
 const init = async () => {
   if (cardsContainer) {
     AGPRender.renderSkeletons(cardsContainer, perPage);
   }
   try {
-    propertiesData = await AGPData.fetchProperties();
+    propertiesData = await AGPData.fetchAllProperties();
   } catch (error) {
     if (cardsContainer) {
       cardsContainer.innerHTML = '<p>No pudimos cargar las propiedades. Intenta nuevamente en unos minutos.</p>';
     }
     return;
   }
+
+  ensureDistrictOptions();
 
   const params = new URLSearchParams(window.location.search);
   const districtParam = params.get('district');
@@ -365,6 +521,7 @@ const init = async () => {
     layout.dataset.view = 'split';
   }
   setView('list');
+  initAdminMode();
 };
 
 init();

@@ -73,6 +73,7 @@
           <a href="index.html#nosotros">Nosotros</a>
         </nav>
         <div class="nav-actions">
+          <button class="btn btn-outline" type="button" data-admin-access-btn hidden>Administrador</button>
           <a class="btn btn-primary" href="contacto.html">Contacto</a>
           <button class="theme-toggle" data-theme-toggle type="button" aria-pressed="false" title="Cambiar a modo noche">
             <span class="theme-toggle__icon" data-theme-icon>☀️</span>
@@ -203,6 +204,85 @@
 
           <div class="active-chips" data-active-chips></div>
           </div>
+
+          <section class="card admin-panel" data-admin-panel hidden>
+            <div class="admin-panel__header">
+              <div>
+                <p class="admin-panel__eyebrow">Modo interno</p>
+                <h2>Panel administrador de departamentos</h2>
+              </div>
+              <button class="btn btn-outline" type="button" data-admin-logout>Cerrar sesión admin</button>
+            </div>
+            <p class="muted-text">
+              Desde aquí puedes agregar nuevos departamentos sin afectar la experiencia normal del resto de visitantes.
+            </p>
+            <form class="admin-form" data-admin-form>
+              <div class="panel-grid">
+                <div>
+                  <label for="adminTitle">Título</label>
+                  <input id="adminTitle" name="title" type="text" required />
+                </div>
+                <div>
+                  <label for="adminDistrict">Distrito</label>
+                  <input id="adminDistrict" name="district" type="text" placeholder="Miraflores" required />
+                </div>
+                <div>
+                  <label for="adminOperation">Operación</label>
+                  <select id="adminOperation" name="operation" required>
+                    <option>Venta</option>
+                    <option>Alquiler</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="adminPrice">Precio (S/)</label>
+                  <input id="adminPrice" name="pricePen" type="number" min="0" required />
+                </div>
+                <div>
+                  <label for="adminBedrooms">Dormitorios</label>
+                  <input id="adminBedrooms" name="bedrooms" type="number" min="0" required />
+                </div>
+                <div>
+                  <label for="adminBathrooms">Baños</label>
+                  <input id="adminBathrooms" name="bathrooms" type="number" min="0" required />
+                </div>
+                <div>
+                  <label for="adminParking">Estacionamientos</label>
+                  <input id="adminParking" name="parking" type="number" min="0" required />
+                </div>
+                <div>
+                  <label for="adminArea">Área (m²)</label>
+                  <input id="adminArea" name="areaM2" type="number" min="0" required />
+                </div>
+                <div>
+                  <label for="adminAddress">Dirección referencial</label>
+                  <input id="adminAddress" name="addressApprox" type="text" required />
+                </div>
+                <div>
+                  <label for="adminMaintenance">Mantenimiento (S/)</label>
+                  <input id="adminMaintenance" name="maintenance" type="number" min="0" placeholder="0" />
+                </div>
+                <div>
+                  <label for="adminLat">Latitud</label>
+                  <input id="adminLat" name="lat" type="number" step="0.000001" placeholder="-12.097" required />
+                </div>
+                <div>
+                  <label for="adminLng">Longitud</label>
+                  <input id="adminLng" name="lng" type="number" step="0.000001" placeholder="-77.037" required />
+                </div>
+              </div>
+              <label for="adminDescription">Descripción</label>
+              <textarea id="adminDescription" name="description" rows="3" required></textarea>
+
+              <label for="adminImages">URLs de fotos (una por línea)</label>
+              <textarea id="adminImages" name="images" rows="4" required></textarea>
+
+              <label for="adminFeatures">Características (una por línea)</label>
+              <textarea id="adminFeatures" name="features" rows="4" required></textarea>
+
+              <button class="btn btn-primary" type="submit">Agregar departamento</button>
+            </form>
+          </section>
+
           <div class="property-layout" data-layout data-view="split">
           <div class="listing-panel">
             <div class="card-grid two" data-property-cards></div>
