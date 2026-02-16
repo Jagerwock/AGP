@@ -219,14 +219,31 @@ textarea {
 
 .nav-links a {
   padding: 6px 8px;
-  border-radius: 8px;
-  transition: var(--transition);
+  border-radius: 0;
+  position: relative;
+  transition: color var(--transition);
 }
 
-.nav-links a.active,
 .nav-links a:hover {
-  background: rgba(212, 160, 23, 0.15);
   color: var(--text);
+}
+
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 8px;
+  right: 8px;
+  bottom: -4px;
+  height: 2px;
+  background: var(--gold-500);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform var(--transition);
+}
+
+.nav-links a.active::after,
+.nav-links a:hover::after {
+  transform: scaleX(1);
 }
 
 .nav-actions {
@@ -1390,8 +1407,4 @@ textarea {
   border-radius: 44px 44px 0 0;
   overflow: hidden; 
   margin: 0;
-}
-
-.btn.btn-primary {
-  margin-top: 18px;
 }
