@@ -610,6 +610,10 @@ textarea {
   color: #fff;
 }
 
+.section-highlight .container {
+  width: min(1280px, 94%);
+}
+
 .section-highlight .section-subtitle {
   color: rgba(255, 255, 255, 0.7);
 }
@@ -1085,12 +1089,12 @@ textarea {
 
 .services-featured {
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 16px;
+  gap: 20px;
 }
 
 .service-feature {
   position: relative;
-  min-height: 210px;
+  min-height: 255px;
   border-radius: var(--radius-md);
   overflow: hidden;
   border: 1px solid rgba(255,255,255,0.22);
@@ -1230,7 +1234,7 @@ textarea {
 }
 
 .footer-logo {
-  width: min(280px, 100%);
+  width: min(224px, 100%);
   margin-bottom: 14px;
 }
 
@@ -1239,7 +1243,22 @@ textarea {
 }
 
 .footer-grid p {
-  margin-bottom: 4px;
+   margin-bottom: 8px;
+}
+
+.footer-grid > :nth-child(2) p a {
+  display: inline-block;
+  line-height: 1.35;
+  padding: 2px 0;
+  border-bottom: 1px solid transparent;
+  transition: color 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
+}
+
+.footer-grid > :nth-child(2) p a:hover,
+.footer-grid > :nth-child(2) p a:focus-visible {
+  color: var(--gold-500);
+  border-bottom-color: var(--gold-500);
+  transform: translateX(3px);
 }
 
 .footer-grid {
@@ -1250,6 +1269,10 @@ textarea {
 
 .footer-brand {
   max-width: 360px;
+}
+
+.footer-brand p {
+  margin-top: 18px;
 }
 
 .footer-grid > :nth-child(2),
