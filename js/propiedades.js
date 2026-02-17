@@ -19,7 +19,6 @@ const sortSelect = document.querySelector('[data-sort]');
 const operationTabs = document.querySelectorAll('[data-operation-tab]');
 const viewToggleButtons = document.querySelectorAll('[data-view-toggle]');
 const bedroomChips = document.querySelectorAll('[data-bedrooms]');
-const moreFiltersBtn = document.querySelector('[data-more-filters]');
 const priceToggleBtn = document.querySelector('[data-price-toggle]');
 
 const districtSelect = document.querySelector('[name="district"]');
@@ -297,12 +296,7 @@ const resetFilters = () => {
   updateView();
 };
 
-const resolveView = (view) => {
-  if (view === 'list' && window.innerWidth > 960) {
-    return 'split';
-  }
-  return view;
-};
+const resolveView = (view) => view;
 
 const setView = (view) => {
   if (!layout) return;
@@ -335,12 +329,12 @@ const setAdminHeroMode = (isAdmin) => {
     heroEyebrow.textContent = isAdmin ? 'Modo administrador' : '';
   }
   if (introTitle) {
-    introTitle.textContent = isAdmin ? 'Administra propiedades en venta en Lima' : 'Encuentra tu próxima propiedad en Lima';
+    introTitle.textContent = 'Encuentra tu próxima propiedad en Lima';
   }
   if (introCopy) {
     introCopy.textContent = isAdmin
-      ? 'Controla los inmuebles publicados, agrega nuevas propiedades y mantén actualizado el catálogo desde tu panel interno.'
-      : 'Accede a inmuebles verificados para compra y alquiler, con filtros rápidos y asesoría experta de AGP Inmobiliaria.';
+      ? 'Accede a inmuebles seleccionados en los distritos de mayor demanda y administra el catálogo con validaciones guiadas.'
+      : 'Accede a inmuebles seleccionados en los distritos de mayor demanda.';
   }
 };
 
@@ -383,6 +377,22 @@ const buildAdminPropertyFromForm = (formData) => {
     imageLabels: lines('images').map((_, index) => `Foto ${index + 1}`),
     source: 'admin',
   };
+};
+
+const validateAdminProperty = (property) => {
+  if (property.title.length < 5) return 'El título debe tener al menos 5 caracteres.';
+  if (property.description.length < 24) return 'La descripción debe tener al menos 24 caracteres.';
+  if (property.pricePen < 10000) return 'El precio debe ser mayor o igual a S/ 10,000.';
+  if (property.areaM2 < 30) return 'El área mínima debe ser de 30 m².';
+  if (property.bedrooms < 1 || property.bathrooms < 1) return 'Dormitorios y baños deben ser al menos 1.';
+  if (property.lat > -11 || property.lat < -13 || property.lng > -76 || property.lng < -78) {
+    return 'Las coordenadas deben corresponder a Lima Metropolitana.';
+  }
+  if (!property.images.length) return 'Ingresa al menos una URL de imagen.';
+  const hasInvalidImage = property.images.some((url) => !/^https?:\/\//i.test(url));
+  if (hasInvalidImage) return 'Todas las imágenes deben iniciar con http:// o https://';
+  if (!property.features.length) return 'Ingresa al menos una característica.';
+  return '';
 };
 
 const initAdminMode = () => {
@@ -442,6 +452,11 @@ const initAdminMode = () => {
       }
       const formData = new FormData(adminForm);
       const newProperty = buildAdminPropertyFromForm(formData);
+      const validationMessage = validateAdminProperty(newProperty);
+      if (validationMessage) {
+        notify(validationMessage);
+        return;
+      }
       AGPData.saveAdminProperty(newProperty);
       propertiesData = await AGPData.fetchAllProperties();
       ensureDistrictOptions();
@@ -525,20 +540,12 @@ const init = async () => {
     });
   }
 
-  if (priceToggleBtn && pricePanel) {
-    priceToggleBtn.addEventListener('click', () => {
-      pricePanel.classList.toggle('is-open');
-      priceToggleBtn.classList.toggle('is-active');
-      priceToggleBtn.setAttribute('aria-expanded', pricePanel.classList.contains('is-open').toString());
-    });
-  }
-
   viewToggleButtons.forEach((button) => {
     button.addEventListener('click', () => setView(button.dataset.viewToggle));
   });
 
   if (layout && !layout.dataset.view) {
-    layout.dataset.view = 'split';
+    layout.dataset.view = 'list';
   }
   setView('list');
   initAdminMode();

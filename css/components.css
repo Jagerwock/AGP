@@ -116,6 +116,14 @@ body.admin-mode .properties-intro h2 {
   line-height: 1.2;
 }
 
+.featured-divider {
+  display: block;
+  width: 140px;
+  height: 4px;
+  border-radius: 999px;
+  background: var(--gold-500);
+}
+
 .featured-meta {
   display: flex;
   flex-wrap: wrap;
@@ -148,6 +156,7 @@ body.admin-mode .properties-intro h2 {
 
 .segmented-control {
   display: inline-flex;
+  align-self: center;
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 999px;
@@ -188,15 +197,14 @@ body.admin-mode .properties-intro h2 {
 }
 
 .quick-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
+  display: grid;
+  grid-template-columns: auto minmax(180px, 1fr) minmax(180px, 1fr) auto;
+  gap: 12px;
   align-items: center;
 }
 
 .quick-row .field {
-  min-width: 180px;
-  flex: 1;
+  min-width: 0;
 }
 
 .quick-row label {
@@ -238,6 +246,11 @@ body.admin-mode .properties-intro h2 {
   gap: 16px;
   align-items: center;
   justify-content: space-between;
+}
+
+.filter-actions--top {
+  padding-bottom: 6px;
+  border-bottom: 1px solid rgba(7, 22, 39, 0.08);
 }
 
 .sort-select {
@@ -321,6 +334,10 @@ body.admin-mode .properties-intro h2 {
 
 .card-grid.two {
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.card-grid.three {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .property-layout {
@@ -433,6 +450,10 @@ body.admin-mode .properties-intro h2 {
     grid-template-columns: 1fr;
   }
 
+  .card-grid.three {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .map-panel {
     position: relative;
     top: 0;
@@ -478,6 +499,14 @@ body.admin-mode .properties-intro h2 {
 
   .quick-filters {
     top: 80px;
+  }
+
+  .quick-row {
+    grid-template-columns: 1fr;
+  }
+
+  .card-grid.three {
+    grid-template-columns: 1fr;
   }
 
   .filter-actions {
@@ -527,4 +556,25 @@ body.admin-mode .properties-intro h2 {
   color: var(--text);
   padding: 10px 12px;
   resize: vertical;
+}
+
+.admin-panel__hint {
+  margin: 0;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(226, 181, 55, 0.45);
+  background: rgba(251, 191, 36, 0.12);
+  color: var(--navy-900);
+  font-weight: 600;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
 }
