@@ -152,31 +152,33 @@
                 <button type="button" class="is-active" data-operation-tab data-value="Venta" aria-pressed="true">Comprar</button>
                 <button type="button" data-operation-tab data-value="Alquiler" aria-pressed="false">Alquilar</button>
               </div>
-              <div class="quick-row__secondary">
-                <div class="field">
-                  <label class="sr-only" for="district">Distrito</label>
-                  <select id="district" name="district" aria-label="Seleccione distrito">
-                    <option value="">Seleccione distrito</option>
-                    <option>Surco</option>
-                    <option>San Borja</option>
-                    <option>Miraflores</option>
-                    <option>San Isidro</option>
-                    <option>Jesús María</option>
-                    <option>Magdalena</option>
-                  </select>
+              <div class="quick-row__secondary-shell">
+                <div class="quick-row__secondary">
+                  <div class="field">
+                    <label class="sr-only" for="district">Distrito</label>
+                    <select id="district" name="district" aria-label="Seleccione distrito">
+                      <option value="">Seleccione distrito</option>
+                      <option>Surco</option>
+                      <option>San Borja</option>
+                      <option>Miraflores</option>
+                      <option>San Isidro</option>
+                      <option>Jesús María</option>
+                      <option>Magdalena</option>
+                    </select>
+                  </div>
+                  <div class="field">
+                    <label class="sr-only" for="type">Tipo</label>
+                    <select id="type" name="type" aria-label="Seleccione tipo">
+                      <option value="">Seleccione tipo</option>
+                      <option>Departamento</option>
+                      <option>Casa</option>
+                      <option>Penthouse</option>
+                      <option>Dúplex</option>
+                      <option>Oficina</option>
+                    </select>
+                  </div>
+                  <button class="btn btn-outline" type="button" data-more-filters aria-expanded="false">Más filtros</button>
                 </div>
-                <div class="field">
-                  <label class="sr-only" for="type">Tipo</label>
-                  <select id="type" name="type" aria-label="Seleccione tipo">
-                    <option value="">Seleccione tipo</option>
-                    <option>Departamento</option>
-                    <option>Casa</option>
-                    <option>Penthouse</option>
-                    <option>Dúplex</option>
-                    <option>Oficina</option>
-                  </select>
-                </div>
-                <button class="btn btn-outline" type="button" data-more-filters aria-expanded="false">Más filtros</button>
               </div>
             </div>
           </div>

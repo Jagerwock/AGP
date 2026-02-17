@@ -159,12 +159,12 @@ body.admin-mode .properties-intro h2 {
 .segmented-control {
   display: inline-flex;
   align-self: center;
-  background: var(--surface);
+  background: #f2f3f5;
   border: 1px solid var(--border);
   border-radius: 999px;
-  padding: 6px;
+  padding: 5px;
   gap: 8px;
-  box-shadow: 0 10px 20px rgba(7, 22, 39, 0.08);
+  box-shadow: 0 4px 12px rgba(7, 22, 39, 0.08);
 }
 
 .segmented-control button {
@@ -219,7 +219,8 @@ body.admin-mode .properties-intro h2 {
 .quick-row--main {
   display: flex;
   align-items: center;
-  gap: 10px;
+  justify-content: space-between;
+  gap: 16px;
 }
 
 .quick-row--main .segmented-control {
@@ -231,9 +232,19 @@ body.admin-mode .properties-intro h2 {
   flex: 1 1 auto;
   align-items: center;
   gap: 8px;
-  padding-left: 10px;
-  margin-left: 6px;
-  border-left: 1px solid rgba(7, 22, 39, 0.12);
+  }
+
+.quick-row__secondary-shell {
+  display: flex;
+  flex: 1 1 auto;
+}
+
+.quick-row__secondary-shell .quick-row__secondary {
+  width: 100%;
+  background: #f2f3f5;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 5px;
 }
 
 .quick-row--operation {
@@ -245,11 +256,11 @@ body.admin-mode .properties-intro h2 {
 }
 
 .quick-row--main .field:first-child {
-  flex: 1.35 1 230px;
+  flex: 1.35 1 240px;
 }
 
 .quick-row--main .field:nth-child(2) {
-  flex: 0.85 1 170px;
+  flex: 0.95 1 190px;
 }
 
 .quick-row--main [data-more-filters] {
@@ -353,10 +364,10 @@ body.admin-mode .properties-intro h2 {
 
 .quick-row--main .field select {
   appearance: none;
-  padding: 8px 34px 8px 14px;
+  padding: 10px 34px 10px 14px;
   border-radius: 999px;
-  border: 1px solid var(--border);
-  background: var(--surface);
+  border: 1px solid #d6dbe3;
+  background: #eceff3;
   background-image: linear-gradient(45deg, transparent 50%, #516070 50%), linear-gradient(135deg, #516070 50%, transparent 50%);
   background-position: calc(100% - 16px) 52%, calc(100% - 11px) 52%;
   background-size: 5px 5px, 5px 5px;
@@ -380,13 +391,13 @@ body.admin-mode .properties-intro h2 {
 }
 
 .quick-row--main [data-more-filters] {
-  border-color: var(--gold-500);
+  border-color: #cfa135;
   background: var(--gold-500);
   color: #1a1a1a;
   padding-inline: 18px;
-  min-height: 44px;
+  min-height: 42px;
   width: auto;
-  margin-left: 14px;
+  margin-left: 0;
   white-space: nowrap;
 }
 
@@ -674,11 +685,14 @@ body.admin-mode .properties-intro h2 {
     align-items: stretch;
   }
 
+  .quick-row__secondary-shell {
+    width: 100%;
+  }
+
    .quick-row__secondary {
     flex-direction: column;
     align-items: stretch;
-    border-left: 0;
-    padding-left: 0;
+    padding: 5px;
     margin-left: 0;
   }
 
