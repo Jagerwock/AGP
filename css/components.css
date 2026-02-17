@@ -48,14 +48,15 @@
 
 .featured-banner .featured-content {
   position: absolute;
-  inset: 0;
+  top: 0;
+  bottom: 0;
+  right: clamp(24px, 5vw, 96px);
   z-index: 2;
-  margin-left: auto;
-  width: min(460px, 100%);
+  width: min(430px, calc(100% - 24px));
   display: grid;
   align-content: center;
   gap: 14px;
-  padding: 56px 42px;
+  padding: 56px 36px;
   color: #fff;
 }
 
@@ -114,6 +115,7 @@ body.admin-mode .properties-intro h2 {
   font-weight: 700;
   color: #fff;
   line-height: 1.2;
+  margin-top: -2px;
 }
 
 .featured-divider {
@@ -190,21 +192,24 @@ body.admin-mode .properties-intro h2 {
 .quick-filters {
   display: grid;
   gap: 18px;
-  padding: 18px;
+  padding: 10px 14px 14px;
   position: sticky;
   top: 96px;
   z-index: 20;
+  border-radius: 20px;
+  box-shadow: 0 10px 24px rgba(7, 22, 39, 0.08);
 }
 
 .quick-row {
   display: grid;
   grid-template-columns: auto minmax(180px, 1fr) minmax(180px, 1fr) auto;
-  gap: 12px;
+  gap: 10px;
   align-items: center;
 }
 
 .quick-row .field {
   min-width: 0;
+  position: relative;
 }
 
 .quick-row label {
@@ -249,7 +254,7 @@ body.admin-mode .properties-intro h2 {
 }
 
 .filter-actions--top {
-  padding-bottom: 6px;
+  padding: 4px 0 10px;
   border-bottom: 1px solid rgba(7, 22, 39, 0.08);
 }
 
@@ -261,10 +266,44 @@ body.admin-mode .properties-intro h2 {
 }
 
 .sort-select select {
-  padding: 8px 12px;
-  border-radius: 10px;
+  appearance: none;
+  padding: 8px 34px 8px 14px;
+  border-radius: 999px;
   border: 1px solid var(--border);
   background: var(--surface);
+  background-image: linear-gradient(45deg, transparent 50%, #516070 50%), linear-gradient(135deg, #516070 50%, transparent 50%);
+  background-position: calc(100% - 16px) 52%, calc(100% - 11px) 52%;
+  background-size: 5px 5px, 5px 5px;
+  background-repeat: no-repeat;
+}
+
+.quick-row .field select {
+  width: 100%;
+  appearance: none;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface);
+  height: 40px;
+  padding: 0 34px 0 14px;
+  color: #445366;
+  font-weight: 500;
+  background-image: linear-gradient(45deg, transparent 50%, #516070 50%), linear-gradient(135deg, #516070 50%, transparent 50%);
+  background-position: calc(100% - 16px) 52%, calc(100% - 11px) 52%;
+  background-size: 5px 5px, 5px 5px;
+  background-repeat: no-repeat;
+}
+
+.quick-row [data-more-filters] {
+  border-color: var(--gold-500);
+  background: var(--gold-500);
+  color: #1a1a1a;
+  padding-inline: 26px;
+}
+
+.quick-row [data-more-filters]:hover {
+  background: var(--gold-600);
+  border-color: var(--gold-600);
+  color: #1a1a1a;
 }
 
 .view-toggle {
@@ -437,6 +476,7 @@ body.admin-mode .properties-intro h2 {
   }
 
   .featured-banner .featured-content {
+    right: 0;
     width: 100%;
     justify-content: end;
     padding: 30px 26px;
