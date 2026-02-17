@@ -108,7 +108,10 @@
             <p class="featured-price">desde $229,000</p>
             <div class="featured-meta">
               <span>Entrega Julio 2026</span>
-              <span>Surco (Urb. Vista Alegre) · Vista a parque Argentina.</span>
+             <span class="featured-meta-location">
+                <img src="Images/Location_Icon.svg" alt="" class="featured-meta-location-icon" />
+                Surco (Urb. Vista Alegre) · Vista a parque Argentina.
+              </span>
             </div>
             <a class="btn btn-primary" href="propiedad.html">Ver Propiedad</a>
           </div>
@@ -122,53 +125,59 @@
         </div>
 
         <div class="filters-shell" data-filters>
-          <div class="card quick-filters">
-            <div class="filter-actions filter-actions--top">
-              <span data-results-count>0 propiedades encontradas</span>
-              <div class="sort-select">
-                <label for="sort">Ordenar</label>
-                <select id="sort" name="sort" data-sort>
-                  <option value="recent">Más recientes</option>
-                  <option value="price-asc">Menor precio</option>
-                  <option value="price-desc">Mayor precio</option>
-                </select>
+           <div class="quick-group quick-group--top">
+              <div class="filter-actions filter-actions--top">
+                <span data-results-count>0 propiedades encontradas</span>
+                <div class="sort-select">
+                  <label for="sort">Ordenar</label>
+                  <select id="sort" name="sort" data-sort>
+                    <option value="recent">Más recientes</option>
+                    <option value="price-asc">Menor precio</option>
+                    <option value="price-desc">Mayor precio</option>
+                  </select>
+                </div>
+                <div class="view-toggle" role="group" aria-label="Vista">
+                  <button type="button" class="is-active" data-view-toggle="list">Lista</button>
+                  <button type="button" data-view-toggle="map">Mapa</button>
+                </div>
               </div>
-              <div class="view-toggle" role="group" aria-label="Vista">
-                <button type="button" class="is-active" data-view-toggle="list">Lista</button>
-                <button type="button" data-view-toggle="map">Mapa</button>
-              </div>
-            </div>
+        </div>
 
-            <div class="quick-row">
-              <div class="segmented-control" role="tablist" aria-label="Operación">
-                <button type="button" data-operation-tab data-value="all" aria-pressed="false">Todo</button>
-                <button type="button" class="is-active" data-operation-tab data-value="Venta" aria-pressed="true">Comprar</button>
-                <button type="button" data-operation-tab data-value="Alquiler" aria-pressed="false">Alquilar</button>
-              </div>
-              <div class="field">
-                <label class="sr-only" for="district">Distrito</label>
-                <select id="district" name="district" aria-label="Seleccione distrito">
-                  <option value="">Seleccione distrito</option>
-                  <option>Surco</option>
-                  <option>San Borja</option>
-                  <option>Miraflores</option>
-                  <option>San Isidro</option>
-                  <option>Jesús María</option>
-                  <option>Magdalena</option>
-                </select>
+            <div class="quick-group quick-group--operation">
+              <div class="quick-row quick-row--operation">
+                <div class="segmented-control" role="tablist" aria-label="Operación">
+                  <button type="button" data-operation-tab data-value="all" aria-pressed="false">Todo</button>
+                  <button type="button" class="is-active" data-operation-tab data-value="Venta" aria-pressed="true">Comprar</button>
+                  <button type="button" data-operation-tab data-value="Alquiler" aria-pressed="false">Alquilar</button>
+                </div>
             </div>
-          <div class="field">
-                <label class="sr-only" for="type">Tipo</label>
-                <select id="type" name="type" aria-label="Seleccione tipo">
-                  <option value="">Seleccione tipo</option>
-                  <option>Departamento</option>
-                  <option>Casa</option>
-                  <option>Penthouse</option>
-                  <option>Dúplex</option>
-                  <option>Oficina</option>
-                </select>
+            <div class="quick-group quick-group--filters">
+              <div class="quick-row quick-row--filters">
+                <div class="field">
+                  <label class="sr-only" for="district">Distrito</label>
+                  <select id="district" name="district" aria-label="Seleccione distrito">
+                    <option value="">Seleccione distrito</option>
+                    <option>Surco</option>
+                    <option>San Borja</option>
+                    <option>Miraflores</option>
+                    <option>San Isidro</option>
+                    <option>Jesús María</option>
+                    <option>Magdalena</option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label class="sr-only" for="type">Tipo</label>
+                  <select id="type" name="type" aria-label="Seleccione tipo">
+                    <option value="">Seleccione tipo</option>
+                    <option>Departamento</option>
+                    <option>Casa</option>
+                    <option>Penthouse</option>
+                    <option>Dúplex</option>
+                    <option>Oficina</option>
+                  </select>
+                </div>
+                <button class="btn btn-outline" type="button" data-more-filters>Más filtros</button>
               </div>
-            <button class="btn btn-outline" type="button" data-more-filters>Más filtros</button>
             </div>
 
 
