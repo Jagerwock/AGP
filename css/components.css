@@ -350,16 +350,26 @@ body.admin-mode .properties-intro h2 {
 }
 
 .filters-panel {
-  display: none;
+  display: grid;
   gap: 18px;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  pointer-events: none;
+  transform: translateY(-8px);
+  transition: max-height 0.32s ease, opacity 0.24s ease, transform 0.24s ease, padding 0.24s ease, border-width 0.24s ease;
   padding: 18px;
   border-radius: var(--radius-md);
-  border: 1px solid var(--border);
+  border: 0 solid var(--border);
   background: var(--surface);
 }
 
 .filters-panel.is-open {
-  display: grid;
+  max-height: 420px;
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+  border-width: 1px;
 }
 
 .filters-panel .panel-grid {

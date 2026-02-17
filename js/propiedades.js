@@ -13,6 +13,7 @@ const mapPanel = document.querySelector('[data-map-panel]');
 const mapCard = document.querySelector('[data-map-card]');
 const activeChipsContainer = document.querySelector('[data-active-chips]');
 const advancedPanel = document.querySelector('[data-advanced-panel]');
+const moreFiltersBtn = document.querySelector('[data-more-filters]');
 const pricePanel = document.querySelector('[data-price-panel]');
 const sortSelect = document.querySelector('[data-sort]');
 
@@ -534,9 +535,12 @@ const init = async () => {
   }
 
   if (moreFiltersBtn && advancedPanel) {
+    moreFiltersBtn.setAttribute('aria-expanded', advancedPanel.classList.contains('is-open').toString());
     moreFiltersBtn.addEventListener('click', () => {
       advancedPanel.classList.toggle('is-open');
-      moreFiltersBtn.textContent = advancedPanel.classList.contains('is-open') ? 'Ocultar filtros' : 'Más filtros';
+      const isOpen = advancedPanel.classList.contains('is-open');
+      moreFiltersBtn.setAttribute('aria-expanded', isOpen.toString());
+      moreFiltersBtn.textContent = isOpen ? 'Quitar filtros' : 'Más filtros';
     });
   }
 
