@@ -53,6 +53,38 @@
   color: rgba(255, 255, 255, 0.85);
 }
 
+.featured-eyebrow {
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.74);
+}
+
+.properties-intro {
+  margin: 0 0 18px;
+}
+
+.properties-intro h2 {
+  margin: 0;
+  font-size: clamp(1.35rem, 2vw, 1.95rem);
+}
+
+.properties-intro p {
+  margin: 8px 0 0;
+  color: var(--muted);
+  max-width: 72ch;
+}
+
+body.admin-mode .featured-eyebrow {
+  color: rgba(251, 191, 36, 0.92);
+}
+
+body.admin-mode .properties-intro h2 {
+  color: var(--navy-900);
+}
+
 .featured-content h2 {
   font-size: clamp(1.6rem, 2.2vw, 2.2rem);
   margin: 10px 0 12px;

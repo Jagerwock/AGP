@@ -33,6 +33,9 @@ const adminAccessButton = document.querySelector('[data-admin-access-btn]');
 const adminPanel = document.querySelector('[data-admin-panel]');
 const adminForm = document.querySelector('[data-admin-form]');
 const adminLogoutButton = document.querySelector('[data-admin-logout]');
+const heroEyebrow = document.querySelector('[data-hero-eyebrow]');
+const introTitle = document.querySelector('[data-intro-title]');
+const introCopy = document.querySelector('[data-intro-copy]');
 
 const defaultState = {
   operation: 'Venta',
@@ -326,10 +329,26 @@ const promptAdminAccess = () => {
   return true;
 };
 
+const setAdminHeroMode = (isAdmin) => {
+  document.body.classList.toggle('admin-mode', isAdmin);
+  if (heroEyebrow) {
+    heroEyebrow.textContent = isAdmin ? 'Modo administrador' : 'Proyecto destacado';
+  }
+  if (introTitle) {
+    introTitle.textContent = isAdmin ? 'Administra propiedades en venta en Lima' : 'Encuentra tu próxima propiedad en Lima';
+  }
+  if (introCopy) {
+    introCopy.textContent = isAdmin
+      ? 'Controla los inmuebles publicados, agrega nuevas propiedades y mantén actualizado el catálogo desde tu panel interno.'
+      : 'Accede a inmuebles verificados para compra y alquiler, con filtros rápidos y asesoría experta de AGP Inmobiliaria.';
+  }
+};
+
 const setAdminVisibility = (isVisible) => {
   if (adminAccessButton) {
     adminAccessButton.hidden = !isVisible;
   }
+  setAdminHeroMode(isVisible);
   if (!isVisible && adminPanel) {
     adminPanel.hidden = true;
   }
@@ -367,6 +386,7 @@ const buildAdminPropertyFromForm = (formData) => {
 };
 
 const initAdminMode = () => {
+  setAdminHeroMode(false);
   const enableAdmin = () => {
     setAdminVisibility(true);
     if (adminPanel) {
