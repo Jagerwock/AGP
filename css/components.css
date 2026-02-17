@@ -218,13 +218,22 @@ body.admin-mode .properties-intro h2 {
 
 .quick-row--main {
   display: flex;
-  flex-wrap: wrap;
   align-items: center;
   gap: 10px;
 }
 
 .quick-row--main .segmented-control {
-  flex: 1 1 260px;
+  flex: 0 0 auto;
+}
+
+.quick-row__secondary {
+  display: flex;
+  flex: 1 1 auto;
+  align-items: center;
+  gap: 10px;
+  padding-left: 10px;
+  margin-left: 6px;
+  border-left: 1px solid rgba(7, 22, 39, 0.12);
 }
 
 .quick-row--operation {
@@ -236,8 +245,7 @@ body.admin-mode .properties-intro h2 {
   min-width: 170px;
 }
 
-.quick-row--main [data-more-filters],
-.quick-row--main [data-price-toggle] {
+.quick-row--main [data-more-filters] {
   flex: 0 0 auto;
 }
 
@@ -344,45 +352,20 @@ body.admin-mode .properties-intro h2 {
   color: #1a1a1a;
 }
 
+.quick-row--main [data-more-filters].is-open {
+  background: transparent;
+  border-color: var(--border);
+  color: var(--text);
+}
+
+.quick-row--main [data-more-filters].is-open:hover {
+  background: rgba(7, 22, 39, 0.06);
+  border-color: var(--border);
+}
+
 .chip-toggle {
   min-height: 40px;
   justify-content: center;
-}
-
-.filters-panel--price {
-  margin-top: 2px;
-}
-
-.price-range-row {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
-  align-items: end;
-  gap: 14px;
-}
-
-.price-range-row label {
-  display: block;
-  font-size: 0.85rem;
-  font-weight: 600;
-  margin-bottom: 6px;
-}
-
-.price-range-row input {
-  width: 100%;
-  border: 1px solid var(--border);
-  border-radius: 999px;
-  background: var(--surface);
-  height: 40px;
-  padding: 0 14px;
-  color: #445366;
-  font-weight: 500;
-}
-
-.price-separator {
-  align-self: center;
-  font-size: 1.35rem;
-  color: var(--muted);
-  padding-inline: 6px;
 }
 
 .view-toggle {
@@ -642,19 +625,18 @@ body.admin-mode .properties-intro h2 {
     align-items: stretch;
   }
 
+   .quick-row__secondary {
+    flex-direction: column;
+    align-items: stretch;
+    border-left: 0;
+    padding-left: 0;
+    margin-left: 0;
+  }
+
   .quick-row--main .field,
   .quick-row--main .segmented-control,
-  .quick-row--main [data-more-filters],
-  .quick-row--main [data-price-toggle] {
+  .quick-row--main [data-more-filters] {
     width: 100%;
-  }
-
-  .price-range-row {
-    grid-template-columns: 1fr;
-  }
-
-  .price-separator {
-    display: none;
   }
 
   .quick-group {

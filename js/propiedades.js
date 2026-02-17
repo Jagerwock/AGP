@@ -14,13 +14,11 @@ const mapCard = document.querySelector('[data-map-card]');
 const activeChipsContainer = document.querySelector('[data-active-chips]');
 const advancedPanel = document.querySelector('[data-advanced-panel]');
 const moreFiltersBtn = document.querySelector('[data-more-filters]');
-const pricePanel = document.querySelector('[data-price-panel]');
 const sortSelect = document.querySelector('[data-sort]');
 
 const operationTabs = document.querySelectorAll('[data-operation-tab]');
 const viewToggleButtons = document.querySelectorAll('[data-view-toggle]');
 const bedroomChips = document.querySelectorAll('[data-bedrooms]');
-const priceToggleBtn = document.querySelector('[data-price-toggle]');
 
 const districtSelect = document.querySelector('[name="district"]');
 const typeSelect = document.querySelector('[name="type"]');
@@ -101,7 +99,6 @@ const applyStateToInputs = () => {
 
   setActiveButton(operationTabs, state.operation || 'all');
   setActiveButton(bedroomChips, state.bedrooms || '');
-  syncPriceToggleState();
 };
 
 const updateStateFromInputs = () => {
@@ -302,16 +299,8 @@ const updateResultsCount = (total) => {
   }
 };
 
-const syncPriceToggleState = () => {
-  if (!priceToggleBtn) return;
-  const hasPrice = Boolean(state.minPrice || state.maxPrice);
-  const isOpen = Boolean(pricePanel && pricePanel.classList.contains('is-open'));
-  priceToggleBtn.classList.toggle('is-active', hasPrice || isOpen);
-};
-
 const updateView = () => {
   updateStateFromInputs();
-  syncPriceToggleState();
   renderActiveChips();
   const filtered = sortItems(getFiltered());
   const totalPages = Math.max(1, Math.ceil(filtered.length / perPage));
@@ -569,21 +558,14 @@ const init = async () => {
   }
 
   if (moreFiltersBtn && advancedPanel) {
-    moreFiltersBtn.setAttribute('aria-expanded', advancedPanel.classList.contains('is-open').toString());
+    const advancedOpen = advancedPanel.classList.contains('is-open');
+    moreFiltersBtn.setAttribute('aria-expanded', advancedOpen.toString());
+    moreFiltersBtn.classList.toggle('is-open', advancedOpen);
     moreFiltersBtn.addEventListener('click', () => {
       advancedPanel.classList.toggle('is-open');
       const isOpen = advancedPanel.classList.contains('is-open');
       moreFiltersBtn.setAttribute('aria-expanded', isOpen.toString());
       moreFiltersBtn.textContent = isOpen ? 'Quitar filtros' : 'Más filtros';
-    });
-  }
-
-  if (priceToggleBtn && pricePanel) {
-    priceToggleBtn.setAttribute('aria-expanded', pricePanel.classList.contains('is-open').toString());
-    priceToggleBtn.addEventListener('click', () => {
-      pricePanel.classList.toggle('is-open');
-      const isOpen = pricePanel.classList.contains('is-open');
-      priceToggleBtn.setAttribute('aria-expanded', isOpen.toString());
     });
   }
 
