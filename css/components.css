@@ -298,21 +298,57 @@ body.admin-mode .properties-intro h2 {
 .filter-actions {
   display: flex;
   flex-wrap: wrap;
-  gap: 16px;
+  gap: 18px;
   align-items: center;
   justify-content: space-between;
 }
 
 .filter-actions--top {
-  padding: 4px 0 10px;
-  border-bottom: 1px solid rgba(7, 22, 39, 0.08);
+  padding: 10px 14px;
+  border: 1px solid rgba(7, 22, 39, 0.08);
+  border-radius: 14px;
+  background: #f5f7fa;
+}
+
+.filter-actions--top [data-results-count] {
+  font-size: 14px;
+  line-height: 1.2;
+  color: #5c6775;
+  font-weight: 500;
 }
 
 .sort-select {
   display: flex;
   align-items: center;
-  gap: 8px;
   font-weight: 600;
+  gap: 10px;
+  font-weight: 600;
+}
+
+.sort-select label,
+.view-toggle-label {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1;
+  font-weight: 600;
+  color: #263445;
+}
+
+.sort-select select {
+  min-height: 34px;
+  border-radius: 999px;
+  border: 1px solid #d7dee8;
+  background-color: #eef2f7;
+  padding: 0 34px 0 14px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #334457;
+}
+
+.view-toggle-shell {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .quick-row--main .field select {
@@ -378,20 +414,25 @@ body.admin-mode .properties-intro h2 {
 
 .view-toggle {
   display: inline-flex;
-  border: 1px solid var(--border);
+  border: 1px solid #d7dee8;
   border-radius: 999px;
   overflow: hidden;
+  background: #eef2f7;
 }
 
 .view-toggle button {
-  padding: 8px 16px;
   font-weight: 600;
-  color: var(--muted);
-  background: var(--surface);
+  padding: 7px 14px;
+  min-height: 34px;
+  min-width: 56px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #425468;
+  background: transparent;
 }
 
 .view-toggle button.is-active {
-  background: var(--navy-900);
+  background: #081e35;
   color: #fff;
 }
 
@@ -658,6 +699,21 @@ body.admin-mode .properties-intro h2 {
   .filter-actions {
     flex-direction: column;
     align-items: flex-start;
+  }
+
+  filter-actions--top {
+    padding: 12px;
+  }
+
+  .filter-actions--top .sort-select,
+  .filter-actions--top .view-toggle-shell {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .filter-actions--top .sort-select select {
+    flex: 1;
+    max-width: 220px;
   }
 }
 .admin-panel {
