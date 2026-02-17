@@ -28,6 +28,9 @@ const bathroomsSelect = document.querySelector('[name="bathrooms"]');
 const minAreaInput = document.querySelector('[name="minArea"]');
 const minPriceInput = document.querySelector('[name="minPrice"]');
 const maxPriceInput = document.querySelector('[name="maxPrice"]');
+const floorsInput = document.querySelector('[name="floors"]');
+const parkingSelect = document.querySelector('[name="parking"]');
+const maintenanceInput = document.querySelector('[name="maintenance"]');
 
 const adminAccessButton = document.querySelector('[data-admin-access-btn]');
 const adminPanel = document.querySelector('[data-admin-panel]');
@@ -46,6 +49,9 @@ const defaultState = {
   bedrooms: '',
   bathrooms: '',
   minArea: '',
+  floors: '',
+  parking: '',
+  maintenance: '',
   sort: 'recent',
 };
 
@@ -88,10 +94,14 @@ const applyStateToInputs = () => {
   if (minAreaInput) minAreaInput.value = state.minArea;
   if (minPriceInput) minPriceInput.value = state.minPrice;
   if (maxPriceInput) maxPriceInput.value = state.maxPrice;
+  if (floorsInput) floorsInput.value = state.floors;
+  if (parkingSelect) parkingSelect.value = state.parking;
+  if (maintenanceInput) maintenanceInput.value = state.maintenance;
   if (sortSelect) sortSelect.value = state.sort;
 
   setActiveButton(operationTabs, state.operation || 'all');
   setActiveButton(bedroomChips, state.bedrooms || '');
+  syncPriceToggleState();
 };
 
 const updateStateFromInputs = () => {
@@ -101,6 +111,9 @@ const updateStateFromInputs = () => {
   if (minAreaInput) state.minArea = minAreaInput.value;
   if (minPriceInput) state.minPrice = minPriceInput.value;
   if (maxPriceInput) state.maxPrice = maxPriceInput.value;
+  if (floorsInput) state.floors = floorsInput.value;
+  if (parkingSelect) state.parking = parkingSelect.value;
+  if (maintenanceInput) state.maintenance = maintenanceInput.value;
   if (sortSelect) state.sort = sortSelect.value;
 };
 
@@ -112,6 +125,9 @@ const buildActiveChips = () => {
   if (state.bedrooms) chips.push({ key: 'bedrooms', label: `${state.bedrooms}+ dorm.` });
   if (state.bathrooms) chips.push({ key: 'bathrooms', label: `${state.bathrooms}+ baños` });
   if (state.minArea) chips.push({ key: 'minArea', label: `Área ${state.minArea}+ m²` });
+  if (state.floors) chips.push({ key: 'floors', label: `${state.floors}+ pisos` });
+  if (state.parking) chips.push({ key: 'parking', label: `${state.parking}+ est.` });
+  if (state.maintenance) chips.push({ key: 'maintenance', label: `Mantenimiento ≤ S/ ${state.maintenance}` });
   if (state.minPrice || state.maxPrice) {
     const min = state.minPrice ? `S/ ${state.minPrice}` : 'S/ 0';
     const max = state.maxPrice ? `S/ ${state.maxPrice}` : 'sin tope';
@@ -152,8 +168,15 @@ const getFiltered = () => {
   const minBeds = parseInt(state.bedrooms || '0', 10);
   const minBaths = parseInt(state.bathrooms || '0', 10);
   const minArea = parseInt(state.minArea || '0', 10);
+  const minFloors = parseInt(state.floors || '0', 10);
+  const minParking = parseInt(state.parking || '0', 10);
+  const maxMaintenance = parseInt(state.maintenance || '99999999', 10);
 
   return propertiesData.filter((property) => {
+    const propertyFloors = Number(property.floors ?? property.floor ?? property.pisos);
+    const supportsFloors = Number.isFinite(propertyFloors) && propertyFloors > 0;
+    const floorsMatch = !minFloors || !supportsFloors || propertyFloors >= minFloors;
+    const maintenanceCost = Number(property.maintenance || 0);
     return (
       (!state.district || property.district === state.district) &&
       (!state.operation || property.operation === state.operation) &&
@@ -162,7 +185,10 @@ const getFiltered = () => {
       property.pricePen <= maxPrice &&
       property.bedrooms >= minBeds &&
       property.bathrooms >= minBaths &&
-      property.areaM2 >= minArea
+      property.areaM2 >= minArea &&
+      property.parking >= minParking &&
+      maintenanceCost <= maxMaintenance &&
+      floorsMatch
     );
   });
 };
@@ -276,8 +302,16 @@ const updateResultsCount = (total) => {
   }
 };
 
+const syncPriceToggleState = () => {
+  if (!priceToggleBtn) return;
+  const hasPrice = Boolean(state.minPrice || state.maxPrice);
+  const isOpen = Boolean(pricePanel && pricePanel.classList.contains('is-open'));
+  priceToggleBtn.classList.toggle('is-active', hasPrice || isOpen);
+};
+
 const updateView = () => {
   updateStateFromInputs();
+  syncPriceToggleState();
   renderActiveChips();
   const filtered = sortItems(getFiltered());
   const totalPages = Math.max(1, Math.ceil(filtered.length / perPage));
@@ -541,6 +575,15 @@ const init = async () => {
       const isOpen = advancedPanel.classList.contains('is-open');
       moreFiltersBtn.setAttribute('aria-expanded', isOpen.toString());
       moreFiltersBtn.textContent = isOpen ? 'Quitar filtros' : 'Más filtros';
+    });
+  }
+
+  if (priceToggleBtn && pricePanel) {
+    priceToggleBtn.setAttribute('aria-expanded', pricePanel.classList.contains('is-open').toString());
+    priceToggleBtn.addEventListener('click', () => {
+      pricePanel.classList.toggle('is-open');
+      const isOpen = pricePanel.classList.contains('is-open');
+      priceToggleBtn.setAttribute('aria-expanded', isOpen.toString());
     });
   }
 

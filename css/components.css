@@ -185,8 +185,9 @@ body.admin-mode .properties-intro h2 {
 }
 
 .filters-shell {
-  display: grid;
-  gap: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 .quick-filters {
@@ -207,29 +208,39 @@ body.admin-mode .properties-intro h2 {
   background: rgba(255, 255, 255, 0.75);
 }
 
-.quick-group--top {
-  padding-bottom: 4px;
+.quick-group--main {
+  width: 100%;
 }
 
-.quick-group--operation {
+.quick-row {
+  width: 100%;
+}
+
+.quick-row--main {
   display: flex;
-  justify-content: flex-start;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+.quick-row--main .segmented-control {
+  flex: 1 1 260px;
 }
 
 .quick-row--operation {
   grid-template-columns: minmax(0, auto);
 }
 
-.quick-row--filters {
-  grid-template-columns: minmax(180px, 1fr) minmax(180px, 1fr) auto;
+.quick-row--main .field {
+  flex: 1 1 190px;
+  min-width: 170px;
 }
 
-.quick-row {
-  display: grid;
-  grid-template-columns: auto minmax(180px, 1fr) minmax(180px, 1fr) auto;
-  gap: 10px;
-  align-items: center;
+.quick-row--main [data-more-filters],
+.quick-row--main [data-price-toggle] {
+  flex: 0 0 auto;
 }
+
 
 .quick-row .field {
   min-width: 0;
@@ -289,7 +300,7 @@ body.admin-mode .properties-intro h2 {
   font-weight: 600;
 }
 
-.sort-select select {
+.quick-row--main .field select {
   appearance: none;
   padding: 8px 34px 8px 14px;
   border-radius: 999px;
@@ -307,7 +318,7 @@ body.admin-mode .properties-intro h2 {
   border: 1px solid var(--border);
   border-radius: 999px;
   background: var(--surface);
-  height: 40px;
+  height: 44px;
   padding: 0 34px 0 14px;
   color: #445366;
   font-weight: 500;
@@ -317,17 +328,61 @@ body.admin-mode .properties-intro h2 {
   background-repeat: no-repeat;
 }
 
-.quick-row [data-more-filters] {
+.quick-row--main [data-more-filters] {
   border-color: var(--gold-500);
   background: var(--gold-500);
   color: #1a1a1a;
   padding-inline: 26px;
+  min-height: 44px;
+  width: 100%;
+  white-space: nowrap;
 }
 
-.quick-row [data-more-filters]:hover {
+.quick-row--main [data-more-filters]:hover {
   background: var(--gold-600);
   border-color: var(--gold-600);
   color: #1a1a1a;
+}
+
+.chip-toggle {
+  min-height: 40px;
+  justify-content: center;
+}
+
+.filters-panel--price {
+  margin-top: 2px;
+}
+
+.price-range-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: end;
+  gap: 14px;
+}
+
+.price-range-row label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.price-range-row input {
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface);
+  height: 40px;
+  padding: 0 14px;
+  color: #445366;
+  font-weight: 500;
+}
+
+.price-separator {
+  align-self: center;
+  font-size: 1.35rem;
+  color: var(--muted);
+  padding-inline: 6px;
 }
 
 .view-toggle {
@@ -350,7 +405,7 @@ body.admin-mode .properties-intro h2 {
 }
 
 .filters-panel {
-  display: grid;
+  display: block;
   gap: 18px;
   max-height: 0;
   opacity: 0;
@@ -358,6 +413,7 @@ body.admin-mode .properties-intro h2 {
   pointer-events: none;
   transform: translateY(-8px);
   transition: max-height 0.32s ease, opacity 0.24s ease, transform 0.24s ease, padding 0.24s ease, border-width 0.24s ease;
+  width: 100%;
   padding: 18px;
   border-radius: var(--radius-md);
   border: 0 solid var(--border);
@@ -365,7 +421,7 @@ body.admin-mode .properties-intro h2 {
 }
 
 .filters-panel.is-open {
-  max-height: 420px;
+  max-height: 560px;
   opacity: 1;
   pointer-events: auto;
   transform: translateY(0);
@@ -375,7 +431,13 @@ body.admin-mode .properties-intro h2 {
 .filters-panel .panel-grid {
   display: grid;
   gap: 16px;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+}
+
+@media (min-width: 1024px) {
+  .filters-panel .panel-grid {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
 }
 
 .active-chips {
@@ -575,8 +637,24 @@ body.admin-mode .properties-intro h2 {
     top: 80px;
   }
 
-  .quick-row {
+  .quick-row--main {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .quick-row--main .field,
+  .quick-row--main .segmented-control,
+  .quick-row--main [data-more-filters],
+  .quick-row--main [data-price-toggle] {
+    width: 100%;
+  }
+
+  .price-range-row {
     grid-template-columns: 1fr;
+  }
+
+  .price-separator {
+    display: none;
   }
 
   .quick-group {

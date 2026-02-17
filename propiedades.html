@@ -126,64 +126,78 @@
 
         <div class="filters-shell" data-filters>
            <div class="quick-group quick-group--top">
-              <div class="filter-actions filter-actions--top">
-                <span data-results-count>0 propiedades encontradas</span>
-                <div class="sort-select">
-                  <label for="sort">Ordenar</label>
-                  <select id="sort" name="sort" data-sort>
-                    <option value="recent">Más recientes</option>
-                    <option value="price-asc">Menor precio</option>
-                    <option value="price-desc">Mayor precio</option>
-                  </select>
-                </div>
-                <div class="view-toggle" role="group" aria-label="Vista">
-                  <button type="button" class="is-active" data-view-toggle="list">Lista</button>
-                  <button type="button" data-view-toggle="map">Mapa</button>
-                </div>
+            <div class="filter-actions filter-actions--top">
+              <span data-results-count>0 propiedades encontradas</span>
+              <div class="sort-select">
+                <label for="sort">Ordenar</label>
+                <select id="sort" name="sort" data-sort>
+                  <option value="recent">Más recientes</option>
+                  <option value="price-asc">Menor precio</option>
+                  <option value="price-desc">Mayor precio</option>
+                </select>
               </div>
-        </div>
-
-            <div class="quick-group quick-group--operation">
-              <div class="quick-row quick-row--operation">
-                <div class="segmented-control" role="tablist" aria-label="Operación">
-                  <button type="button" data-operation-tab data-value="all" aria-pressed="false">Todo</button>
-                  <button type="button" class="is-active" data-operation-tab data-value="Venta" aria-pressed="true">Comprar</button>
-                  <button type="button" data-operation-tab data-value="Alquiler" aria-pressed="false">Alquilar</button>
-                </div>
-            </div>
-            <div class="quick-group quick-group--filters">
-              <div class="quick-row quick-row--filters">
-                <div class="field">
-                  <label class="sr-only" for="district">Distrito</label>
-                  <select id="district" name="district" aria-label="Seleccione distrito">
-                    <option value="">Seleccione distrito</option>
-                    <option>Surco</option>
-                    <option>San Borja</option>
-                    <option>Miraflores</option>
-                    <option>San Isidro</option>
-                    <option>Jesús María</option>
-                    <option>Magdalena</option>
-                  </select>
-                </div>
-                <div class="field">
-                  <label class="sr-only" for="type">Tipo</label>
-                  <select id="type" name="type" aria-label="Seleccione tipo">
-                    <option value="">Seleccione tipo</option>
-                    <option>Departamento</option>
-                    <option>Casa</option>
-                    <option>Penthouse</option>
-                    <option>Dúplex</option>
-                    <option>Oficina</option>
-                  </select>
-                </div>
-                <button class="btn btn-outline" type="button" data-more-filters>Más filtros</button>
+        <div class="view-toggle" role="group" aria-label="Vista">
+                <button type="button" class="is-active" data-view-toggle="list">Lista</button>
+                <button type="button" data-view-toggle="map">Mapa</button>
               </div>
             </div>
+          </div>
+          <div class="quick-group quick-group--main">
+            <div class="quick-row quick-row--main">
+              <div class="segmented-control" role="tablist" aria-label="Operación">
+                <button type="button" data-operation-tab data-value="all" aria-pressed="false">Todo</button>
+                <button type="button" class="is-active" data-operation-tab data-value="Venta" aria-pressed="true">Comprar</button>
+                <button type="button" data-operation-tab data-value="Alquiler" aria-pressed="false">Alquilar</button>
+              </div>
+              <div class="field">
+                <label class="sr-only" for="district">Distrito</label>
+                <select id="district" name="district" aria-label="Seleccione distrito">
+                  <option value="">Seleccione distrito</option>
+                  <option>Surco</option>
+                  <option>San Borja</option>
+                  <option>Miraflores</option>
+                  <option>San Isidro</option>
+                  <option>Jesús María</option>
+                  <option>Magdalena</option>
+                </select>
+              </div>
+              <div class="field">
+                <label class="sr-only" for="type">Tipo</label>
+                <select id="type" name="type" aria-label="Seleccione tipo">
+                  <option value="">Seleccione tipo</option>
+                  <option>Departamento</option>
+                  <option>Casa</option>
+                  <option>Penthouse</option>
+                  <option>Dúplex</option>
+                  <option>Oficina</option>
+                </select>
+              </div>
+              <button class="btn btn-outline" type="button" data-more-filters aria-expanded="false">Más filtros</button>
+              <button class="chip chip-toggle" type="button" data-price-toggle aria-expanded="false">Precio</button>
+            </div>
+          </div>
 
+          <div class="filters-panel filters-panel--price" data-price-panel>
+            <div class="price-range-row" role="group" aria-label="Rango de precio">
+              <div>
+                <label for="minPrice">Precio mínimo (S/)</label>
+                <input id="minPrice" name="minPrice" type="number" placeholder="200000" min="0" />
+              </div>
+              <span class="price-separator" aria-hidden="true">—</span>
+              <div>
+                <label for="maxPrice">Precio máximo (S/)</label>
+                <input id="maxPrice" name="maxPrice" type="number" placeholder="2500000" min="0" />
+              </div>
+            </div>
+          </div>
 
 
           <div class="filters-panel" data-advanced-panel>
             <div class="panel-grid">
+              <div>
+                <label for="floors">Pisos</label>
+                <input id="floors" name="floors" type="number" min="0" placeholder="2" />
+              </div>
               <div>
                 <label for="bathrooms">Baños</label>
                 <select id="bathrooms" name="bathrooms">
@@ -207,12 +221,17 @@
                 <input id="minArea" name="minArea" type="number" placeholder="60" min="0" />
               </div>
               <div>
-                <label for="minPrice">Precio mín (S/)</label>
-                <input id="minPrice" name="minPrice" type="number" placeholder="200000" min="0" />
+                <label for="parking">Estacionamientos</label>
+                <select id="parking" name="parking">
+                  <option value="">Todos</option>
+                  <option value="1">1+</option>
+                  <option value="2">2+</option>
+                  <option value="3">3+</option>
+                </select>
               </div>
               <div>
-                <label for="maxPrice">Precio máx (S/)</label>
-                <input id="maxPrice" name="maxPrice" type="number" placeholder="2500000" min="0" />
+                <label for="maintenance">Mantenimiento máx (S/)</label>
+                <input id="maintenance" name="maintenance" type="number" placeholder="800" min="0" />
               </div>
             </div>
           </div>
