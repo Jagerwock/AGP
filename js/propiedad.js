@@ -57,6 +57,16 @@ const renderDetail = (property) => {
           <div class="gallery-main">
           <button class="gallery-arrow gallery-arrow--left" type="button" data-gallery-prev aria-label="Imagen anterior">❮</button>
             <img src="${property.images[0]}" alt="${property.title}" loading="lazy" data-gallery-main />
+            <div class="gallery-main__overlay" aria-hidden="true"></div>
+            <div class="gallery-main__content">
+              <h2>${property.title}</h2>
+              <p class="gallery-main__subtitle">Flats y Dúplex desde 95 m² hasta 182 m²</p>
+              <span class="gallery-main__divider" aria-hidden="true"></span>
+              <p class="gallery-main__price">desde ${AGPRender.formatPrice(property.pricePen)}</p>
+              <p class="gallery-main__delivery">Entrega Julio 2026</p>
+              <p class="gallery-main__meta"><img src="Images/Location_Icon.svg" alt="" aria-hidden="true" class="gallery-main__location-icon" />${property.addressApprox || 'Ubicación referencial en Lima'}</p>
+              <a class="btn btn-primary" href="contacto.html">Ver Propiedad</a>
+            </div>
             <button class="gallery-arrow gallery-arrow--right" type="button" data-gallery-next aria-label="Imagen siguiente">❯</button>
             <span class="gallery-caption" data-gallery-caption>${getImageLabel(property, 0)}</span>
           </div>
