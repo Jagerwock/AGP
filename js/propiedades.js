@@ -332,7 +332,7 @@ const promptAdminAccess = () => {
 const setAdminHeroMode = (isAdmin) => {
   document.body.classList.toggle('admin-mode', isAdmin);
   if (heroEyebrow) {
-    heroEyebrow.textContent = isAdmin ? 'Modo administrador' : 'Proyecto destacado';
+    heroEyebrow.textContent = isAdmin ? 'Modo administrador' : '';
   }
   if (introTitle) {
     introTitle.textContent = isAdmin ? 'Administra propiedades en venta en Lima' : 'Encuentra tu próxima propiedad en Lima';

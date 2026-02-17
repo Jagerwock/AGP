@@ -51,25 +51,28 @@
   inset: 0;
   z-index: 2;
   margin-left: auto;
-  width: min(420px, 100%);
+  width: min(460px, 100%);
   display: grid;
   align-content: center;
-  gap: 10px;
-  padding: 36px;
-  background: linear-gradient(180deg, rgba(8, 44, 94, 0.72) 0%, rgba(8, 44, 94, 0.92) 100%);
+  gap: 14px;
+  padding: 56px 42px;
   color: #fff;
 }
 
 .featured-banner .featured-content h1 {
-  font-size: clamp(2rem, 2.8vw, 3rem);
-  line-height: 1.08;
+  font-size: clamp(2.35rem, 3.3vw, 3.7rem);
+  line-height: 1.16;
 }
 
 .featured-banner .featured-type {
   color: rgba(255, 255, 255, 0.85);
+  font-size: 1.95rem;
+  line-height: 1.45;
+  max-width: 30ch;
 }
 
 .featured-eyebrow {
+  display: none;
   margin: 0;
   text-transform: uppercase;
   letter-spacing: 0.08em;
@@ -107,28 +110,40 @@ body.admin-mode .properties-intro h2 {
 }
 
 .featured-content .featured-price {
-  font-size: 1.4rem;
+  font-size: clamp(1.9rem, 2.5vw, 2.3rem);
   font-weight: 700;
   color: #fff;
+  line-height: 1.2;
 }
 
 .featured-meta {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
+  gap: 16px;
   color: rgba(255, 255, 255, 0.82);
+  font-size: 1.4rem;
+  line-height: 1.5;
 }
 
 .featured-meta-location {
   display: inline-flex;
-  align-items: center;
-  gap: 5px;
+  align-items: flex-start;
+  gap: 8px;
 }
 
 .featured-meta-location-icon {
-  width: 12px;
-  height: 12px;
+  width: 16px;
+  height: 16px;
+  margin-top: 6px;
   flex-shrink: 0;
+}
+
+.featured-banner .featured-content::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(270deg, rgba(8, 44, 94, 0.9) 0%, rgba(8, 44, 94, 0.64) 38%, rgba(8, 44, 94, 0.24) 76%, rgba(8, 44, 94, 0) 100%);
 }
 
 .segmented-control {
@@ -407,7 +422,11 @@ body.admin-mode .properties-intro h2 {
   .featured-banner .featured-content {
     width: 100%;
     justify-content: end;
-    background: linear-gradient(180deg, rgba(8, 44, 94, 0.18) 12%, rgba(8, 44, 94, 0.9) 100%);
+    padding: 30px 26px;
+  }
+
+  .featured-banner .featured-content::before {
+    background: linear-gradient(180deg, rgba(8, 44, 94, 0.2) 12%, rgba(8, 44, 94, 0.9) 100%);
   }
 
   .property-layout {
@@ -444,6 +463,17 @@ body.admin-mode .properties-intro h2 {
 
   .featured-banner .featured-content {
     padding: 24px;
+    gap: 10px;
+  }
+
+  .featured-banner .featured-content h1 {
+    font-size: clamp(2rem, 10vw, 2.55rem);
+  }
+
+  .featured-banner .featured-type,
+  .featured-content .featured-price,
+  .featured-meta {
+    font-size: 1.05rem;
   }
 
   .quick-filters {
