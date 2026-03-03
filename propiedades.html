@@ -185,30 +185,32 @@
 
         <div class="filters-panel" data-advanced-panel>
           <div class="inline-filters" aria-label="Filtros avanzados">
-            <div class="inline-filters__group inline-filters__group--price">
-              <button class="inline-filters__price" type="button" aria-label="Precio" data-price-toggle aria-expanded="false">Precio</button>
-            </div>
-            <div class="inline-filters__group inline-filters__group--beds">
-              <span class="inline-filters__label">Dormitorios</span>
-              <div class="chip-group" role="group" aria-label="Dormitorios">
-                <button class="chip" type="button" data-bedrooms data-value="1">1+</button>
-                <button class="chip" type="button" data-bedrooms data-value="2">2+</button>
-                <button class="chip" type="button" data-bedrooms data-value="3">3+</button>
-                <button class="chip" type="button" data-bedrooms data-value="4">4+</button>
+            <div class="inline-filters__row">
+              <div class="inline-filters__group inline-filters__group--price">
+                <button class="inline-filters__price" type="button" aria-label="Precio" data-price-toggle aria-expanded="false">Precio</button>
               </div>
-            </div>
-            <div class="inline-filters__group inline-filters__group--bath">
-              <label class="inline-filters__label" for="bathrooms">Baños</label>
-              <select id="bathrooms" name="bathrooms">
-                <option value="">Todos</option>
-                <option value="1">1+</option>
-                <option value="2">2+</option>
-                <option value="3">3+</option>
-              </select>
-            </div>
-            <div class="inline-filters__group inline-filters__group--area">
-              <label class="inline-filters__label" for="minArea">Área mínima (m²)</label>
-              <input id="minArea" name="minArea" type="number" placeholder="60" min="0" />
+              <div class="inline-filters__group inline-filters__group--beds">
+                <span class="inline-filters__label">Dormitorios</span>
+                <div class="chip-group" role="group" aria-label="Dormitorios">
+                  <button class="chip" type="button" data-bedrooms data-value="1">1+</button>
+                  <button class="chip" type="button" data-bedrooms data-value="2">2+</button>
+                  <button class="chip" type="button" data-bedrooms data-value="3">3+</button>
+                  <button class="chip" type="button" data-bedrooms data-value="4">4+</button>
+                </div>
+              </div>
+              <div class="inline-filters__group inline-filters__group--bath">
+                <label class="inline-filters__label" for="bathrooms">Baños</label>
+                <select id="bathrooms" name="bathrooms">
+                  <option value="">Todos</option>
+                  <option value="1">1+</option>
+                  <option value="2">2+</option>
+                  <option value="3">3+</option>
+                </select>
+              </div>
+              <div class="inline-filters__group inline-filters__group--area">
+                <label class="inline-filters__label" for="minArea">Área mínima (m²)</label>
+                <input id="minArea" name="minArea" type="number" placeholder="60" min="0" />
+              </div>
             </div>
 
             <div class="inline-filters__price-range" data-price-panel class="hidden">

@@ -585,7 +585,7 @@ const init = async () => {
   if (priceToggleButton && pricePanel) {
     const setPricePanelState = (isOpen) => {
       pricePanel.classList.toggle('hidden', !isOpen);
-      priceToggleButton.classList.toggle('is-open', isOpen);
+      priceToggleButton.classList.toggle('active', isOpen);
       priceToggleButton.setAttribute('aria-expanded', isOpen.toString());
     };
 
