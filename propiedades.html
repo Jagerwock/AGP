@@ -186,7 +186,7 @@
         <div class="filters-panel" data-advanced-panel>
           <div class="inline-filters" aria-label="Filtros avanzados">
             <div class="inline-filters__group inline-filters__group--price">
-              <button class="inline-filters__price" type="button" aria-label="Precio">Precio</button>
+              <button class="inline-filters__price" type="button" aria-label="Precio" data-price-toggle aria-expanded="false">Precio</button>
             </div>
             <div class="inline-filters__group inline-filters__group--beds">
               <span class="inline-filters__label">Dormitorios</span>
@@ -209,6 +209,18 @@
             <div class="inline-filters__group inline-filters__group--area">
               <label class="inline-filters__label" for="minArea">Área mínima (m²)</label>
               <input id="minArea" name="minArea" type="number" placeholder="60" min="0" />
+            </div>
+
+            <div class="inline-filters__price-range" data-price-panel hidden>
+              <div class="inline-filters__price-field">
+                <label class="inline-filters__label" for="minPrice">Precio mínimo (S/)</label>
+                <input id="minPrice" name="minPrice" type="text" placeholder="200,000" inputmode="numeric" />
+              </div>
+              <span class="inline-filters__price-divider" aria-hidden="true"></span>
+              <div class="inline-filters__price-field">
+                <label class="inline-filters__label" for="maxPrice">Precio máximo (S/)</label>
+                <input id="maxPrice" name="maxPrice" type="text" placeholder="200,000" inputmode="numeric" />
+              </div>
             </div>
           </div>
         </div>

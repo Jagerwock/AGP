@@ -15,6 +15,8 @@ const activeChipsContainer = document.querySelector('[data-active-chips]');
 const advancedPanel = document.querySelector('[data-advanced-panel]');
 const moreFiltersBtn = document.querySelector('[data-more-filters]');
 const sortSelect = document.querySelector('[data-sort]');
+const priceToggleButton = document.querySelector('[data-price-toggle]');
+const pricePanel = document.querySelector('[data-price-panel]');
 
 const operationTabs = document.querySelectorAll('[data-operation-tab]');
 const viewToggleButtons = document.querySelectorAll('[data-view-toggle]');
@@ -29,6 +31,13 @@ const maxPriceInput = document.querySelector('[name="maxPrice"]');
 const floorsInput = document.querySelector('[name="floors"]');
 const parkingSelect = document.querySelector('[name="parking"]');
 const maintenanceInput = document.querySelector('[name="maintenance"]');
+
+const normalizeNumericValue = (value) => (value || '').toString().replace(/[^\d]/g, '');
+const formatThousands = (value) => {
+  const cleaned = normalizeNumericValue(value);
+  if (!cleaned) return '';
+  return Number(cleaned).toLocaleString('en-US');
+};
 
 const adminAccessButton = document.querySelector('[data-admin-access-btn]');
 const adminPanel = document.querySelector('[data-admin-panel]');
@@ -91,6 +100,8 @@ const applyStateToInputs = () => {
   if (bathroomsSelect) bathroomsSelect.value = state.bathrooms;
   if (minAreaInput) minAreaInput.value = state.minArea;
   if (minPriceInput) minPriceInput.value = state.minPrice;
+  if (minPriceInput) minPriceInput.value = formatThousands(state.minPrice);
+  if (maxPriceInput) maxPriceInput.value = formatThousands(state.maxPrice);
   if (maxPriceInput) maxPriceInput.value = state.maxPrice;
   if (floorsInput) floorsInput.value = state.floors;
   if (parkingSelect) parkingSelect.value = state.parking;
@@ -106,6 +117,8 @@ const updateStateFromInputs = () => {
   if (typeSelect) state.type = typeSelect.value;
   if (bathroomsSelect) state.bathrooms = bathroomsSelect.value;
   if (minAreaInput) state.minArea = minAreaInput.value;
+  if (minPriceInput) state.minPrice = normalizeNumericValue(minPriceInput.value);
+  if (maxPriceInput) state.maxPrice = normalizeNumericValue(maxPriceInput.value);
   if (minPriceInput) state.minPrice = minPriceInput.value;
   if (maxPriceInput) state.maxPrice = maxPriceInput.value;
   if (floorsInput) state.floors = floorsInput.value;
@@ -566,6 +579,33 @@ const init = async () => {
       const isOpen = advancedPanel.classList.contains('is-open');
       moreFiltersBtn.setAttribute('aria-expanded', isOpen.toString());
       moreFiltersBtn.textContent = isOpen ? 'Quitar filtros' : 'Más filtros';
+    });
+  }
+
+  if (priceToggleButton && pricePanel) {
+    const setPricePanelState = (isOpen) => {
+      pricePanel.hidden = !isOpen;
+      priceToggleButton.classList.toggle('is-open', isOpen);
+      priceToggleButton.setAttribute('aria-expanded', isOpen.toString());
+    };
+
+    setPricePanelState(false);
+
+    priceToggleButton.addEventListener('click', () => {
+      setPricePanelState(pricePanel.hidden);
+    });
+
+    [minPriceInput, maxPriceInput].forEach((input) => {
+      if (!input) return;
+      input.addEventListener('focus', () => {
+        input.value = normalizeNumericValue(input.value);
+      });
+      input.addEventListener('blur', () => {
+        input.value = formatThousands(input.value);
+      });
+      input.addEventListener('input', () => {
+        input.value = normalizeNumericValue(input.value);
+      });
     });
   }
 
