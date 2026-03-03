@@ -961,3 +961,7 @@ body.admin-mode .properties-intro h2 {
   clip: rect(0, 0, 0, 0);
   border: 0;
 }
+
+.hidden {
+  display: none;
+}

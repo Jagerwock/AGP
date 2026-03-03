@@ -584,7 +584,7 @@ const init = async () => {
 
   if (priceToggleButton && pricePanel) {
     const setPricePanelState = (isOpen) => {
-      pricePanel.hidden = !isOpen;
+      pricePanel.classList.toggle('hidden', !isOpen);
       priceToggleButton.classList.toggle('is-open', isOpen);
       priceToggleButton.setAttribute('aria-expanded', isOpen.toString());
     };
@@ -592,7 +592,8 @@ const init = async () => {
     setPricePanelState(false);
 
     priceToggleButton.addEventListener('click', () => {
-      setPricePanelState(pricePanel.hidden);
+      const isHidden = pricePanel.classList.contains('hidden');
+      setPricePanelState(isHidden);
     });
 
     [minPriceInput, maxPriceInput].forEach((input) => {
